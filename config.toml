@@ -2,7 +2,7 @@ baseURL = "https://kiwislice.github.io/html-css-js-memo/"
 
 languageCode = "en-us"
 DefaultContentLanguage = "en"
-title = "DocDock Documentation"
+title = "Html-Css-Js學習筆記"
 theme = "hugo-theme-docdock"
 themesdir = "themes"
 pygmentsCodeFences = true
@@ -28,7 +28,7 @@ enableMissingTranslationPlaceholders = false
 
 
 [params]
-editURL = "https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/"
+editURL = "https://github.com/kiwislice/html-css-js-memo/edit/master/exampleSite/content/"
 showVisitedLinks = true # default is false
 themeStyle = "flex" # "original" or "flex" # default "flex"
 themeVariant = "" # choose theme variant "green", "gold" , "gray", "blue" (default)
@@ -48,21 +48,21 @@ home = [ "HTML", "RSS", "JSON"]
 pre = "<h3>More</h3>"
 name = "<i class='fa fa-github'></i> <label>Github repo</label>"
 identifier = "ds"
-url = "https://github.com/vjeantet/hugo-theme-docdock"
+url = "https://github.com/kiwislice/html-css-js-memo"
 weight = 10
 
-[[menu.shortcuts]]
-name = "<i class='fa fa-cloud-download'></i> <label>Download</label>"
-url = "https://github.com/vjeantet/hugo-theme-docdock/archive/master.zip"
-weight = 11
+#[[menu.shortcuts]]
+#name = "<i class='fa fa-cloud-download'></i> <label>Download</label>"
+#url = "https://github.com/kiwislice/html-css-js-memo/archive/master.zip"
+#weight = 11
 
-[[menu.shortcuts]]
-name = "<i class='fa fa-bookmark'></i> <label>Hugo Documentation</label>"
-identifier = "hugodoc"
-url = "https://gohugo.io/"
-weight = 20
+#[[menu.shortcuts]]
+#name = "<i class='fa fa-bookmark'></i> <label>Hugo Documentation</label>"
+#identifier = "hugodoc"
+#url = "https://gohugo.io/"
+#weight = 20
 
-[[menu.shortcuts]]
-name = "<i class='fa fa-bullhorn'></i> <label>Credits</label>"
-url = "/credits"
-weight = 30
+#[[menu.shortcuts]]
+#name = "<i class='fa fa-bullhorn'></i> <label>Credits</label>"
+#url = "/credits"
+#weight = 30

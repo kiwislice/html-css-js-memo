@@ -1,0 +1,5 @@
+d:
+cd D:\CodeWorkSpace\Hugo\Sites\html-css-js-memo
+rd /s /q docs
+hugo server -d docs -b "https://kiwislice.github.io/html-css-js-memo/" --appendPort=false
+
