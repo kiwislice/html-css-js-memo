@@ -4,14 +4,14 @@
 	"title": "CSS",
 	"tags": [],
 	"description": "",
-	"content": ""
+	"content": ".\n"
 },
 {
 	"uri": "https://kiwislice.github.io/html-css-js-memo/css/text-truncate/",
 	"title": "文字截斷",
 	"tags": [],
 	"description": "",
-	"content": " 文字截斷 .text-truncate { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } 範例\n"
+	"content": " 單行： .text-truncate { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }  https://codepen.io/PJCHENder/pen/QOgVLR  多行：  https://css-tricks.com/line-clampin/  "
 },
 {
 	"uri": "https://kiwislice.github.io/html-css-js-memo/",

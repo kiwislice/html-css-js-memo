@@ -5,8 +5,7 @@ weight: 1
 ---
 
 
-
-### 文字截斷
+#### 單行：
 
 ```css
 .text-truncate {
@@ -16,5 +15,11 @@ weight: 1
 }
 ```
 
-[範例](https://kiwislice.github.io/coursera-html-css-javascript-test/text-truncate/)
+- https://codepen.io/PJCHENder/pen/QOgVLR
+
+
+#### 多行：
+
+- https://css-tricks.com/line-clampin/
+
 
