@@ -1,37 +1,68 @@
-baseURL = "https://kiwislice.github.io/coursera-html-css-javascript-test/"
+baseURL = "https://kiwislice.github.io/html-css-js-memo/"
+
 languageCode = "en-us"
-title = "Html/Css/Js學習筆記"
-themesDir = "themes"
+DefaultContentLanguage = "en"
+title = "DocDock Documentation"
 theme = "hugo-theme-docdock"
-
+themesdir = "themes"
 pygmentsCodeFences = true
-pygmentsCodefencesGuessSyntax = true
-pygmentsUseClasses = true
+pygmentsStyle = "monokailight"
 
-[[menu.main]]
-    name = "Home"
-    url = "https://kiwislice.github.io/coursera-html-css-javascript-test/"
-    weight = 1
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir= false
+enableMissingTranslationPlaceholders = false
 
-[[menu.main]]
-    name = "Docs"
-    url = "https://kiwislice.github.io/coursera-html-css-javascript-test/docs/"
-    weight = 2
+
+# [Languages]
+# [Languages.en]
+# title = "Documentation for Hugo docDock"
+# weight = 1
+# languageName = "English"
+# 
+# [Languages.fr]
+# title = "Documentation du thème docDock"
+# weight = 2
+# languageName = "Français"
+
+
+
 
 [params]
-  google_analytics_id=""
-  homepage_button_link = 'https://kiwislice.github.io/coursera-html-css-javascript-test/docs'
-  homepage_button_text = 'Read The Docs'
-  homepage_intro = 'Whisper is a documentation theme built with Hugo. The design and functionality is intentionally minimal.'
-  #homepage_image = '/images/terminal.gif'
+editURL = "https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/"
+showVisitedLinks = true # default is false
+themeStyle = "flex" # "original" or "flex" # default "flex"
+themeVariant = "" # choose theme variant "green", "gold" , "gray", "blue" (default)
+ordersectionsby = "weight" # ordersectionsby = "title"
+disableHomeIcon = false # default is false
+disableSearch = false # default is false
+disableNavChevron = false # set true to hide next/prev chevron, default is false
+highlightClientSide = false # set true to use highlight.pack.js instead of the default hugo chroma highlighter
+menushortcutsnewtab = false # set true to open shortcuts links to a new tab/window
+enableGitInfo = true
 
-  [params.homepage_meta_tags]
-    meta_description = "Hugo Whisper is a documentation theme built with Hugo."
-    meta_og_title = "Html/Css/Js學習筆記"
-    meta_og_type = "website"
-    meta_og_url = "https://hugo-whisper.netlify.com"
-    meta_og_image = "https://raw.githubusercontent.com/JugglerX/hugo-whisper-theme/master/images/tn.png"
-    meta_og_description = "Hugo Whisper is a documentation theme built with Hugo."
-    meta_twitter_card = "summary"
-    meta_twitter_site = "@zerostaticio"
-    meta_twitter_creator = "@zerostaticio"
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
+
+
+[[menu.shortcuts]]
+pre = "<h3>More</h3>"
+name = "<i class='fa fa-github'></i> <label>Github repo</label>"
+identifier = "ds"
+url = "https://github.com/vjeantet/hugo-theme-docdock"
+weight = 10
+
+[[menu.shortcuts]]
+name = "<i class='fa fa-cloud-download'></i> <label>Download</label>"
+url = "https://github.com/vjeantet/hugo-theme-docdock/archive/master.zip"
+weight = 11
+
+[[menu.shortcuts]]
+name = "<i class='fa fa-bookmark'></i> <label>Hugo Documentation</label>"
+identifier = "hugodoc"
+url = "https://gohugo.io/"
+weight = 20
+
+[[menu.shortcuts]]
+name = "<i class='fa fa-bullhorn'></i> <label>Credits</label>"
+url = "/credits"
+weight = 30
