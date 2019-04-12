@@ -4,14 +4,14 @@
 	"title": "CSS",
 	"tags": [],
 	"description": "",
-	"content": " 佔空間用\nindex2\n文字截斷 .text-truncate { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } 範例\n"
+	"content": ""
 },
 {
 	"uri": "https://kiwislice.github.io/html-css-js-memo/css/text-truncate/",
-	"title": "CSS",
+	"title": "文字截斷",
 	"tags": [],
 	"description": "",
-	"content": " 佔空間用\nindex2\n文字截斷 .text-truncate { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } 範例\n"
+	"content": " 文字截斷 .text-truncate { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } 範例\n"
 },
 {
 	"uri": "https://kiwislice.github.io/html-css-js-memo/",
@@ -40,6 +40,13 @@
 	"tags": [],
 	"description": "Hugo-built Sites with docdock theme",
 	"content": " https://invincible.site/ by @shazic https://bitfan.io/ by @vjeantet "
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/_footer/",
+	"title": "Html-Css-Js學習筆記",
+	"tags": [],
+	"description": "",
+	"content": "By kiwislice.\n"
 },
 {
 	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/",
