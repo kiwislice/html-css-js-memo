@@ -2,7 +2,7 @@ baseURL = "https://kiwislice.github.io/html-css-js-memo/"
 
 languageCode = "en-us"
 DefaultContentLanguage = "en"
-title = "Html-Css-Js學習筆記"
+title = "學習筆記"
 theme = "hugo-theme-docdock"
 themesdir = "themes"
 pygmentsCodeFences = true

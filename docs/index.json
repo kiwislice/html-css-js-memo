@@ -1,7 +1,7 @@
 [
 {
 	"uri": "https://kiwislice.github.io/html-css-js-memo/css/",
-	"title": "CSS",
+	"title": "Html-Css-Js",
 	"tags": [],
 	"description": "",
 	"content": ".\n"
@@ -15,10 +15,10 @@
 },
 {
 	"uri": "https://kiwislice.github.io/html-css-js-memo/",
-	"title": "Html-Css-Js學習筆記",
+	"title": "學習筆記",
 	"tags": [],
 	"description": "",
-	"content": " Html-Css-Js學習筆記 紀錄各種測試與試作品.\n常用網站  CSS w3schools Bootstrap4 w3schools Bootstrap官網 CodePen：線上編輯、測試、展示網站 免費處理中GIF下載 JS等價表  "
+	"content": " 學習筆記 紀錄各種測試與試作品.\nHtml-Css-Js常用網站  CSS w3schools Bootstrap4 w3schools Bootstrap官網 CodePen：線上編輯、測試、展示網站 免費處理中GIF下載 JS等價表  Java Web常用網站  Spring Security Reference Spring Web MVC Reference Spring Boot Reference Guide  資安相關  OWSAP  "
 },
 {
 	"uri": "https://kiwislice.github.io/html-css-js-memo/categories/",
