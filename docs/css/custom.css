@@ -14,3 +14,12 @@ header .logo {
 article section.page h1:first-of-type {
 	font-family: "Novacento Sans Wide", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif, \5FAE\8EDF\6B63\9ED1\9AD4, "Microsoft JhengHei";
 }
+
+code {
+	background: #eee !import;
+    padding: 3px 6px;
+    border-radius: 3px;
+    font-family: roboto mono,monospace;
+    /*font-size: .9rem;*/
+    /*line-height: 1.4;*/
+}
