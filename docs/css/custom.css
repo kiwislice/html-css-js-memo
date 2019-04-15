@@ -6,3 +6,11 @@ article > aside .menu .dd-item.active > div * {
 header .logo {
 	font-size: 1.5rem;
 }
+
+* {
+	font-family: 'Roboto', sans-serif, \5FAE\8EDF\6B63\9ED1\9AD4, "Microsoft JhengHei";
+}
+
+article section.page h1:first-of-type {
+	font-family: "Novacento Sans Wide", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif, \5FAE\8EDF\6B63\9ED1\9AD4, "Microsoft JhengHei";
+}

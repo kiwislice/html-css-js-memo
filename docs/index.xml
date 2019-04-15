@@ -6,15 +6,25 @@
     <description>Recent content on 學習筆記</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 Feb 2019 19:27:37 +1000</lastBuildDate>
+    <lastBuildDate>Mon, 15 Apr 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kiwislice.github.io/html-css-js-memo/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>登記Windows服務</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/tools/%E7%99%BB%E8%A8%98windows%E6%9C%8D%E5%8B%99/</link>
+      <pubDate>Mon, 15 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/tools/%E7%99%BB%E8%A8%98windows%E6%9C%8D%E5%8B%99/</guid>
+      <description>使用工具 winsw
+流程  到winsw/releases下載適用的版本(由環境的.NET版本決定) 從winsw/examples下載xml設定檔 準備好服務啟動時要執行的目標(EX:.JAR檔) 將1., 2., 3.放在同資料夾並給相同檔名  開啟命令提示字元(看狀況可用系統管理員身分執行)，進入該資料夾，執行xxx.exe install即可(xxx自行替換成該exe檔名)  DEBUG 如果啟動過程出錯，可至事件檢視器查看</description>
+    </item>
+    
+    <item>
       <title>文字截斷</title>
       <link>https://kiwislice.github.io/html-css-js-memo/css/text-truncate/</link>
-      <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
+      <pubDate>Fri, 12 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>https://kiwislice.github.io/html-css-js-memo/css/text-truncate/</guid>
       <description> 單行： .text-truncate { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }  https://codepen.io/PJCHENder/pen/QOgVLR  多行：  https://css-tricks.com/line-clampin/  </description>

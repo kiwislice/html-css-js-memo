@@ -1,5 +1,12 @@
 [
 {
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tools/%E7%99%BB%E8%A8%98windows%E6%9C%8D%E5%8B%99/",
+	"title": "登記Windows服務",
+	"tags": [],
+	"description": "",
+	"content": " 使用工具 winsw\n流程  到winsw/releases下載適用的版本(由環境的.NET版本決定) 從winsw/examples下載xml設定檔 準備好服務啟動時要執行的目標(EX:.JAR檔) 將1., 2., 3.放在同資料夾並給相同檔名  開啟命令提示字元(看狀況可用系統管理員身分執行)，進入該資料夾，執行xxx.exe install即可(xxx自行替換成該exe檔名)  DEBUG 如果啟動過程出錯，可至事件檢視器查看\n"
+},
+{
 	"uri": "https://kiwislice.github.io/html-css-js-memo/css/",
 	"title": "Html-Css-Js",
 	"tags": [],
@@ -14,11 +21,25 @@
 	"content": " 單行： .text-truncate { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }  https://codepen.io/PJCHENder/pen/QOgVLR  多行：  https://css-tricks.com/line-clampin/  "
 },
 {
+	"uri": "https://kiwislice.github.io/html-css-js-memo/java/",
+	"title": "Java",
+	"tags": [],
+	"description": "",
+	"content": ".\n"
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tools/",
+	"title": "Tools",
+	"tags": [],
+	"description": "",
+	"content": ".\n"
+},
+{
 	"uri": "https://kiwislice.github.io/html-css-js-memo/",
 	"title": "學習筆記",
 	"tags": [],
 	"description": "",
-	"content": " 學習筆記 紀錄各種測試與試作品.\nHtml-Css-Js常用網站  CSS w3schools Bootstrap4 w3schools Bootstrap官網 CodePen：線上編輯、測試、展示網站 免費處理中GIF下載 JS等價表  Java Web常用網站  Spring Security Reference Spring Web MVC Reference Spring Boot Reference Guide  資安相關  OWSAP  "
+	"content": " 學習筆記 紀錄各種測試與試作品.\nHtml-Css-Js常用網站  CSS w3schools Bootstrap4 w3schools Bootstrap官網 CodePen：線上編輯、測試、展示網站 免費處理中GIF下載 JS等價表  Java Web常用網站  Spring Security Reference Spring Web MVC Reference Spring Boot Reference Guide Spring Data JPA Reference Lombok  資安相關  OWSAP  "
 },
 {
 	"uri": "https://kiwislice.github.io/html-css-js-memo/categories/",

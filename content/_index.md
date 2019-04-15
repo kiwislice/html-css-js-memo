@@ -23,6 +23,8 @@ description = ""
 - [Spring Security Reference](<https://docs.spring.io/spring-security/site/docs/5.1.5.RELEASE/reference/htmlsingle/>)
 - [Spring Web MVC Reference](<https://docs.spring.io/spring/docs/5.1.5.RELEASE/spring-framework-reference/web.html#mvc>)
 - [Spring Boot Reference Guide](<https://docs.spring.io/spring-boot/docs/2.1.3.RELEASE/reference/htmlsingle/>)
+- [Spring Data JPA Reference](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/)
+- [Lombok](https://projectlombok.org/)
 
 
 
