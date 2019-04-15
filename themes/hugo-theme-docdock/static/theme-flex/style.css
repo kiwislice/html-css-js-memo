@@ -44,6 +44,7 @@ header {
   right: 0;
   top: 0;
   z-index: 100; }
+  /*
   header:after {
     background: url(ribbon.png) 0 0/100% no-repeat;
     content: '';
@@ -52,6 +53,7 @@ header {
     position: absolute;
     right: 0;
     top: 100%; }
+    */
   header a {
     text-decoration: none; }
   header .logo {
@@ -93,7 +95,7 @@ header {
         margin-bottom: 0rem; }
 
 article > aside {
-  background-color: #f9f9f9;
+  /*background-color: #f9f9f9;*/
   bottom: 0;
   box-sizing: border-box;
   display: -webkit-box;

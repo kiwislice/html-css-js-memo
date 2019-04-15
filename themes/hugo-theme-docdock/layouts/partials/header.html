@@ -5,6 +5,10 @@
   {{ if .Site.GetPage "page" "_header.md" }}
     {{(.Site.GetPage "page" "_header.md").Content}}
   {{else}}
-    <a class="baselink" href="{{.Site.BaseURL}}">{{.Site.Title}}</a>
+    <!--<a class="baselink" href="{{.Site.BaseURL}}">{{.Site.Title}}</a>-->
+	<a class="baselink" href="{{.Site.BaseURL}}"><i class="fa fa-fw fa-home"></i></a>
+	
   {{end}}
 {{end}}
+
+
