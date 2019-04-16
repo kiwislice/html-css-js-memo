@@ -16,21 +16,34 @@ function initLunr() {
             pagesIndex =   index;
             // Set up lunrjs by declaring the fields we use
             // Also provide their boost level for the ranking
-            lunrIndex = new lunr.Index
-            lunrIndex.ref("uri");
-            lunrIndex.field('title', {
-                boost: 15
-            });
-            lunrIndex.field('tags', {
-                boost: 10
-            });
-            lunrIndex.field("content", {
-                boost: 5
+            // lunrIndex = new lunr.Index
+            // lunrIndex.ref("uri");
+            // lunrIndex.field('title', {
+            //     boost: 15
+            // });
+            // lunrIndex.field('tags', {
+            //     boost: 10
+            // });
+            // lunrIndex.field("content", {
+            //     boost: 5
+            // });
+            lunrIndex = elasticlunr(function(){
+                this.addField('title', {
+                    boost: 15
+                });
+                this.addField('tags', {
+                    boost: 10
+                });
+                this.addField('content', {
+                    boost: 5
+                });
+                this.setRef('uri');
             });
 
             // Feed lunr with each file and let lunr actually index them
             pagesIndex.forEach(function(page) {
-                lunrIndex.add(page);
+                // lunrIndex.add(page);
+                lunrIndex.addDoc(page);
             });
             lunrIndex.pipeline.remove(lunrIndex.stemmer)
         })
@@ -48,7 +61,7 @@ function initLunr() {
  */
 function search(query) {
     // Find the item in our index corresponding to the lunr one to have more info
-    return lunrIndex.search(query).map(function(result) {
+    return lunrIndex.search(query, {}).map(function(result) {
             return pagesIndex.filter(function(page) {
                 return page.uri === result.ref;
             })[0];
