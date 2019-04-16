@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>學習筆記</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2019-04-16T14:23:27 CST">
+<title>自定義Scope :: 學習筆記</title>
+<link rel="shortcut icon" href="/html-css-js-memo/images/favicon.png" type="image/x-icon" />
+<link href="/html-css-js-memo/css/font-awesome.min.css" rel="stylesheet">
+<link href="/html-css-js-memo/css/nucleus.css" rel="stylesheet">
+<link href="/html-css-js-memo/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/html-css-js-memo/css/bootstrap.min.css">
+<script src="/html-css-js-memo/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "https:\/\/kiwislice.github.io\/html-css-js-memo\/";
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-79101-13', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  <link rel="stylesheet" href="/html-css-js-memo/css/custom.css">
+  <script src="/html-css-js-memo/js/custom.js"></script>
+  
+
+    
+  </head>
+  <body data-url="/html-css-js-memo/java/spring/custom-scope/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    
+	<a class="baselink" href="https://kiwislice.github.io/html-css-js-memo/"><i class="fa fa-fw fa-home"></i></a>
+	
+  
+
+
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="https://github.com/kiwislice/html-css-js-memo"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+          
+    <li data-nav-id="/html-css-js-memo/css/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/css/">Html-Css-Js</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/html-css-js-memo/css/text-truncate/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/css/text-truncate/">
+            文字截斷
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/html-css-js-memo/java/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/java/">Java</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/html-css-js-memo/java/spring/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/java/spring/">Spring</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/html-css-js-memo/java/spring/custom-scope/" class="dd-item active">
+        <div>
+          <a href="/html-css-js-memo/java/spring/custom-scope/">
+            自定義Scope
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/html-css-js-memo/tools/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/tools/">Tools</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/html-css-js-memo/tools/register-windows-service/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/tools/register-windows-service/">
+            登記Windows服務
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section><center>
+
+<a class="github-button" href="https://github.com/kiwislice/html-css-js-memo/archive/master.zip" data-icon="octicon-cloud-download" aria-label="Download vjeantet/hugo-theme-docdock on GitHub">Download</a>
+
+
+<a class="github-button" href="https://github.com/kiwislice/html-css-js-memo" data-icon="octicon-star" data-show-count="false" aria-label="Star vjeantet/hugo-theme-docdock on GitHub">Star</a>
+
+
+<a class="github-button" href="https://github.com/kiwislice/html-css-js-memo/fork" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork vjeantet/hugo-theme-docdock on GitHub">Fork</a>
+
+</center>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/html-css-js-memo/css/" >
+   Html-Css-Js</option>
+    <option value="/html-css-js-memo/java/" >
+   Java</option> 
+  
+    <option value="/html-css-js-memo/tools/" >
+   Tools</option>
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="">
+        </div>
+        <script type="text/javascript" src="/html-css-js-memo/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/html-css-js-memo/js/auto-complete.js"></script>
+        <link href="/html-css-js-memo/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "https:\/\/kiwislice.github.io\/html-css-js-memo\/";
+          
+        </script>
+        <script type="text/javascript" src="/html-css-js-memo/js/search.js"></script>
+      </div>
+    
+
+    <h1>自定義Scope</h1>
+    
+    
+    
+    <p>先準備自定義的Scope物件(此範例為JSF的ViewScope)</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> <span style="color:#111">org.springframework.beans.factory.ObjectFactory</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> <span style="color:#111">org.springframework.beans.factory.config.Scope</span><span style="color:#f92672">;</span>
+
+<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">ViewScope</span> <span style="color:#00a8c8">implements</span> <span style="color:#111">Scope</span> <span style="color:#f92672">{</span>
+
+	<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">static</span> <span style="color:#00a8c8">final</span> <span style="color:#111">String</span> <span style="color:#111">SCOPE_NAME</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;custom_view&#34;</span><span style="color:#f92672">;</span>
+
+    <span style="color:#75715e">/** 取得給定名稱物件，不存在則建立 */</span>
+	<span style="color:#75af00">@Override</span>
+	<span style="color:#00a8c8">public</span> <span style="color:#111">Object</span> <span style="color:#75af00">get</span><span style="color:#f92672">(</span><span style="color:#111">String</span> <span style="color:#111">name</span><span style="color:#f92672">,</span> <span style="color:#111">ObjectFactory</span><span style="color:#f92672">&lt;?&gt;</span> <span style="color:#111">objectFactory</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#111">Map</span><span style="color:#f92672">&lt;</span><span style="color:#111">String</span><span style="color:#f92672">,</span> <span style="color:#111">Object</span><span style="color:#f92672">&gt;</span> <span style="color:#111">viewMap</span> <span style="color:#f92672">=</span> <span style="color:#111">FacesContext</span><span style="color:#f92672">.</span><span style="color:#75af00">getCurrentInstance</span><span style="color:#f92672">().</span><span style="color:#75af00">getViewRoot</span><span style="color:#f92672">().</span><span style="color:#75af00">getViewMap</span><span style="color:#f92672">();</span>
+		<span style="color:#00a8c8">if</span> <span style="color:#f92672">(</span><span style="color:#111">viewMap</span><span style="color:#f92672">.</span><span style="color:#75af00">containsKey</span><span style="color:#f92672">(</span><span style="color:#111">name</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+			<span style="color:#00a8c8">return</span> <span style="color:#111">viewMap</span><span style="color:#f92672">.</span><span style="color:#75af00">get</span><span style="color:#f92672">(</span><span style="color:#111">name</span><span style="color:#f92672">);</span>
+		<span style="color:#f92672">}</span> <span style="color:#00a8c8">else</span> <span style="color:#f92672">{</span>
+			<span style="color:#111">Object</span> <span style="color:#111">object</span> <span style="color:#f92672">=</span> <span style="color:#111">objectFactory</span><span style="color:#f92672">.</span><span style="color:#75af00">getObject</span><span style="color:#f92672">();</span>
+			<span style="color:#111">viewMap</span><span style="color:#f92672">.</span><span style="color:#75af00">put</span><span style="color:#f92672">(</span><span style="color:#111">name</span><span style="color:#f92672">,</span> <span style="color:#111">object</span><span style="color:#f92672">);</span>
+			<span style="color:#00a8c8">return</span> <span style="color:#111">object</span><span style="color:#f92672">;</span>
+		<span style="color:#f92672">}</span>
+	<span style="color:#f92672">}</span>
+
+	<span style="color:#75af00">@Override</span>
+	<span style="color:#00a8c8">public</span> <span style="color:#111">String</span> <span style="color:#75af00">getConversationId</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+		<span style="color:#00a8c8">return</span> <span style="color:#00a8c8">null</span><span style="color:#f92672">;</span>
+	<span style="color:#f92672">}</span>
+
+	<span style="color:#75af00">@Override</span>
+	<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">registerDestructionCallback</span><span style="color:#f92672">(</span><span style="color:#111">String</span> <span style="color:#111">name</span><span style="color:#f92672">,</span> <span style="color:#111">Runnable</span> <span style="color:#111">callback</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+
+	<span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">/** 移除指定物件 */</span>
+	<span style="color:#75af00">@Override</span>
+	<span style="color:#00a8c8">public</span> <span style="color:#111">Object</span> <span style="color:#75af00">remove</span><span style="color:#f92672">(</span><span style="color:#111">String</span> <span style="color:#111">name</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#00a8c8">return</span> <span style="color:#111">FacesContext</span><span style="color:#f92672">.</span><span style="color:#75af00">getCurrentInstance</span><span style="color:#f92672">().</span><span style="color:#75af00">getViewRoot</span><span style="color:#f92672">().</span><span style="color:#75af00">getViewMap</span><span style="color:#f92672">().</span><span style="color:#75af00">remove</span><span style="color:#f92672">(</span><span style="color:#111">name</span><span style="color:#f92672">);</span>
+	<span style="color:#f92672">}</span>
+
+	<span style="color:#75af00">@Override</span>
+	<span style="color:#00a8c8">public</span> <span style="color:#111">Object</span> <span style="color:#75af00">resolveContextualObject</span><span style="color:#f92672">(</span><span style="color:#111">String</span> <span style="color:#111">arg0</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#00a8c8">return</span> <span style="color:#00a8c8">null</span><span style="color:#f92672">;</span>
+	<span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span></code></pre></div>
+<p>準備1個<code>BeanFactoryPostProcessor</code>，負責登記Scpoe名稱與對應的Scope物件</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> <span style="color:#111">org.springframework.beans.BeansException</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> <span style="color:#111">org.springframework.beans.factory.config.BeanFactoryPostProcessor</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> <span style="color:#111">org.springframework.beans.factory.config.ConfigurableListableBeanFactory</span><span style="color:#f92672">;</span>
+
+<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">CustomerBeanFactoryPostProcessor</span> <span style="color:#00a8c8">implements</span> <span style="color:#111">BeanFactoryPostProcessor</span> <span style="color:#f92672">{</span>
+	<span style="color:#75af00">@Override</span>
+	<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">postProcessBeanFactory</span><span style="color:#f92672">(</span><span style="color:#111">ConfigurableListableBeanFactory</span> <span style="color:#111">beanFactory</span><span style="color:#f92672">)</span> <span style="color:#00a8c8">throws</span> <span style="color:#111">BeansException</span> <span style="color:#f92672">{</span>
+		<span style="color:#111">beanFactory</span><span style="color:#f92672">.</span><span style="color:#75af00">registerScope</span><span style="color:#f92672">(</span><span style="color:#111">ViewScope</span><span style="color:#f92672">.</span><span style="color:#75af00">SCOPE_NAME</span><span style="color:#f92672">,</span> <span style="color:#00a8c8">new</span> <span style="color:#111">ViewScope</span><span style="color:#f92672">());</span>
+	<span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span></code></pre></div>
+<p>將客製的<code>BeanFactoryPostProcessor</code>登記為Bean</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75af00">@Configuration</span>
+<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">CustomScopeConfig</span> <span style="color:#f92672">{</span>
+	<span style="color:#75af00">@Bean</span>
+	<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">static</span> <span style="color:#111">BeanFactoryPostProcessor</span> <span style="color:#75af00">beanFactoryPostProcessor</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+		<span style="color:#00a8c8">return</span> <span style="color:#00a8c8">new</span> <span style="color:#111">CustomerBeanFactoryPostProcessor</span><span style="color:#f92672">();</span>
+	<span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span></code></pre></div>
+<p>使用方式</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75af00">@Component</span>
+<span style="color:#75af00">@Scope</span><span style="color:#f92672">(</span><span style="color:#111">ViewScope</span><span style="color:#f92672">.</span><span style="color:#75af00">SCOPE_NAME</span><span style="color:#f92672">)</span>
+<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">PageView</span> <span style="color:#f92672">{</span>
+<span style="color:#f92672">}</span></code></pre></div>
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+</div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i>  16/04/2019
+    </div>
+    
+
+    
+    <div class="github-link">
+      <a href="https://github.com/kiwislice/html-css-js-memo/edit/master/exampleSite/content/java/spring/custom-scope.md" target="blank"><i class="fa fa-code-fork"></i>
+        </a>
+    </div>
+    
+  </div>
+
+
+	<div>
+
+
+  
+    <p>By kiwislice.</p>
+
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/html-css-js-memo/js/clipboard.min.js"></script>
+
+<link href="/html-css-js-memo/css/featherlight.min.css" rel="stylesheet">
+<script src="/html-css-js-memo/js/featherlight.min.js"></script>
+
+
+
+<script src="/html-css-js-memo/theme-flex/script.js"></script>
+
+
+    
+
+    
+    
+
+    
+  <script data-no-instant>document.write('<script src="/livereload.js?port=1313&mindelay=10"></' + 'script>')</script></body>
+</html>

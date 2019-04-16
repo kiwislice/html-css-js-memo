@@ -5,8 +5,8 @@
     <link>https://kiwislice.github.io/html-css-js-memo/</link>
     <description>Recent content on 學習筆記</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 15 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <language>zh-TW</language>
+    <lastBuildDate>Tue, 16 Apr 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kiwislice.github.io/html-css-js-memo/index.xml" rel="self" type="application/rss+xml" />
     
@@ -28,6 +28,16 @@
       
       <guid>https://kiwislice.github.io/html-css-js-memo/css/text-truncate/</guid>
       <description> 單行： .text-truncate { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }  https://codepen.io/PJCHENder/pen/QOgVLR  多行：  https://css-tricks.com/line-clampin/  </description>
+    </item>
+    
+    <item>
+      <title>自定義Scope</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/java/spring/custom-scope/</link>
+      <pubDate>Tue, 16 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/java/spring/custom-scope/</guid>
+      <description>先準備自定義的Scope物件(此範例為JSF的ViewScope)
+import org.springframework.beans.factory.ObjectFactory; import org.springframework.beans.factory.config.Scope; public class ViewScope implements Scope { public static final String SCOPE_NAME = &amp;#34;custom_view&amp;#34;; /** 取得給定名稱物件，不存在則建立 */ @Override public Object get(String name, ObjectFactory&amp;lt;?&amp;gt; objectFactory) { Map&amp;lt;String, Object&amp;gt; viewMap = FacesContext.getCurrentInstance().getViewRoot().getViewMap(); if (viewMap.containsKey(name)) { return viewMap.get(name); } else { Object object = objectFactory.getObject(); viewMap.put(name, object); return object; } } @Override public String getConversationId() { return null; } @Override public void registerDestructionCallback(String name, Runnable callback) { } /** 移除指定物件 */ @Override public Object remove(String name) { return FacesContext.</description>
     </item>
     
     <item>
