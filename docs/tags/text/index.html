@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2019-04-16T16:51:29 CST">
-<title>登記Windows服務 :: 學習筆記</title>
+<title>text :: 學習筆記</title>
 <link rel="shortcut icon" href="/html-css-js-memo/images/favicon.png" type="image/x-icon" />
 <link href="/html-css-js-memo/css/font-awesome.min.css" rel="stylesheet">
 <link href="/html-css-js-memo/css/nucleus.css" rel="stylesheet">
@@ -33,7 +33,7 @@
 
     
   </head>
-  <body data-url="/html-css-js-memo/tools/register-windows-service/">
+  <body data-url="/html-css-js-memo/tags/text/">
     
       <header>
   <div class="logo">
@@ -83,16 +83,30 @@
       <a href="/html-css-js-memo/java/">Java</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-        </ul>
-    </li>
-    <li data-nav-id="/html-css-js-memo/tools/" class="dd-item parent haschildren
+    <li data-nav-id="/html-css-js-memo/java/spring/" class="dd-item haschildren
         ">
       <div>
-      <a href="/html-css-js-memo/tools/">Tools</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/html-css-js-memo/java/spring/">Spring</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/html-css-js-memo/tools/register-windows-service/" class="dd-item active">
+      <li data-nav-id="/html-css-js-memo/java/spring/custom-scope/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/java/spring/custom-scope/">
+            自定義Scope
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/html-css-js-memo/tools/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/tools/">Tools</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/html-css-js-memo/tools/register-windows-service/" class="dd-item">
         <div>
           <a href="/html-css-js-memo/tools/register-windows-service/">
             登記Windows服務
@@ -132,9 +146,7 @@
     <option value="/html-css-js-memo/java/" >
    Java</option>
     <option value="/html-css-js-memo/tools/" >
-   Tools</option> 
-      <option value="/html-css-js-memo/tools/register-windows-service/"  selected>- 登記Windows服務</option>
-  
+   Tools</option>
 
 
 
@@ -158,30 +170,58 @@
       </div>
     
 
-    <h1>登記Windows服務</h1>
+    <h1>text</h1>
     
     
     
-    
 
-<h4 id="使用工具">使用工具</h4>
 
-<p><a href="https://github.com/kohsuke/winsw">winsw</a></p>
 
-<h4 id="流程">流程</h4>
+<div class="extra-pagination inner">
+<nav class="pagination" role="navigation">
+	
+	<span class="page-number"> 1  1</span>
+	
+</nav>
 
-<ol>
-<li>到<a href="https://github.com/kohsuke/winsw/releases">winsw/releases</a>下載適用的版本(由環境的.NET版本決定)</li>
-<li>從<a href="https://github.com/kohsuke/winsw/tree/master/examples">winsw/examples</a>下載xml設定檔</li>
-<li>準備好服務啟動時要執行的目標(EX:.JAR檔)</li>
-<li>將1., 2., 3.放在同資料夾並給相同檔名
-<img src="https://raw.githubusercontent.com/kiwislice/html-css-js-memo/master/static/images/tools/1555314930686.png" alt="1555314930686" /></li>
-<li>開啟命令提示字元(看狀況可用系統管理員身分執行)，進入該資料夾，執行<code>xxx.exe install</code>即可(xxx自行替換成該exe檔名)</li>
-</ol>
+</div>
 
-<h4 id="debug">DEBUG</h4>
 
-<p>如果啟動過程出錯，可至事件檢視器查看</p>
+   <article class="post css">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/html-css-js-memo/css/text-truncate/">文字截斷</a></h2>
+    </header>
+    <section class="post-excerpt">
+        <p> 單行： .text-truncate { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }  https://codepen.io/PJCHENder/pen/QOgVLR  多行：  https://css-tricks.com/line-clampin/   <a class="read-more" href="/html-css-js-memo/css/text-truncate/">&raquo;</a></p>
+    </section>
+    <footer class=" footline" >
+         
+        
+
+        
+          
+            
+                <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/css/">css</a>
+            
+                <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/text/">text</a>
+            
+                <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/truncate/">truncate</a>
+            
+        
+
+    </footer>
+</article>
+
+
+<div style="margin-bottom:2rem"></div>
+
+<nav class="pagination" role="navigation">
+	
+	<span class="page-number"> 1  1</span>
+	
+</nav>
+
+
 
 
     
@@ -198,26 +238,18 @@
 
 <div class="footline">
     
-    <div class="tags"> 
-      
-        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/windows">windows</a>
-      
-        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/service">service</a>
-      
-    </div>
-    
 
     
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i>  15/04/2019
+        <i class='fa fa-calendar'></i>  12/04/2019
     </div>
     
 
     
     <div class="github-link">
-      <a href="https://github.com/kiwislice/html-css-js-memo/edit/master/exampleSite/content/tools/register-windows-service.md" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/kiwislice/html-css-js-memo/edit/master/exampleSite/content/" target="blank"><i class="fa fa-code-fork"></i>
         </a>
     </div>
     

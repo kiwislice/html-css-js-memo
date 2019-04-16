@@ -6,9 +6,73 @@
     <description>Recent content in Tags on 學習筆記</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
+    <lastBuildDate>Tue, 16 Apr 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kiwislice.github.io/html-css-js-memo/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>scope</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/tags/scope/</link>
+      <pubDate>Tue, 16 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/tags/scope/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>spring</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/tags/spring/</link>
+      <pubDate>Tue, 16 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/tags/spring/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>service</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/tags/service/</link>
+      <pubDate>Mon, 15 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/tags/service/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>windows</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/tags/windows/</link>
+      <pubDate>Mon, 15 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/tags/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>css</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/tags/css/</link>
+      <pubDate>Fri, 12 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/tags/css/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>text</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/tags/text/</link>
+      <pubDate>Fri, 12 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/tags/text/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>truncate</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/tags/truncate/</link>
+      <pubDate>Fri, 12 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/tags/truncate/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

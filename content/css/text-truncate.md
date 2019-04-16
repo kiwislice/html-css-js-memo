@@ -2,6 +2,7 @@
 title: '文字截斷'
 date: 2019-04-12
 weight: 1
+tags: ["css","text","truncate"]
 ---
 
 

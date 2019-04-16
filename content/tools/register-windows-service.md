@@ -2,6 +2,7 @@
 title: '登記Windows服務'
 date: 2019-04-15
 weight: 1
+tags: ["windows","service"]
 ---
 
 

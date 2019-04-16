@@ -2,7 +2,7 @@
 {
 	"uri": "https://kiwislice.github.io/html-css-js-memo/tools/register-windows-service/",
 	"title": "登記Windows服務",
-	"tags": [],
+	"tags": ["windows", "service"],
 	"description": "",
 	"content": " 使用工具 winsw\n流程  到winsw/releases下載適用的版本(由環境的.NET版本決定) 從winsw/examples下載xml設定檔 準備好服務啟動時要執行的目標(EX:.JAR檔) 將1., 2., 3.放在同資料夾並給相同檔名  開啟命令提示字元(看狀況可用系統管理員身分執行)，進入該資料夾，執行xxx.exe install即可(xxx自行替換成該exe檔名)  DEBUG 如果啟動過程出錯，可至事件檢視器查看\n"
 },
@@ -16,7 +16,7 @@
 {
 	"uri": "https://kiwislice.github.io/html-css-js-memo/css/text-truncate/",
 	"title": "文字截斷",
-	"tags": [],
+	"tags": ["css", "text", "truncate"],
 	"description": "",
 	"content": " 單行： .text-truncate { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }  https://codepen.io/PJCHENder/pen/QOgVLR  多行：  https://css-tricks.com/line-clampin/  "
 },
@@ -30,7 +30,7 @@
 {
 	"uri": "https://kiwislice.github.io/html-css-js-memo/java/spring/custom-scope/",
 	"title": "自定義Scope",
-	"tags": [],
+	"tags": ["spring", "scope"],
 	"description": "",
 	"content": "先準備自定義的Scope物件(此範例為JSF的ViewScope)\nimport org.springframework.beans.factory.ObjectFactory; import org.springframework.beans.factory.config.Scope; public class ViewScope implements Scope { public static final String SCOPE_NAME = \u0026#34;custom_view\u0026#34;; /** 取得給定名稱物件，不存在則建立 */ @Override public Object get(String name, ObjectFactory\u0026lt;?\u0026gt; objectFactory) { Map\u0026lt;String, Object\u0026gt; viewMap = FacesContext.getCurrentInstance().getViewRoot().getViewMap(); if (viewMap.containsKey(name)) { return viewMap.get(name); } else { Object object = objectFactory.getObject(); viewMap.put(name, object); return object; } } @Override public String getConversationId() { return null; } @Override public void registerDestructionCallback(String name, Runnable callback) { } /** 移除指定物件 */ @Override public Object remove(String name) { return FacesContext.getCurrentInstance().getViewRoot().getViewMap().remove(name); } @Override public Object resolveContextualObject(String arg0) { return null; } } 準備1個BeanFactoryPostProcessor，負責登記Scpoe名稱與對應的Scope物件\nimport org.springframework.beans.BeansException; import org.springframework.beans.factory.config.BeanFactoryPostProcessor; import org.springframework.beans.factory.config.ConfigurableListableBeanFactory; public class CustomerBeanFactoryPostProcessor implements BeanFactoryPostProcessor { @Override public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException { beanFactory.registerScope(ViewScope.SCOPE_NAME, new ViewScope()); } } 將客製的BeanFactoryPostProcessor登記為Bean\n@Configuration public class CustomScopeConfig { @Bean public static BeanFactoryPostProcessor beanFactoryPostProcessor() { return new CustomerBeanFactoryPostProcessor(); } } 使用方式\n@Component @Scope(ViewScope.SCOPE_NAME) public class PageView { }"
 },
@@ -49,11 +49,67 @@
 	"content": ".\n"
 },
 {
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/scope/",
+	"title": "scope",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/spring/",
+	"title": "spring",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
 	"uri": "https://kiwislice.github.io/html-css-js-memo/",
 	"title": "學習筆記",
 	"tags": [],
 	"description": "",
 	"content": " 學習筆記 紀錄各種測試與試作品.\nHtml-Css-Js常用網站  CSS w3schools Bootstrap4 w3schools Bootstrap官網 CodePen：線上編輯、測試、展示網站 免費處理中GIF下載 JS等價表  Java Web常用網站  Spring Security Reference Spring Web MVC Reference Spring Boot Reference Guide Spring Data JPA Reference Lombok  資安相關  OWSAP  "
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/service/",
+	"title": "service",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/windows/",
+	"title": "windows",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/css/",
+	"title": "css",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/text/",
+	"title": "text",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/truncate/",
+	"title": "truncate",
+	"tags": [],
+	"description": "",
+	"content": ""
 },
 {
 	"uri": "https://kiwislice.github.io/html-css-js-memo/categories/",
@@ -82,11 +138,4 @@
 	"tags": [],
 	"description": "",
 	"content": "By kiwislice.\n"
-},
-{
-	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/",
-	"title": "Tags",
-	"tags": [],
-	"description": "",
-	"content": ""
 }]

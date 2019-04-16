@@ -2,6 +2,7 @@
 title: '自定義Scope'
 date: 2019-04-16
 weight: 50
+tags: ["spring","scope"]
 ---
 
 
