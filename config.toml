@@ -27,7 +27,7 @@ enableMissingTranslationPlaceholders = false
 
 
 [params]
-editURL = "https://github.com/kiwislice/html-css-js-memo/edit/master/exampleSite/content/"
+editURL = "https://github.com/kiwislice/html-css-js-memo/edit/master/content/"
 showVisitedLinks = true # default is false
 themeStyle = "flex" # "original" or "flex" # default "flex"
 themeVariant = "" # choose theme variant "green", "gold" , "gray", "blue" (default)

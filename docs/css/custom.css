@@ -28,3 +28,29 @@ pre > code {
 	background: #fafafa;
 }
 
+.w-100 {
+	width: 100%;
+}
+
+.w-20 {
+	width: 20%;
+}
+
+.text-wrap {
+	white-space: normal;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.text-truncate-3-line {
+	height: 5rem;
+}
+
+.text-truncate-3-line p {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
+}
+
+

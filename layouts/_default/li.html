@@ -1,0 +1,28 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col" class="w-20">Title</th>
+            <th scope="col">Summary</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="post {{ .Section }}">
+            <td class="text-truncate-3-line">
+                <a href="{{ .RelPermalink }}">
+                    <p>{{ .Title }}</p>
+                </a>
+                
+		        {{if .Params.tags }}  
+		            {{ range $index, $tag := .Params.tags }}
+		                <a class="label label-default" href="{{$.Site.BaseURL}}tags/{{ $tag | urlize }}/">{{ $tag }}</a>
+		            {{ end }}
+		        {{end}}
+
+            </td>
+            <td class="text-truncate-3-line">
+            	<p>{{ .Summary }}</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
