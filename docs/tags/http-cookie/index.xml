@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>http cookie on 學習筆記</title>
+    <link>https://kiwislice.github.io/html-css-js-memo/tags/http-cookie/</link>
+    <description>Recent content in http cookie on 學習筆記</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Thu, 18 Apr 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://kiwislice.github.io/html-css-js-memo/tags/http-cookie/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Http Cookie</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/web/http-cookie/</link>
+      <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/web/http-cookie/</guid>
+      <description>Secure和HttpOnly httpOnly flag: 有設定時，Cookie只限被伺服端存取，無法在用戶端讀取。
+secure flag: 有設定時，Cookie只能透過https的方式傳輸。
+範例：
+HTTP/2.0 200 OK Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly https://www.ajoshow.com/2017/07/19/201707192223/
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#Secure_and_HttpOnly_cookies</description>
+    </item>
+    
+  </channel>
+</rss>

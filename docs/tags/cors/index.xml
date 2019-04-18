@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cors on 學習筆記</title>
+    <link>https://kiwislice.github.io/html-css-js-memo/tags/cors/</link>
+    <description>Recent content in cors on 學習筆記</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Thu, 18 Apr 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://kiwislice.github.io/html-css-js-memo/tags/cors/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>跨來源資源共用(CORS)</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/web/cors/</link>
+      <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/web/cors/</guid>
+      <description>跨來源資源共用（Cross-Origin Resource Sharing）是一種使用額外 HTTP 標頭令目前瀏覽網站的使用者代理取得存取其他來源（網域）伺服器特定資源權限的機制。當使用者代理請求一個不是目前文件來源——例如來自於不同網域（domain）、通訊協定（protocol）或通訊埠（port）的資源時，會建立一個跨來源 HTTP 請求（cross-origin HTTP request）。
+舉個跨來源請求的例子：http://domain-a.comHTML 頁面裡面一個&amp;lt;img&amp;gt;標籤的src屬性載入來自 http://domain-b.com/image.jpg 的圖片。現今網路上許多頁面所載入的資源，如 CSS 樣式表、圖片影像、以及指令碼（script）都來自與所在位置分離的網域，如內容傳遞網路（content delivery networks, CDN）。
+基於安全性考量，程式碼所發出的跨來源 HTTP 請求會受到限制。例如，XMLHttpRequest 及 Fetch 都遵守同源政策（same-origin policy）。這代表網路應用程式所使用的 API 除非使用 CORS 標頭，否則只能請求與應用程式相同網域的 HTTP 資源。
+https://developer.mozilla.org/zh-TW/docs/Web/HTTP/CORS</description>
+    </item>
+    
+  </channel>
+</rss>

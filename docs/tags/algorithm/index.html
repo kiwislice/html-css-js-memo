@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-04-18T11:43:12 CST">
+<meta name="revised" content="2019-04-18T16:42:12 CST">
 <title>algorithm :: 學習筆記</title>
 <link rel="shortcut icon" href="/html-css-js-memo/images/favicon.png" type="image/x-icon" />
 <link href="/html-css-js-memo/css/font-awesome.min.css" rel="stylesheet">
@@ -107,6 +107,42 @@
     </li>
         </ul>
     </li>
+    <li data-nav-id="/html-css-js-memo/web/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/web/">Web雜項</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/html-css-js-memo/web/cors/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/web/cors/">
+            跨來源資源共用(CORS)
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/html-css-js-memo/web/csrf/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/web/csrf/">
+            跨站請求偽造(CSRF)
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/html-css-js-memo/web/http-cookie/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/web/http-cookie/">
+            Http Cookie
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/html-css-js-memo/web/http-security-header/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/web/http-security-header/">
+            Http安全性Header
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
     <li data-nav-id="/html-css-js-memo/tools/" class="dd-item haschildren
         ">
       <div>
@@ -132,6 +168,13 @@
         <div>
           <a href="/html-css-js-memo/algorithm/union-find/">
             Uinon-Find Algorithm
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/html-css-js-memo/algorithm/rabin-karp-string-matching/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/algorithm/rabin-karp-string-matching/">
+            Rabin-Karp String Matching Algorithm
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -218,6 +261,8 @@
    Html-Css-Js</option>
     <option value="/html-css-js-memo/java/" >
    Java</option>
+    <option value="/html-css-js-memo/web/" >
+   Web雜項</option>
     <option value="/html-css-js-memo/tools/" >
    Tools</option>
     <option value="/html-css-js-memo/algorithm/" >
@@ -309,7 +354,7 @@
         
         <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/algorithms-part-i/">Algorithms, Part I</a>
         
-        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/algorithm/">algorithm&#34;</a>
+        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/algorithm/">algorithm</a>
         
         <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/union-find/">union-find</a>
         
@@ -318,6 +363,30 @@
     <td class="text-truncate-3-line">
         <p>編程作業: Percolation 100分關鍵在使用2個WeightedQuickUnionUF，一個繪圖用，一個判斷滲透用
 Percolation.java import edu.princeton.cs.algs4.WeightedQuickUnionUF; public class Percolation { private static final int FULL_ROOT = 0; private final int n; private final boolean[] open; private final WeightedQuickUnionUF uf; private final WeightedQuickUnionUF ufForCheckPercolates; private final int END_ROOT; private int openSize; private boolean percolates; public Percolation(int n) { if (n &lt;= 0) throw new java.lang.IllegalArgumentException(); this.n = n; final int size = n * n + 2; this.open = new boolean[size]; this.</p>
+    </td>
+</tr>
+
+
+
+
+	<tr class="post algorithm">
+    <td class="text-truncate-3-line">
+        <a href="/html-css-js-memo/algorithm/rabin-karp-string-matching/">
+            <p>Rabin-Karp String Matching Algorithm</p>
+        </a>
+        
+        
+        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/algorithm/">algorithm</a>
+        
+        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/rabin-karp/">rabin-karp</a>
+        
+        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/string-matching/">string matching</a>
+        
+        
+    </td>
+    <td class="text-truncate-3-line">
+        <p> 用途 判斷是否包含子字串及位置
+實現  透過hash讓比對快速失敗  參考資料  </p>
     </td>
 </tr>
 

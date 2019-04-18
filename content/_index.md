@@ -5,9 +5,11 @@ description = ""
 +++
 
 # 學習筆記
-紀錄各種測試與試作品.
+就是個忘記時方便查找的的筆記，順便紀錄各種測試與試作品.
 
-## Html-Css-Js常用網站
+
+
+## Html-Css-Js相關網站
 
 - [CSS w3schools](https://www.w3schools.com/cssref/css_selectors.asp)
 - [Bootstrap4 w3schools](https://www.w3schools.com/bootstrap4/bootstrap_ref_all_classes.asp)
@@ -15,10 +17,13 @@ description = ""
 - [CodePen](https://codepen.io/)：線上編輯、測試、展示網站
 - [免費處理中GIF下載](http://ajaxload.info/)
 - [JS等價表](https://dorey.github.io/JavaScript-Equality-Table/)
+- [漸層色塊](https://webkul.github.io/coolhue/)
+- [互動小動畫](https://webkul.github.io/micron/)
+- 
 
 
 
-## Java Web常用網站
+## Java Web相關網站
 
 - [Spring Security Reference](<https://docs.spring.io/spring-security/site/docs/5.1.5.RELEASE/reference/htmlsingle/>)
 - [Spring Web MVC Reference](<https://docs.spring.io/spring/docs/5.1.5.RELEASE/spring-framework-reference/web.html#mvc>)
@@ -38,3 +43,4 @@ description = ""
 - [Pastebin](https://pastebin.com/)
 - [Coursera](https://www.coursera.org/)
 - [Swagger](https://swagger.io/)
+

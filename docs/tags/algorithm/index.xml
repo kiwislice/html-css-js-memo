@@ -37,6 +37,16 @@ Percolation.java import edu.princeton.cs.algs4.WeightedQuickUnionUF; public clas
     </item>
     
     <item>
+      <title>Rabin-Karp String Matching Algorithm</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/algorithm/rabin-karp-string-matching/</link>
+      <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/algorithm/rabin-karp-string-matching/</guid>
+      <description> 用途 判斷是否包含子字串及位置
+實現  透過hash讓比對快速失敗  參考資料  </description>
+    </item>
+    
+    <item>
       <title>Week 2 編程作業:Deques and Randomized Queues</title>
       <link>https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week2/</link>
       <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>

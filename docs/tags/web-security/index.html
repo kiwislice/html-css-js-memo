@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>學習筆記</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2019-04-18T16:42:12 CST">
+<title>web security :: 學習筆記</title>
+<link rel="shortcut icon" href="/html-css-js-memo/images/favicon.png" type="image/x-icon" />
+<link href="/html-css-js-memo/css/font-awesome.min.css" rel="stylesheet">
+<link href="/html-css-js-memo/css/nucleus.css" rel="stylesheet">
+<link href="/html-css-js-memo/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/html-css-js-memo/css/bootstrap.min.css">
+<script src="/html-css-js-memo/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "https:\/\/kiwislice.github.io\/html-css-js-memo\/";
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-79101-13', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  <link rel="stylesheet" href="/html-css-js-memo/css/custom.css">
+  <script src="/html-css-js-memo/js/custom.js"></script>
+  
+
+    
+  </head>
+  <body data-url="/html-css-js-memo/tags/web-security/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    
+	<a class="baselink" href="https://kiwislice.github.io/html-css-js-memo/"><i class="fa fa-fw fa-home"></i></a>
+	
+  
+
+
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="https://github.com/kiwislice/html-css-js-memo"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+          
+    <li data-nav-id="/html-css-js-memo/html-css-js/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/html-css-js/">Html-Css-Js</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/html-css-js-memo/html-css-js/get-cursor-position-textarea/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/html-css-js/get-cursor-position-textarea/">
+            取得Textarea游標位置
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/html-css-js-memo/html-css-js/text-truncate/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/html-css-js/text-truncate/">
+            文字截斷
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/html-css-js-memo/java/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/java/">Java</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/html-css-js-memo/java/spring/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/java/spring/">Spring</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/html-css-js-memo/java/spring/custom-scope/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/java/spring/custom-scope/">
+            自定義Scope
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/html-css-js-memo/web/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/web/">Web雜項</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/html-css-js-memo/web/cors/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/web/cors/">
+            跨來源資源共用(CORS)
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/html-css-js-memo/web/csrf/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/web/csrf/">
+            跨站請求偽造(CSRF)
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/html-css-js-memo/web/http-cookie/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/web/http-cookie/">
+            Http Cookie
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/html-css-js-memo/web/http-security-header/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/web/http-security-header/">
+            Http安全性Header
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/html-css-js-memo/tools/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/tools/">Tools</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/html-css-js-memo/tools/register-windows-service/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/tools/register-windows-service/">
+            登記Windows服務
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/html-css-js-memo/algorithm/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/algorithm/">Algorithm</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/html-css-js-memo/algorithm/union-find/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/algorithm/union-find/">
+            Uinon-Find Algorithm
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/html-css-js-memo/algorithm/rabin-karp-string-matching/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/algorithm/rabin-karp-string-matching/">
+            Rabin-Karp String Matching Algorithm
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/html-css-js-memo/algorithm/coursera/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/algorithm/coursera/">Coursera</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/html-css-js-memo/algorithm/coursera/algorithms-part-i/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/algorithm/coursera/algorithms-part-i/">Algorithms, Part I</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week1/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week1/">
+            Week 1 編程作業:Percolation
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week2/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week2/">
+            Week 2 編程作業:Deques and Randomized Queues
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week3/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week3/">
+            Week 3 編程作業:Collinear Points
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week4/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week4/">
+            Week 4 編程作業:8 Puzzle
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week5/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week5/">
+            Week 5 編程作業:Kd-Trees
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section><center>
+
+<a class="github-button" href="https://github.com/kiwislice/html-css-js-memo/archive/master.zip" data-icon="octicon-cloud-download" aria-label="Download vjeantet/hugo-theme-docdock on GitHub">Download</a>
+
+
+<a class="github-button" href="https://github.com/kiwislice/html-css-js-memo" data-icon="octicon-star" data-show-count="false" aria-label="Star vjeantet/hugo-theme-docdock on GitHub">Star</a>
+
+
+<a class="github-button" href="https://github.com/kiwislice/html-css-js-memo/fork" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork vjeantet/hugo-theme-docdock on GitHub">Fork</a>
+
+</center>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/html-css-js-memo/html-css-js/" >
+   Html-Css-Js</option>
+    <option value="/html-css-js-memo/java/" >
+   Java</option>
+    <option value="/html-css-js-memo/web/" >
+   Web雜項</option>
+    <option value="/html-css-js-memo/tools/" >
+   Tools</option>
+    <option value="/html-css-js-memo/algorithm/" >
+   Algorithm</option>
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="英文關鍵字搜尋...">
+        </div>
+        <script type="text/javascript" src="/html-css-js-memo/js/lunr.min.js"></script>
+		
+        <script type="text/javascript" src="/html-css-js-memo/js/auto-complete.js"></script>
+        <link href="/html-css-js-memo/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "https:\/\/kiwislice.github.io\/html-css-js-memo\/";
+          
+        </script>
+        <script type="text/javascript" src="/html-css-js-memo/js/search.js"></script>
+      </div>
+    
+
+    <h1>web security</h1>
+    
+    
+    
+
+
+
+<div class="extra-pagination inner">
+<nav class="pagination" role="navigation">
+	
+	<span class="page-number">Page 1 of 1</span>
+	
+</nav>
+
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col" class="w-20">Title</th>
+            <th scope="col">Summary</th>
+        </tr>
+    </thead>
+    <tbody>
+       
+
+	<tr class="post web">
+    <td class="text-truncate-3-line">
+        <a href="/html-css-js-memo/web/csrf/">
+            <p>跨站請求偽造(CSRF)</p>
+        </a>
+        
+        
+        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/web/">web</a>
+        
+        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/csrf/">csrf</a>
+        
+        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/web-security/">web security</a>
+        
+        
+    </td>
+    <td class="text-truncate-3-line">
+        <p>跨站請求偽造（英語：Cross-site request forgery），也被稱為 one-click attack 或者 session riding，通常縮寫為 CSRF 或者 XSRF， 是一種挾制用戶在目前已登入的Web應用程式上執行非本意的操作的攻擊方法。跟跨網站指令碼（XSS）相比，XSS 利用的是用戶對指定網站的信任，CSRF 利用的是網站對用戶網頁瀏覽器的信任。
+手法 假如一家銀行用以執行轉帳操作的URL位址如下：
+ http://www.examplebank.com/withdraw?account=AccoutName&amp;amount=1000&amp;for=PayeeName
+ 那麼，一個惡意攻擊者可以在另一個網站上放置如下程式碼：
+ &rdquo;&gt;
+ 如果有帳戶名為Alice的用戶存取了惡意站點，而她之前剛存取過銀行不久，登入資訊尚未過期，那麼她就會損失1000資金。
+透過例子能夠看出，攻擊者並不能通過CSRF攻擊來直接獲取用戶的帳戶控制權，也不能直接竊取用戶的任何資訊。他們能做到的，是欺騙用戶瀏覽器，讓其以用戶的名義執行操作。
+CSRF wiki
+CSRF cookie與httpOnly</p>
+    </td>
+</tr>
+
+
+
+
+	<tr class="post web">
+    <td class="text-truncate-3-line">
+        <a href="/html-css-js-memo/web/http-cookie/">
+            <p>Http Cookie</p>
+        </a>
+        
+        
+        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/web/">web</a>
+        
+        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/http-cookie/">http cookie</a>
+        
+        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/web-security/">web security</a>
+        
+        
+    </td>
+    <td class="text-truncate-3-line">
+        <p>Secure和HttpOnly httpOnly flag: 有設定時，Cookie只限被伺服端存取，無法在用戶端讀取。
+secure flag: 有設定時，Cookie只能透過https的方式傳輸。
+範例：
+HTTP/2.0 200 OK Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly https://www.ajoshow.com/2017/07/19/201707192223/
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#Secure_and_HttpOnly_cookies</p>
+    </td>
+</tr>
+
+
+
+
+	<tr class="post web">
+    <td class="text-truncate-3-line">
+        <a href="/html-css-js-memo/web/http-security-header/">
+            <p>Http安全性Header</p>
+        </a>
+        
+        
+        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/web/">web</a>
+        
+        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/http-header/">http header</a>
+        
+        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/web-security/">web security</a>
+        
+        
+    </td>
+    <td class="text-truncate-3-line">
+        <p>X-Frame-Options HTTP回應標頭 (header) 用來指示文件是否能夠載入&lt;frame&gt;, &lt;iframe&gt;以及&lt;object&gt;，網站可以利用 X-Frame-Options 來確保本身內容不會遭惡意嵌入道其他網站、避免 clickjacking 攻擊
+範例：
+HTTP/2.0 200 OK X-Frame-Options: DENY https://developer.mozilla.org/zh-TW/docs/Web/HTTP/X-Frame-Options
+X-XSS-Protection 可在檢測到反映的跨站點腳本（XSS）攻擊時阻止頁面加載
+範例：
+HTTP/2.0 200 OK X-XSS-Protection: 1; mode=block https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Headers/X-XSS-Protection
+X-Content-Type HTTP回應標頭 (header) 用來指示該標記MIME類型的Content-Type標題不應該被改變，並且被遵循
+範例：
+HTTP/2.0 200 OK X-Content-Type-Options: nosniff https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Headers/X-Content-Type-Options</p>
+    </td>
+</tr>
+
+
+
+
+
+    </tbody>
+</table>
+
+
+<div style="margin-bottom:2rem"></div>
+
+<nav class="pagination" role="navigation">
+	
+	<span class="page-number">Page 1 of 1</span>
+	
+</nav>
+
+
+
+
+    
+    
+        
+  
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 18/04/2019
+    </div>
+    
+
+    
+    <div class="github-link">
+      <a href="https://github.com/kiwislice/html-css-js-memo/edit/master/content/" target="blank"><i class="fa fa-code-fork"></i>
+        </a>
+    </div>
+    
+  </div>
+
+
+	<div>
+
+
+  
+    <p>By kiwislice.</p>
+
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/html-css-js-memo/js/clipboard.min.js"></script>
+
+<link href="/html-css-js-memo/css/featherlight.min.css" rel="stylesheet">
+<script src="/html-css-js-memo/js/featherlight.min.js"></script>
+
+
+
+<script src="/html-css-js-memo/theme-flex/script.js"></script>
+
+
+    
+
+    
+    
+
+    
+  <script data-no-instant>document.write('<script src="/livereload.js?port=1313&mindelay=10"></' + 'script>')</script></body>
+</html>

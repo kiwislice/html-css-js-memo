@@ -2,7 +2,7 @@
 title: 'Week 1 編程作業:Percolation'
 date: 2019-04-18
 weight: 1
-tags: ["coursera","Algorithms, Part I",algorithm","union-find"]
+tags: ["coursera","Algorithms, Part I","algorithm","union-find"]
 ---
 
 

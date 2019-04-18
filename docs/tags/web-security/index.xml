@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>web security on 學習筆記</title>
+    <link>https://kiwislice.github.io/html-css-js-memo/tags/web-security/</link>
+    <description>Recent content in web security on 學習筆記</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Thu, 18 Apr 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://kiwislice.github.io/html-css-js-memo/tags/web-security/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>跨站請求偽造(CSRF)</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/web/csrf/</link>
+      <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/web/csrf/</guid>
+      <description>跨站請求偽造（英語：Cross-site request forgery），也被稱為 one-click attack 或者 session riding，通常縮寫為 CSRF 或者 XSRF， 是一種挾制用戶在目前已登入的Web應用程式上執行非本意的操作的攻擊方法。跟跨網站指令碼（XSS）相比，XSS 利用的是用戶對指定網站的信任，CSRF 利用的是網站對用戶網頁瀏覽器的信任。
+手法 假如一家銀行用以執行轉帳操作的URL位址如下：
+ http://www.examplebank.com/withdraw?account=AccoutName&amp;amp;amount=1000&amp;amp;for=PayeeName
+ 那麼，一個惡意攻擊者可以在另一個網站上放置如下程式碼：
+ &amp;rdquo;&amp;gt;
+ 如果有帳戶名為Alice的用戶存取了惡意站點，而她之前剛存取過銀行不久，登入資訊尚未過期，那麼她就會損失1000資金。
+透過例子能夠看出，攻擊者並不能通過CSRF攻擊來直接獲取用戶的帳戶控制權，也不能直接竊取用戶的任何資訊。他們能做到的，是欺騙用戶瀏覽器，讓其以用戶的名義執行操作。
+CSRF wiki
+CSRF cookie與httpOnly</description>
+    </item>
+    
+    <item>
+      <title>Http Cookie</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/web/http-cookie/</link>
+      <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/web/http-cookie/</guid>
+      <description>Secure和HttpOnly httpOnly flag: 有設定時，Cookie只限被伺服端存取，無法在用戶端讀取。
+secure flag: 有設定時，Cookie只能透過https的方式傳輸。
+範例：
+HTTP/2.0 200 OK Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly https://www.ajoshow.com/2017/07/19/201707192223/
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#Secure_and_HttpOnly_cookies</description>
+    </item>
+    
+    <item>
+      <title>Http安全性Header</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/web/http-security-header/</link>
+      <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/web/http-security-header/</guid>
+      <description>X-Frame-Options HTTP回應標頭 (header) 用來指示文件是否能夠載入&amp;lt;frame&amp;gt;, &amp;lt;iframe&amp;gt;以及&amp;lt;object&amp;gt;，網站可以利用 X-Frame-Options 來確保本身內容不會遭惡意嵌入道其他網站、避免 clickjacking 攻擊
+範例：
+HTTP/2.0 200 OK X-Frame-Options: DENY https://developer.mozilla.org/zh-TW/docs/Web/HTTP/X-Frame-Options
+X-XSS-Protection 可在檢測到反映的跨站點腳本（XSS）攻擊時阻止頁面加載
+範例：
+HTTP/2.0 200 OK X-XSS-Protection: 1; mode=block https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Headers/X-XSS-Protection
+X-Content-Type HTTP回應標頭 (header) 用來指示該標記MIME類型的Content-Type標題不應該被改變，並且被遵循
+範例：
+HTTP/2.0 200 OK X-Content-Type-Options: nosniff https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Headers/X-Content-Type-Options</description>
+    </item>
+    
+  </channel>
+</rss>

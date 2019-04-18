@@ -66,6 +66,16 @@ function(textareaId) { var ta = document.getElementById(textareaClientId); retur
     </item>
     
     <item>
+      <title>Rabin-Karp String Matching Algorithm</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/algorithm/rabin-karp-string-matching/</link>
+      <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/algorithm/rabin-karp-string-matching/</guid>
+      <description> 用途 判斷是否包含子字串及位置
+實現  透過hash讓比對快速失敗  參考資料  </description>
+    </item>
+    
+    <item>
       <title>Week 2 編程作業:Deques and Randomized Queues</title>
       <link>https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week2/</link>
       <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
@@ -73,6 +83,65 @@ function(textareaId) { var ta = document.getElementById(textareaClientId); retur
       <guid>https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week2/</guid>
       <description>編程作業: Deques and Randomized Queues Deque使用節點，RandomizedQueue使用陣列，100分沒有太困難
 Deque.java import java.util.Iterator; public class Deque&amp;lt;Item&amp;gt; implements Iterable&amp;lt;Item&amp;gt; { private final Node head; private final Node tail; private int size; public Deque() { this.head = new Node(); this.tail = new Node(); this.head.next = this.tail; this.tail.pre = this.head; } public boolean isEmpty() { return this.size == 0; } public int size() { return this.size; } public void addFirst(Item item) { checkNullItem(item); Node newNode = new Node(item); insertAfter(this.</description>
+    </item>
+    
+    <item>
+      <title>跨來源資源共用(CORS)</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/web/cors/</link>
+      <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/web/cors/</guid>
+      <description>跨來源資源共用（Cross-Origin Resource Sharing）是一種使用額外 HTTP 標頭令目前瀏覽網站的使用者代理取得存取其他來源（網域）伺服器特定資源權限的機制。當使用者代理請求一個不是目前文件來源——例如來自於不同網域（domain）、通訊協定（protocol）或通訊埠（port）的資源時，會建立一個跨來源 HTTP 請求（cross-origin HTTP request）。
+舉個跨來源請求的例子：http://domain-a.comHTML 頁面裡面一個&amp;lt;img&amp;gt;標籤的src屬性載入來自 http://domain-b.com/image.jpg 的圖片。現今網路上許多頁面所載入的資源，如 CSS 樣式表、圖片影像、以及指令碼（script）都來自與所在位置分離的網域，如內容傳遞網路（content delivery networks, CDN）。
+基於安全性考量，程式碼所發出的跨來源 HTTP 請求會受到限制。例如，XMLHttpRequest 及 Fetch 都遵守同源政策（same-origin policy）。這代表網路應用程式所使用的 API 除非使用 CORS 標頭，否則只能請求與應用程式相同網域的 HTTP 資源。
+https://developer.mozilla.org/zh-TW/docs/Web/HTTP/CORS</description>
+    </item>
+    
+    <item>
+      <title>跨站請求偽造(CSRF)</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/web/csrf/</link>
+      <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/web/csrf/</guid>
+      <description>跨站請求偽造（英語：Cross-site request forgery），也被稱為 one-click attack 或者 session riding，通常縮寫為 CSRF 或者 XSRF， 是一種挾制用戶在目前已登入的Web應用程式上執行非本意的操作的攻擊方法。跟跨網站指令碼（XSS）相比，XSS 利用的是用戶對指定網站的信任，CSRF 利用的是網站對用戶網頁瀏覽器的信任。
+手法 假如一家銀行用以執行轉帳操作的URL位址如下：
+ http://www.examplebank.com/withdraw?account=AccoutName&amp;amp;amount=1000&amp;amp;for=PayeeName
+ 那麼，一個惡意攻擊者可以在另一個網站上放置如下程式碼：
+ &amp;rdquo;&amp;gt;
+ 如果有帳戶名為Alice的用戶存取了惡意站點，而她之前剛存取過銀行不久，登入資訊尚未過期，那麼她就會損失1000資金。
+透過例子能夠看出，攻擊者並不能通過CSRF攻擊來直接獲取用戶的帳戶控制權，也不能直接竊取用戶的任何資訊。他們能做到的，是欺騙用戶瀏覽器，讓其以用戶的名義執行操作。
+CSRF wiki
+CSRF cookie與httpOnly</description>
+    </item>
+    
+    <item>
+      <title>Http Cookie</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/web/http-cookie/</link>
+      <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/web/http-cookie/</guid>
+      <description>Secure和HttpOnly httpOnly flag: 有設定時，Cookie只限被伺服端存取，無法在用戶端讀取。
+secure flag: 有設定時，Cookie只能透過https的方式傳輸。
+範例：
+HTTP/2.0 200 OK Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly https://www.ajoshow.com/2017/07/19/201707192223/
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#Secure_and_HttpOnly_cookies</description>
+    </item>
+    
+    <item>
+      <title>Http安全性Header</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/web/http-security-header/</link>
+      <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/web/http-security-header/</guid>
+      <description>X-Frame-Options HTTP回應標頭 (header) 用來指示文件是否能夠載入&amp;lt;frame&amp;gt;, &amp;lt;iframe&amp;gt;以及&amp;lt;object&amp;gt;，網站可以利用 X-Frame-Options 來確保本身內容不會遭惡意嵌入道其他網站、避免 clickjacking 攻擊
+範例：
+HTTP/2.0 200 OK X-Frame-Options: DENY https://developer.mozilla.org/zh-TW/docs/Web/HTTP/X-Frame-Options
+X-XSS-Protection 可在檢測到反映的跨站點腳本（XSS）攻擊時阻止頁面加載
+範例：
+HTTP/2.0 200 OK X-XSS-Protection: 1; mode=block https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Headers/X-XSS-Protection
+X-Content-Type HTTP回應標頭 (header) 用來指示該標記MIME類型的Content-Type標題不應該被改變，並且被遵循
+範例：
+HTTP/2.0 200 OK X-Content-Type-Options: nosniff https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Headers/X-Content-Type-Options</description>
     </item>
     
     <item>

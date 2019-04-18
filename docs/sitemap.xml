@@ -33,7 +33,32 @@
   </url>
   
   <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/algorithm/rabin-karp-string-matching/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week2/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/web/cors/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/web/csrf/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/web/http-cookie/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/web/http-security-header/</loc>
     <lastmod>2019-04-18T00:00:00+00:00</lastmod>
   </url>
   
@@ -73,6 +98,11 @@
   
   <url>
     <loc>https://kiwislice.github.io/html-css-js-memo/java/</loc>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/web/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -116,7 +146,31 @@
   </url>
   
   <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/tags/cors/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://kiwislice.github.io/html-css-js-memo/tags/coursera/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/tags/csrf/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/tags/http-cookie/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/tags/http-header/</loc>
     <lastmod>2019-04-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -134,6 +188,12 @@
   </url>
   
   <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/tags/rabin-karp/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://kiwislice.github.io/html-css-js-memo/tags/sort/</loc>
     <lastmod>2019-04-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -146,6 +206,12 @@
   </url>
   
   <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/tags/string-matching/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://kiwislice.github.io/html-css-js-memo/tags/tree/</loc>
     <lastmod>2019-04-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -153,6 +219,18 @@
   
   <url>
     <loc>https://kiwislice.github.io/html-css-js-memo/tags/union-find/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/tags/web/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/tags/web-security/</loc>
     <lastmod>2019-04-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>

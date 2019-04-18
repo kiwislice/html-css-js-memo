@@ -9,7 +9,7 @@
 {
 	"uri": "https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week1/",
 	"title": "Week 1 編程作業:Percolation",
-	"tags": ["coursera", "Algorithms, Part I", "algorithm&#34;", "union-find"],
+	"tags": ["coursera", "Algorithms, Part I", "algorithm", "union-find"],
 	"description": "",
 	"content": " 編程作業: Percolation 100分關鍵在使用2個WeightedQuickUnionUF，一個繪圖用，一個判斷滲透用\nPercolation.java import edu.princeton.cs.algs4.WeightedQuickUnionUF; public class Percolation { private static final int FULL_ROOT = 0; private final int n; private final boolean[] open; private final WeightedQuickUnionUF uf; private final WeightedQuickUnionUF ufForCheckPercolates; private final int END_ROOT; private int openSize; private boolean percolates; public Percolation(int n) { if (n \u0026lt;= 0) throw new java.lang.IllegalArgumentException(); this.n = n; final int size = n * n + 2; this.open = new boolean[size]; this.uf = new WeightedQuickUnionUF(size); this.ufForCheckPercolates = new WeightedQuickUnionUF(size); this.END_ROOT = size - 1; } private int rcToIndex(int row, int col) { if (row \u0026lt; 1 || row \u0026gt; n || col \u0026lt; 1 || col \u0026gt; n) throw new java.lang.IllegalArgumentException(); return (row - 1) * n + (col - 1) + 1; } public void open(int row, int col) { int i = rcToIndex(row, col); if (this.open[i]) return; this.open[i] = true; this.openSize++; if (row == 1) union(FULL_ROOT, i); if (row == n) this.ufForCheckPercolates.union(END_ROOT, i); if (row \u0026gt; 1 \u0026amp;\u0026amp; this.open[i - n]) union(i, i - n); if (row \u0026lt; n \u0026amp;\u0026amp; this.open[i + n]) union(i, i + n); if (col \u0026gt; 1 \u0026amp;\u0026amp; this.open[i - 1]) union(i, i - 1); if (col \u0026lt; n \u0026amp;\u0026amp; this.open[i + 1]) union(i, i + 1); } private void union(int i, int j) { this.uf.union(i, j); this.ufForCheckPercolates.union(i, j); } public boolean isFull(int row, int col) { int i = rcToIndex(row, col); return this.open[i] \u0026amp;\u0026amp; this.uf.connected(FULL_ROOT, i); } public boolean isOpen(int row, int col) { return this.open[rcToIndex(row, col)]; } public int numberOfOpenSites() { return this.openSize; } public boolean percolates() { if (!this.percolates) this.percolates = this.ufForCheckPercolates.connected(FULL_ROOT, END_ROOT); return this.percolates; } } PercolationStats.java import edu.princeton.cs.algs4.StdOut; import edu.princeton.cs.algs4.StdRandom; import edu.princeton.cs.algs4.StdStats; public class PercolationStats { private static final double CONFIDENCE_95 = 1.96; private final double mean; private final double stddev; private final double confidenceDiff; public PercolationStats(int n, int trials) { if (n \u0026lt;= 0 || trials \u0026lt;= 0) throw new java.lang.IllegalArgumentException(); double[] results = new double[trials]; for (int i = 0; i \u0026lt; trials; i++) { results[i] = test(n); } this.mean = StdStats.mean(results); this.stddev = StdStats.stddev(results); this.confidenceDiff = CONFIDENCE_95 * this.stddev / Math.sqrt(trials); } private static double test(int n) { Percolation p = new Percolation(n); int r, c; while (!p.percolates()) { r = StdRandom.uniform(1, n + 1); c = StdRandom.uniform(1, n + 1); if (!p.isOpen(r, c)) p.open(r, c); } return p.numberOfOpenSites() * 1.0 / (n * n); } public double mean() { return this.mean; } public double stddev() { return this.stddev; } public double confidenceLo() { return this.mean - this.confidenceDiff; } public double confidenceHi() { return this.mean + this.confidenceDiff; } public static void main(String[] args) { int n = Integer.parseInt(args[0]); int T = Integer.parseInt(args[1]); PercolationStats ps = new PercolationStats(n, T); StdOut.println(\u0026#34;mean = \u0026#34; + ps.mean()); StdOut.println(\u0026#34;stddev = \u0026#34; + ps.stddev()); StdOut.println(\u0026#34;95% confidence interval = [\u0026#34; + ps.confidenceLo() + \u0026#34;, \u0026#34; + ps.confidenceHi() + \u0026#34;]\u0026#34;); } }"
 },
@@ -42,11 +42,46 @@
 	"content": " 單行： .text-truncate { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }  https://codepen.io/PJCHENder/pen/QOgVLR  多行：  https://css-tricks.com/line-clampin/ https://codepen.io/nxworld/pen/wxZPwL  "
 },
 {
+	"uri": "https://kiwislice.github.io/html-css-js-memo/algorithm/rabin-karp-string-matching/",
+	"title": "Rabin-Karp String Matching Algorithm",
+	"tags": ["algorithm", "rabin-karp", "string matching"],
+	"description": "",
+	"content": " 用途 判斷是否包含子字串及位置\n實現  透過hash讓比對快速失敗  參考資料  "
+},
+{
 	"uri": "https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week2/",
 	"title": "Week 2 編程作業:Deques and Randomized Queues",
 	"tags": ["coursera", "Algorithms, Part I", "algorithm", "stack", "queue"],
 	"description": "",
 	"content": " 編程作業: Deques and Randomized Queues Deque使用節點，RandomizedQueue使用陣列，100分沒有太困難\nDeque.java import java.util.Iterator; public class Deque\u0026lt;Item\u0026gt; implements Iterable\u0026lt;Item\u0026gt; { private final Node head; private final Node tail; private int size; public Deque() { this.head = new Node(); this.tail = new Node(); this.head.next = this.tail; this.tail.pre = this.head; } public boolean isEmpty() { return this.size == 0; } public int size() { return this.size; } public void addFirst(Item item) { checkNullItem(item); Node newNode = new Node(item); insertAfter(this.head, newNode); } public void addLast(Item item) { checkNullItem(item); Node newNode = new Node(item); insertAfter(this.tail.pre, newNode); } private void insertAfter(Node a, Node insert) { this.size++; Node b = a.next; insert.next = b; insert.pre = a; a.next = insert; b.pre = insert; } private static void checkNullItem(Object item) { if (item == null) throw new java.lang.IllegalArgumentException(); } public Item removeFirst() { if (this.size == 0) throw new java.util.NoSuchElementException(); return remove(this.head.next); } public Item removeLast() { if (this.size == 0) throw new java.util.NoSuchElementException(); return remove(this.tail.pre); } private Item remove(Node n) { this.size--; Node a = n.pre; Node b = n.next; n.next = null; n.pre = null; a.next = b; b.pre = a; return n.item; } public Iterator\u0026lt;Item\u0026gt; iterator() { return new DequeIterator(); } private class DequeIterator implements Iterator\u0026lt;Item\u0026gt; { private Node cur = head; @Override public boolean hasNext() { return cur.next != tail; } @Override public Item next() { if (!this.hasNext()) throw new java.util.NoSuchElementException(); cur = cur.next; return cur.item; } } private class Node { Item item; Node next; Node pre; Node() { } Node(Item item) { this.item = item; } } public static void main(String[] args) { Deque\u0026lt;Integer\u0026gt; dq = new Deque\u0026lt;\u0026gt;(); dq.addFirst(1); dq.addFirst(2); dq.addLast(3); System.out.println(dq.removeLast()); System.out.println(dq.removeLast()); System.out.println(dq.removeLast()); } } RandomizedQueue.java import java.util.Iterator; import edu.princeton.cs.algs4.StdRandom; public class RandomizedQueue\u0026lt;Item\u0026gt; implements Iterable\u0026lt;Item\u0026gt; { private static final int MIN_SIZE = 16; private Item[] ar; private int size; public RandomizedQueue() { this.ar = (Item[]) new Object[MIN_SIZE]; } public boolean isEmpty() { return this.size == 0; } public int size() { return this.size; } public void enqueue(Item item) { if (item == null) throw new java.lang.IllegalArgumentException(); sizeup(); this.ar[size++] = item; } public Item dequeue() { if (this.size == 0) throw new java.util.NoSuchElementException(); int i = StdRandom.uniform(0, size); Item rtn = this.ar[i]; this.ar[i] = this.ar[size - 1]; this.ar[size - 1] = null; size--; sizedown(); return rtn; } private void sizeup() { if (this.size \u0026lt; this.ar.length) return; Item[] newar = (Item[]) new Object[this.ar.length * 2]; System.arraycopy(this.ar, 0, newar, 0, this.size); this.ar = newar; } private void sizedown() { if (this.ar.length == MIN_SIZE || this.size \u0026gt;= this.ar.length / 4) return; Item[] newar = (Item[]) new Object[this.ar.length / 2]; System.arraycopy(this.ar, 0, newar, 0, this.size); this.ar = newar; } public Item sample() { if (this.size == 0) throw new java.util.NoSuchElementException(); int i = StdRandom.uniform(0, size); return this.ar[i]; } public Iterator\u0026lt;Item\u0026gt; iterator() { return new RQIterator(); } private class RQIterator implements Iterator\u0026lt;Item\u0026gt; { private final int[] is = StdRandom.permutation(size); private int i = 0; @Override public boolean hasNext() { return i \u0026lt; size; } @Override public Item next() { if (!this.hasNext()) throw new java.util.NoSuchElementException(); return ar[is[i++]]; } } public static void main(String[] args) { RandomizedQueue\u0026lt;Integer\u0026gt; rq = new RandomizedQueue\u0026lt;\u0026gt;(); for (int i = 0; i \u0026lt; 50; i++) rq.enqueue(i); for (int i : rq) System.out.println(i); System.out.println(\u0026#34;========\u0026#34;); for (int i = 0; i \u0026lt; 50; i++) System.out.println(rq.dequeue()); } } Permutation.java import edu.princeton.cs.algs4.StdIn; import edu.princeton.cs.algs4.StdOut; public class Permutation { public static void main(String[] args) { int k = Integer.parseInt(args[0]); //\tint k = 3;  RandomizedQueue\u0026lt;String\u0026gt; rq = new RandomizedQueue\u0026lt;\u0026gt;(); while(!StdIn.isEmpty()) { String s = StdIn.readString(); rq.enqueue(s); } for (int i = 0; i \u0026lt; k; i++) StdOut.println(rq.dequeue()); } }"
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/web/cors/",
+	"title": "跨來源資源共用(CORS)",
+	"tags": ["web", "cors"],
+	"description": "",
+	"content": "跨來源資源共用（Cross-Origin Resource Sharing）是一種使用額外 HTTP 標頭令目前瀏覽網站的使用者代理取得存取其他來源（網域）伺服器特定資源權限的機制。當使用者代理請求一個不是目前文件來源——例如來自於不同網域（domain）、通訊協定（protocol）或通訊埠（port）的資源時，會建立一個跨來源 HTTP 請求（cross-origin HTTP request）。\n舉個跨來源請求的例子：http://domain-a.comHTML 頁面裡面一個\u0026lt;img\u0026gt;標籤的src屬性載入來自 http://domain-b.com/image.jpg 的圖片。現今網路上許多頁面所載入的資源，如 CSS 樣式表、圖片影像、以及指令碼（script）都來自與所在位置分離的網域，如內容傳遞網路（content delivery networks, CDN）。\n基於安全性考量，程式碼所發出的跨來源 HTTP 請求會受到限制。例如，XMLHttpRequest 及 Fetch 都遵守同源政策（same-origin policy）。這代表網路應用程式所使用的 API 除非使用 CORS 標頭，否則只能請求與應用程式相同網域的 HTTP 資源。\nhttps://developer.mozilla.org/zh-TW/docs/Web/HTTP/CORS\n"
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/web/csrf/",
+	"title": "跨站請求偽造(CSRF)",
+	"tags": ["web", "csrf", "web security"],
+	"description": "",
+	"content": " 跨站請求偽造（英語：Cross-site request forgery），也被稱為 one-click attack 或者 session riding，通常縮寫為 CSRF 或者 XSRF， 是一種挾制用戶在目前已登入的Web應用程式上執行非本意的操作的攻擊方法。跟跨網站指令碼（XSS）相比，XSS 利用的是用戶對指定網站的信任，CSRF 利用的是網站對用戶網頁瀏覽器的信任。\n手法 假如一家銀行用以執行轉帳操作的URL位址如下：\n http://www.examplebank.com/withdraw?account=AccoutName\u0026amp;amount=1000\u0026amp;for=PayeeName\n 那麼，一個惡意攻擊者可以在另一個網站上放置如下程式碼：\n \u0026rdquo;\u0026gt;\n 如果有帳戶名為Alice的用戶存取了惡意站點，而她之前剛存取過銀行不久，登入資訊尚未過期，那麼她就會損失1000資金。\n透過例子能夠看出，攻擊者並不能通過CSRF攻擊來直接獲取用戶的帳戶控制權，也不能直接竊取用戶的任何資訊。他們能做到的，是欺騙用戶瀏覽器，讓其以用戶的名義執行操作。\nCSRF wiki\nCSRF cookie與httpOnly\n"
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/web/http-cookie/",
+	"title": "Http Cookie",
+	"tags": ["web", "http cookie", "web security"],
+	"description": "",
+	"content": " Secure和HttpOnly httpOnly flag: 有設定時，Cookie只限被伺服端存取，無法在用戶端讀取。\nsecure flag: 有設定時，Cookie只能透過https的方式傳輸。\n範例：\nHTTP/2.0 200 OK Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly https://www.ajoshow.com/2017/07/19/201707192223/\nhttps://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#Secure_and_HttpOnly_cookies\n"
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/web/http-security-header/",
+	"title": "Http安全性Header",
+	"tags": ["web", "http header", "web security"],
+	"description": "",
+	"content": " X-Frame-Options HTTP回應標頭 (header) 用來指示文件是否能夠載入\u0026lt;frame\u0026gt;, \u0026lt;iframe\u0026gt;以及\u0026lt;object\u0026gt;，網站可以利用 X-Frame-Options 來確保本身內容不會遭惡意嵌入道其他網站、避免 clickjacking 攻擊\n範例：\nHTTP/2.0 200 OK X-Frame-Options: DENY https://developer.mozilla.org/zh-TW/docs/Web/HTTP/X-Frame-Options\nX-XSS-Protection 可在檢測到反映的跨站點腳本（XSS）攻擊時阻止頁面加載\n範例：\nHTTP/2.0 200 OK X-XSS-Protection: 1; mode=block https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Headers/X-XSS-Protection\nX-Content-Type HTTP回應標頭 (header) 用來指示該標記MIME類型的Content-Type標題不應該被改變，並且被遵循\n範例：\nHTTP/2.0 200 OK X-Content-Type-Options: nosniff https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Headers/X-Content-Type-Options\n"
 },
 {
 	"uri": "https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week3/",
@@ -105,6 +140,13 @@
 	"content": ""
 },
 {
+	"uri": "https://kiwislice.github.io/html-css-js-memo/web/",
+	"title": "Web雜項",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
 	"uri": "https://kiwislice.github.io/html-css-js-memo/tools/",
 	"title": "Tools",
 	"tags": [],
@@ -154,8 +196,36 @@
 	"content": ""
 },
 {
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/cors/",
+	"title": "cors",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
 	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/coursera/",
 	"title": "coursera",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/csrf/",
+	"title": "csrf",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/http-cookie/",
+	"title": "http cookie",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/http-header/",
+	"title": "http header",
 	"tags": [],
 	"description": "",
 	"content": ""
@@ -175,6 +245,13 @@
 	"content": ""
 },
 {
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/rabin-karp/",
+	"title": "rabin-karp",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
 	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/sort/",
 	"title": "sort",
 	"tags": [],
@@ -184,6 +261,13 @@
 {
 	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/stack/",
 	"title": "stack",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/string-matching/",
+	"title": "string matching",
 	"tags": [],
 	"description": "",
 	"content": ""
@@ -203,11 +287,25 @@
 	"content": ""
 },
 {
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/web/",
+	"title": "web",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/web-security/",
+	"title": "web security",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
 	"uri": "https://kiwislice.github.io/html-css-js-memo/",
 	"title": "學習筆記",
 	"tags": [],
 	"description": "",
-	"content": " 學習筆記 紀錄各種測試與試作品.\nHtml-Css-Js常用網站  CSS w3schools Bootstrap4 w3schools Bootstrap官網 CodePen：線上編輯、測試、展示網站 免費處理中GIF下載 JS等價表  Java Web常用網站  Spring Security Reference Spring Web MVC Reference Spring Boot Reference Guide Spring Data JPA Reference Lombok Maven Repository JSF Tag   其他  OWSAP Markdown Pastebin Coursera Swagger  "
+	"content": " 學習筆記 就是個忘記時方便查找的的筆記，順便紀錄各種測試與試作品.\nHtml-Css-Js相關網站  CSS w3schools Bootstrap4 w3schools Bootstrap官網 CodePen：線上編輯、測試、展示網站 免費處理中GIF下載 JS等價表 漸層色塊 互動小動畫   Java Web相關網站  Spring Security Reference Spring Web MVC Reference Spring Boot Reference Guide Spring Data JPA Reference Lombok Maven Repository JSF Tag   其他  OWSAP Markdown Pastebin Coursera Swagger  "
 },
 {
 	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/javascript/",

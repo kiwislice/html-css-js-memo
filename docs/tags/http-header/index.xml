@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>http header on 學習筆記</title>
+    <link>https://kiwislice.github.io/html-css-js-memo/tags/http-header/</link>
+    <description>Recent content in http header on 學習筆記</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Thu, 18 Apr 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://kiwislice.github.io/html-css-js-memo/tags/http-header/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Http安全性Header</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/web/http-security-header/</link>
+      <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/web/http-security-header/</guid>
+      <description>X-Frame-Options HTTP回應標頭 (header) 用來指示文件是否能夠載入&amp;lt;frame&amp;gt;, &amp;lt;iframe&amp;gt;以及&amp;lt;object&amp;gt;，網站可以利用 X-Frame-Options 來確保本身內容不會遭惡意嵌入道其他網站、避免 clickjacking 攻擊
+範例：
+HTTP/2.0 200 OK X-Frame-Options: DENY https://developer.mozilla.org/zh-TW/docs/Web/HTTP/X-Frame-Options
+X-XSS-Protection 可在檢測到反映的跨站點腳本（XSS）攻擊時阻止頁面加載
+範例：
+HTTP/2.0 200 OK X-XSS-Protection: 1; mode=block https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Headers/X-XSS-Protection
+X-Content-Type HTTP回應標頭 (header) 用來指示該標記MIME類型的Content-Type標題不應該被改變，並且被遵循
+範例：
+HTTP/2.0 200 OK X-Content-Type-Options: nosniff https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Headers/X-Content-Type-Options</description>
+    </item>
+    
+  </channel>
+</rss>

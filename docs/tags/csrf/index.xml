@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>csrf on 學習筆記</title>
+    <link>https://kiwislice.github.io/html-css-js-memo/tags/csrf/</link>
+    <description>Recent content in csrf on 學習筆記</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Thu, 18 Apr 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://kiwislice.github.io/html-css-js-memo/tags/csrf/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>跨站請求偽造(CSRF)</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/web/csrf/</link>
+      <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/web/csrf/</guid>
+      <description>跨站請求偽造（英語：Cross-site request forgery），也被稱為 one-click attack 或者 session riding，通常縮寫為 CSRF 或者 XSRF， 是一種挾制用戶在目前已登入的Web應用程式上執行非本意的操作的攻擊方法。跟跨網站指令碼（XSS）相比，XSS 利用的是用戶對指定網站的信任，CSRF 利用的是網站對用戶網頁瀏覽器的信任。
+手法 假如一家銀行用以執行轉帳操作的URL位址如下：
+ http://www.examplebank.com/withdraw?account=AccoutName&amp;amp;amount=1000&amp;amp;for=PayeeName
+ 那麼，一個惡意攻擊者可以在另一個網站上放置如下程式碼：
+ &amp;rdquo;&amp;gt;
+ 如果有帳戶名為Alice的用戶存取了惡意站點，而她之前剛存取過銀行不久，登入資訊尚未過期，那麼她就會損失1000資金。
+透過例子能夠看出，攻擊者並不能通過CSRF攻擊來直接獲取用戶的帳戶控制權，也不能直接竊取用戶的任何資訊。他們能做到的，是欺騙用戶瀏覽器，讓其以用戶的名義執行操作。
+CSRF wiki
+CSRF cookie與httpOnly</description>
+    </item>
+    
+  </channel>
+</rss>
