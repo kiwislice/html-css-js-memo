@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Html-Css-Js on 學習筆記</title>
+    <link>https://kiwislice.github.io/html-css-js-memo/html-css-js/</link>
+    <description>Recent content in Html-Css-Js on 學習筆記</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Wed, 17 Apr 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://kiwislice.github.io/html-css-js-memo/html-css-js/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>取得Textarea游標位置</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/html-css-js/get-cursor-position-textarea/</link>
+      <pubDate>Wed, 17 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/html-css-js/get-cursor-position-textarea/</guid>
+      <description> 透過JS可取得textarea的selectionStart和selectionEnd屬性
+function(textareaId) { var ta = document.getElementById(textareaClientId); return ta.selectionStart; }  參考  https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XUL/Property/selectionStart  </description>
+    </item>
+    
+    <item>
+      <title>文字截斷</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/html-css-js/text-truncate/</link>
+      <pubDate>Fri, 12 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/html-css-js/text-truncate/</guid>
+      <description> 單行： .text-truncate { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }  https://codepen.io/PJCHENder/pen/QOgVLR  多行：  https://css-tricks.com/line-clampin/ https://codepen.io/nxworld/pen/wxZPwL  </description>
+    </item>
+    
+  </channel>
+</rss>

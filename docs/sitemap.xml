@@ -3,18 +3,58 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/algorithm/union-find/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week1/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/html-css-js/</loc>
+    <lastmod>2019-04-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/html-css-js/get-cursor-position-textarea/</loc>
+    <lastmod>2019-04-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://kiwislice.github.io/html-css-js-memo/tools/register-windows-service/</loc>
     <lastmod>2019-04-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kiwislice.github.io/html-css-js-memo/css/</loc>
+    <loc>https://kiwislice.github.io/html-css-js-memo/html-css-js/text-truncate/</loc>
     <lastmod>2019-04-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kiwislice.github.io/html-css-js-memo/css/text-truncate/</loc>
-    <lastmod>2019-04-12T00:00:00+00:00</lastmod>
+    <loc>https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week2/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week3/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week4/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week5/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -28,6 +68,10 @@
   </url>
   
   <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/</loc>
+  </url>
+  
+  <url>
     <loc>https://kiwislice.github.io/html-css-js-memo/java/</loc>
   </url>
   
@@ -37,8 +81,96 @@
   </url>
   
   <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/algorithm/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/tags/algorithms-part-i/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://kiwislice.github.io/html-css-js-memo/tags/</loc>
-    <lastmod>2019-04-16T00:00:00+00:00</lastmod>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/tags/a-star/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/tags/algorithm/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/tags/binary-search/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/tags/coursera/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/tags/priority-queue/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/tags/queue/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/tags/sort/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/tags/stack/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/tags/tree/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/tags/union-find/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/</loc>
+    <lastmod>2019-04-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/tags/javascript/</loc>
+    <lastmod>2019-04-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kiwislice.github.io/html-css-js-memo/tags/textarea/</loc>
+    <lastmod>2019-04-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -52,11 +184,6 @@
     <loc>https://kiwislice.github.io/html-css-js-memo/tags/spring/</loc>
     <lastmod>2019-04-16T00:00:00+00:00</lastmod>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://kiwislice.github.io/html-css-js-memo/</loc>
-    <lastmod>2019-04-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>

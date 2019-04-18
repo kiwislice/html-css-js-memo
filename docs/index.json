@@ -1,5 +1,33 @@
 [
 {
+	"uri": "https://kiwislice.github.io/html-css-js-memo/algorithm/union-find/",
+	"title": "Uinon-Find Algorithm",
+	"tags": ["algorithm", "union-find"],
+	"description": "",
+	"content": " 用途 判斷2個目標是否在同一組、判斷2個目標是否相連\n實現  用1維陣列表示N個目標\n array[n]表示第n個目標的父節點\n 每個群組可視為一棵樹，任意2點有相同根節點表示同組\n array[i]==i表示到達根節點\n 將2點設為同組只需\n  public void unite(int p, int q) { int i = root(p); int j = root(q); id[i] = j; } 瓶頸  樹太深時尋找根節點費時  優化  另外開個陣列紀錄群組大小，合併時將小樹放到大樹下，減少深度 在訪問根的過程中，將所有節點的父節點都順手改為父父節點，減少深度  參考資料  https://www.cs.princeton.edu/~rs/AlgsDS07/01UnionFind.pdf  "
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week1/",
+	"title": "Week 1 編程作業:Percolation",
+	"tags": ["coursera", "Algorithms, Part I", "algorithm&#34;", "union-find"],
+	"description": "",
+	"content": " 編程作業: Percolation 100分關鍵在使用2個WeightedQuickUnionUF，一個繪圖用，一個判斷滲透用\nPercolation.java import edu.princeton.cs.algs4.WeightedQuickUnionUF; public class Percolation { private static final int FULL_ROOT = 0; private final int n; private final boolean[] open; private final WeightedQuickUnionUF uf; private final WeightedQuickUnionUF ufForCheckPercolates; private final int END_ROOT; private int openSize; private boolean percolates; public Percolation(int n) { if (n \u0026lt;= 0) throw new java.lang.IllegalArgumentException(); this.n = n; final int size = n * n + 2; this.open = new boolean[size]; this.uf = new WeightedQuickUnionUF(size); this.ufForCheckPercolates = new WeightedQuickUnionUF(size); this.END_ROOT = size - 1; } private int rcToIndex(int row, int col) { if (row \u0026lt; 1 || row \u0026gt; n || col \u0026lt; 1 || col \u0026gt; n) throw new java.lang.IllegalArgumentException(); return (row - 1) * n + (col - 1) + 1; } public void open(int row, int col) { int i = rcToIndex(row, col); if (this.open[i]) return; this.open[i] = true; this.openSize++; if (row == 1) union(FULL_ROOT, i); if (row == n) this.ufForCheckPercolates.union(END_ROOT, i); if (row \u0026gt; 1 \u0026amp;\u0026amp; this.open[i - n]) union(i, i - n); if (row \u0026lt; n \u0026amp;\u0026amp; this.open[i + n]) union(i, i + n); if (col \u0026gt; 1 \u0026amp;\u0026amp; this.open[i - 1]) union(i, i - 1); if (col \u0026lt; n \u0026amp;\u0026amp; this.open[i + 1]) union(i, i + 1); } private void union(int i, int j) { this.uf.union(i, j); this.ufForCheckPercolates.union(i, j); } public boolean isFull(int row, int col) { int i = rcToIndex(row, col); return this.open[i] \u0026amp;\u0026amp; this.uf.connected(FULL_ROOT, i); } public boolean isOpen(int row, int col) { return this.open[rcToIndex(row, col)]; } public int numberOfOpenSites() { return this.openSize; } public boolean percolates() { if (!this.percolates) this.percolates = this.ufForCheckPercolates.connected(FULL_ROOT, END_ROOT); return this.percolates; } } PercolationStats.java import edu.princeton.cs.algs4.StdOut; import edu.princeton.cs.algs4.StdRandom; import edu.princeton.cs.algs4.StdStats; public class PercolationStats { private static final double CONFIDENCE_95 = 1.96; private final double mean; private final double stddev; private final double confidenceDiff; public PercolationStats(int n, int trials) { if (n \u0026lt;= 0 || trials \u0026lt;= 0) throw new java.lang.IllegalArgumentException(); double[] results = new double[trials]; for (int i = 0; i \u0026lt; trials; i++) { results[i] = test(n); } this.mean = StdStats.mean(results); this.stddev = StdStats.stddev(results); this.confidenceDiff = CONFIDENCE_95 * this.stddev / Math.sqrt(trials); } private static double test(int n) { Percolation p = new Percolation(n); int r, c; while (!p.percolates()) { r = StdRandom.uniform(1, n + 1); c = StdRandom.uniform(1, n + 1); if (!p.isOpen(r, c)) p.open(r, c); } return p.numberOfOpenSites() * 1.0 / (n * n); } public double mean() { return this.mean; } public double stddev() { return this.stddev; } public double confidenceLo() { return this.mean - this.confidenceDiff; } public double confidenceHi() { return this.mean + this.confidenceDiff; } public static void main(String[] args) { int n = Integer.parseInt(args[0]); int T = Integer.parseInt(args[1]); PercolationStats ps = new PercolationStats(n, T); StdOut.println(\u0026#34;mean = \u0026#34; + ps.mean()); StdOut.println(\u0026#34;stddev = \u0026#34; + ps.stddev()); StdOut.println(\u0026#34;95% confidence interval = [\u0026#34; + ps.confidenceLo() + \u0026#34;, \u0026#34; + ps.confidenceHi() + \u0026#34;]\u0026#34;); } }"
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/html-css-js/",
+	"title": "Html-Css-Js",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/html-css-js/get-cursor-position-textarea/",
+	"title": "取得Textarea游標位置",
+	"tags": ["javascript", "textarea"],
+	"description": "",
+	"content": " 透過JS可取得textarea的selectionStart和selectionEnd屬性\nfunction(textareaId) { var ta = document.getElementById(textareaClientId); return ta.selectionStart; }  參考  https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XUL/Property/selectionStart  "
+},
+{
 	"uri": "https://kiwislice.github.io/html-css-js-memo/tools/register-windows-service/",
 	"title": "登記Windows服務",
 	"tags": ["windows", "service"],
@@ -7,25 +35,53 @@
 	"content": " 使用工具 winsw\n流程  到winsw/releases下載適用的版本(由環境的.NET版本決定) 從winsw/examples下載xml設定檔 準備好服務啟動時要執行的目標(EX:.JAR檔) 將1., 2., 3.放在同資料夾並給相同檔名  開啟命令提示字元(看狀況可用系統管理員身分執行)，進入該資料夾，執行xxx.exe install即可(xxx自行替換成該exe檔名)  DEBUG 如果啟動過程出錯，可至事件檢視器查看\n"
 },
 {
-	"uri": "https://kiwislice.github.io/html-css-js-memo/css/",
-	"title": "Html-Css-Js",
-	"tags": [],
-	"description": "",
-	"content": ".\n"
-},
-{
-	"uri": "https://kiwislice.github.io/html-css-js-memo/css/text-truncate/",
+	"uri": "https://kiwislice.github.io/html-css-js-memo/html-css-js/text-truncate/",
 	"title": "文字截斷",
 	"tags": ["css", "text", "truncate"],
 	"description": "",
-	"content": " 單行： .text-truncate { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }  https://codepen.io/PJCHENder/pen/QOgVLR  多行：  https://css-tricks.com/line-clampin/  "
+	"content": " 單行： .text-truncate { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }  https://codepen.io/PJCHENder/pen/QOgVLR  多行：  https://css-tricks.com/line-clampin/ https://codepen.io/nxworld/pen/wxZPwL  "
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week2/",
+	"title": "Week 2 編程作業:Deques and Randomized Queues",
+	"tags": ["coursera", "Algorithms, Part I", "algorithm", "stack", "queue"],
+	"description": "",
+	"content": " 編程作業: Deques and Randomized Queues Deque使用節點，RandomizedQueue使用陣列，100分沒有太困難\nDeque.java import java.util.Iterator; public class Deque\u0026lt;Item\u0026gt; implements Iterable\u0026lt;Item\u0026gt; { private final Node head; private final Node tail; private int size; public Deque() { this.head = new Node(); this.tail = new Node(); this.head.next = this.tail; this.tail.pre = this.head; } public boolean isEmpty() { return this.size == 0; } public int size() { return this.size; } public void addFirst(Item item) { checkNullItem(item); Node newNode = new Node(item); insertAfter(this.head, newNode); } public void addLast(Item item) { checkNullItem(item); Node newNode = new Node(item); insertAfter(this.tail.pre, newNode); } private void insertAfter(Node a, Node insert) { this.size++; Node b = a.next; insert.next = b; insert.pre = a; a.next = insert; b.pre = insert; } private static void checkNullItem(Object item) { if (item == null) throw new java.lang.IllegalArgumentException(); } public Item removeFirst() { if (this.size == 0) throw new java.util.NoSuchElementException(); return remove(this.head.next); } public Item removeLast() { if (this.size == 0) throw new java.util.NoSuchElementException(); return remove(this.tail.pre); } private Item remove(Node n) { this.size--; Node a = n.pre; Node b = n.next; n.next = null; n.pre = null; a.next = b; b.pre = a; return n.item; } public Iterator\u0026lt;Item\u0026gt; iterator() { return new DequeIterator(); } private class DequeIterator implements Iterator\u0026lt;Item\u0026gt; { private Node cur = head; @Override public boolean hasNext() { return cur.next != tail; } @Override public Item next() { if (!this.hasNext()) throw new java.util.NoSuchElementException(); cur = cur.next; return cur.item; } } private class Node { Item item; Node next; Node pre; Node() { } Node(Item item) { this.item = item; } } public static void main(String[] args) { Deque\u0026lt;Integer\u0026gt; dq = new Deque\u0026lt;\u0026gt;(); dq.addFirst(1); dq.addFirst(2); dq.addLast(3); System.out.println(dq.removeLast()); System.out.println(dq.removeLast()); System.out.println(dq.removeLast()); } } RandomizedQueue.java import java.util.Iterator; import edu.princeton.cs.algs4.StdRandom; public class RandomizedQueue\u0026lt;Item\u0026gt; implements Iterable\u0026lt;Item\u0026gt; { private static final int MIN_SIZE = 16; private Item[] ar; private int size; public RandomizedQueue() { this.ar = (Item[]) new Object[MIN_SIZE]; } public boolean isEmpty() { return this.size == 0; } public int size() { return this.size; } public void enqueue(Item item) { if (item == null) throw new java.lang.IllegalArgumentException(); sizeup(); this.ar[size++] = item; } public Item dequeue() { if (this.size == 0) throw new java.util.NoSuchElementException(); int i = StdRandom.uniform(0, size); Item rtn = this.ar[i]; this.ar[i] = this.ar[size - 1]; this.ar[size - 1] = null; size--; sizedown(); return rtn; } private void sizeup() { if (this.size \u0026lt; this.ar.length) return; Item[] newar = (Item[]) new Object[this.ar.length * 2]; System.arraycopy(this.ar, 0, newar, 0, this.size); this.ar = newar; } private void sizedown() { if (this.ar.length == MIN_SIZE || this.size \u0026gt;= this.ar.length / 4) return; Item[] newar = (Item[]) new Object[this.ar.length / 2]; System.arraycopy(this.ar, 0, newar, 0, this.size); this.ar = newar; } public Item sample() { if (this.size == 0) throw new java.util.NoSuchElementException(); int i = StdRandom.uniform(0, size); return this.ar[i]; } public Iterator\u0026lt;Item\u0026gt; iterator() { return new RQIterator(); } private class RQIterator implements Iterator\u0026lt;Item\u0026gt; { private final int[] is = StdRandom.permutation(size); private int i = 0; @Override public boolean hasNext() { return i \u0026lt; size; } @Override public Item next() { if (!this.hasNext()) throw new java.util.NoSuchElementException(); return ar[is[i++]]; } } public static void main(String[] args) { RandomizedQueue\u0026lt;Integer\u0026gt; rq = new RandomizedQueue\u0026lt;\u0026gt;(); for (int i = 0; i \u0026lt; 50; i++) rq.enqueue(i); for (int i : rq) System.out.println(i); System.out.println(\u0026#34;========\u0026#34;); for (int i = 0; i \u0026lt; 50; i++) System.out.println(rq.dequeue()); } } Permutation.java import edu.princeton.cs.algs4.StdIn; import edu.princeton.cs.algs4.StdOut; public class Permutation { public static void main(String[] args) { int k = Integer.parseInt(args[0]); //\tint k = 3;  RandomizedQueue\u0026lt;String\u0026gt; rq = new RandomizedQueue\u0026lt;\u0026gt;(); while(!StdIn.isEmpty()) { String s = StdIn.readString(); rq.enqueue(s); } for (int i = 0; i \u0026lt; k; i++) StdOut.println(rq.dequeue()); } }"
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week3/",
+	"title": "Week 3 編程作業:Collinear Points",
+	"tags": ["coursera", "Algorithms, Part I", "algorithm", "sort"],
+	"description": "",
+	"content": " 編程作業: Collinear Points 100分關鍵是FastCollinearPoints在判斷線段重複時不使用Set或Sort，而是只有當前點是當前線段的左下端點時才加入\nPoint.java /****************************************************************************** * Compilation: javac Point.java * Execution: java Point * Dependencies: none * * An immutable data type for points in the plane. * For use on Coursera, Algorithms Part I programming assignment. * ******************************************************************************/ import java.util.Comparator; import edu.princeton.cs.algs4.StdDraw; public class Point implements Comparable\u0026lt;Point\u0026gt; { private final int x; // x-coordinate of this point \tprivate final int y; // y-coordinate of this point  /** * Initializes a new point. * * @param x the \u0026lt;em\u0026gt;x\u0026lt;/em\u0026gt;-coordinate of the point * @param y the \u0026lt;em\u0026gt;y\u0026lt;/em\u0026gt;-coordinate of the point */ public Point(int x, int y) { /* DO NOT MODIFY */ this.x = x; this.y = y; } /** * Draws this point to standard draw. */ public void draw() { /* DO NOT MODIFY */ StdDraw.point(x, y); } /** * Draws the line segment between this point and the specified point to standard * draw. * * @param that the other point */ public void drawTo(Point that) { /* DO NOT MODIFY */ StdDraw.line(this.x, this.y, that.x, that.y); } /** * Returns the slope between this point and the specified point. Formally, if * the two points are (x0, y0) and (x1, y1), then the slope is (y1 - y0) / (x1 - * x0). For completeness, the slope is defined to be +0.0 if the line segment * connecting the two points is horizontal; Double.POSITIVE_INFINITY if the line * segment is vertical; and Double.NEGATIVE_INFINITY if (x0, y0) and (x1, y1) * are equal. * * @param that the other point * @return the slope between this point and the specified point */ public double slopeTo(Point that) { /* YOUR CODE HERE */ if (that == null) throw new java.lang.NullPointerException(); if (that.x == this.x) return that.y == this.y ? Double.NEGATIVE_INFINITY : Double.POSITIVE_INFINITY; return that.y == this.y ? 0 : (that.y - this.y) * 1.0 / (that.x - this.x); } /** * Compares two points by y-coordinate, breaking ties by x-coordinate. Formally, * the invoking point (x0, y0) is less than the argument point (x1, y1) if and * only if either y0 \u0026lt; y1 or if y0 = y1 and x0 \u0026lt; x1. * * @param that the other point * @return the value \u0026lt;tt\u0026gt;0\u0026lt;/tt\u0026gt; if this point is equal to the argument point (x0 * = x1 and y0 = y1); a negative integer if this point is less than the * argument point; and a positive integer if this point is greater than * the argument point */ public int compareTo(Point that) { /* YOUR CODE HERE */ if (that == null) throw new java.lang.NullPointerException(); int i = this.y - that.y; return i == 0 ? this.x - that.x : i; } /** * Compares two points by the slope they make with this point. The slope is * defined as in the slopeTo() method. * * @return the Comparator that defines this ordering on points */ public Comparator\u0026lt;Point\u0026gt; slopeOrder() { /* YOUR CODE HERE */ return new Comparator\u0026lt;Point\u0026gt;() { @Override public int compare(Point p1, Point p2) { if (p1 == null || p2 == null) throw new java.lang.NullPointerException(); return Double.compare(slopeTo(p1), slopeTo(p2)); } }; } /** * Returns a string representation of this point. This method is provide for * debugging; your program should not rely on the format of the string * representation. * * @return a string representation of this point */ public String toString() { /* DO NOT MODIFY */ return \u0026#34;(\u0026#34; + x + \u0026#34;, \u0026#34; + y + \u0026#34;)\u0026#34;; } /** * Unit tests the Point data type. */ public static void main(String[] args) { } } BruteCollinearPoints.java import java.util.ArrayList; import java.util.Arrays; import java.util.List; public class BruteCollinearPoints { private final List\u0026lt;LineSegment\u0026gt; list; public BruteCollinearPoints(Point[] points) { if (points == null) throw new java.lang.IllegalArgumentException(); checkPoints(points); this.list = new ArrayList\u0026lt;\u0026gt;(); if (points.length \u0026gt;= 4) brute(points); } private void brute(Point[] points) { for (int a = 0; a \u0026lt; points.length - 3; a++) { for (int b = a + 1; b \u0026lt; points.length - 2; b++) { for (int c = b + 1; c \u0026lt; points.length - 1; c++) { for (int d = c + 1; d \u0026lt; points.length; d++) { if (collinear(points[a], points[b], points[c], points[d])) addLineSegment(points[a], points[b], points[c], points[d]); } } } } } private static boolean collinear(Point a, Point b, Point c, Point d) { final double slopeAB = a.slopeTo(b); return slopeAB == a.slopeTo(c) \u0026amp;\u0026amp; slopeAB == a.slopeTo(d); } private void addLineSegment(Point... ps) { Arrays.sort(ps); this.list.add(new LineSegment(ps[0], ps[ps.length - 1])); } private static void checkPoints(Point... ps) { for (Point p : ps) { if (p == null) throw new java.lang.IllegalArgumentException(); } for (int i = 0; i \u0026lt; ps.length - 1; i++) { for (int j = i + 1; j \u0026lt; ps.length; j++) { if (ps[i].compareTo(ps[j]) == 0) throw new java.lang.IllegalArgumentException(); } } } public int numberOfSegments() { return this.list.size(); } public LineSegment[] segments() { return this.list.toArray(new LineSegment[0]); } } FastCollinearPoints.java import java.util.ArrayList; import java.util.Arrays; import java.util.Comparator; import java.util.List; public class FastCollinearPoints { private final List\u0026lt;LineSegment\u0026gt; list; private final ComputePoint[] cps; public FastCollinearPoints(Point[] points) { checkNullPoints(points); Point[] clone = new Point[points.length]; System.arraycopy(points, 0, clone, 0, points.length); checkRepeatPoints(clone); this.list = new ArrayList\u0026lt;\u0026gt;(); this.cps = new ComputePoint[points.length]; for (int i = 0; i \u0026lt; points.length; i++) this.cps[i] = new ComputePoint(); for (int i = 0; i \u0026lt; points.length - 3; i++) fast(clone, i); } private static void checkNullPoints(Point[] ps) { if (ps == null) throw new java.lang.IllegalArgumentException(); for (Point p : ps) { if (p == null) throw new java.lang.IllegalArgumentException(); } } private static void checkRepeatPoints(Point[] ps) { Arrays.sort(ps); for (int i = 1; i \u0026lt; ps.length; i++) { if (ps[i - 1].compareTo(ps[i]) == 0) throw new java.lang.IllegalArgumentException(); } } private void fast(Point[] ps, int cur) { Point curP = ps[cur]; for (int i = 0; i \u0026lt; ps.length; i++) { this.cps[i].p = ps[i]; this.cps[i].slope = curP.slopeTo(ps[i]); } Arrays.sort(cps, ComputePoint.SORT_BY_SLOPE); int c = 1; for (int i = 1; i \u0026lt; ps.length; i++) { if (cps[i - 1].slope == cps[i].slope) { c++; continue; } if (c \u0026gt;= 3) { addLine(curP, i - c, c); } c = 1; } if (c \u0026gt;= 3) { int i = ps.length; addLine(curP, i - c, c); } } private void addLine(Point curP, int cpsS, int len) { Point min = min(curP, cps[cpsS].p); Point max = max(curP, cps[cpsS + len - 1].p); if (curP != min) return; this.list.add(new LineSegment(min, max)); } private static Point min(Point a, Point b) { return a.compareTo(b) \u0026gt; 0 ? b : a; } private static Point max(Point a, Point b) { return a.compareTo(b) \u0026lt; 0 ? b : a; } private static class ComputePoint { Point p; double slope; static final Comparator\u0026lt;ComputePoint\u0026gt; SORT_BY_SLOPE = new Comparator\u0026lt;FastCollinearPoints.ComputePoint\u0026gt;() { @Override public int compare(ComputePoint o1, ComputePoint o2) { return Double.compare(o1.slope, o2.slope); } }; static final Comparator\u0026lt;ComputePoint\u0026gt; SORT_BY_P = new Comparator\u0026lt;FastCollinearPoints.ComputePoint\u0026gt;() { @Override public int compare(ComputePoint o1, ComputePoint o2) { return o1.p.compareTo(o2.p); } }; } public int numberOfSegments() { return this.list.size(); } public LineSegment[] segments() { return this.list.toArray(new LineSegment[0]); } }"
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week4/",
+	"title": "Week 4 編程作業:8 Puzzle",
+	"tags": ["coursera", "Algorithms, Part I", "algorithm", "priority queue", "a star"],
+	"description": "",
+	"content": " 編程作業: 8 Puzzle 只有99分\nBoard.java import java.util.ArrayList; import java.util.Arrays; import java.util.List; public class Board { private final short[] blocks; private final int n; private int i0; private int hamming; private int manhattan; private long hash; public Board(int[][] blocks) { this(blocks.length, copy(blocks)); } private Board(int n, short[] blocks) { this.blocks = Arrays.copyOf(blocks, blocks.length); this.n = n; this.hash = 0; for (int i = 0; i \u0026lt; blocks.length; i++) { if (this.blocks[i] == 0) { this.i0 = i; } else if (this.blocks[i] != i + 1) { this.hash *= 11; this.hash += this.blocks[i]; hamming++; int i1 = this.blocks[i] - 1; manhattan += Math.abs((i / n) - (i1 / n)) + Math.abs((i % n) - (i1 % n)); } } } private Board(int n, short[] blocks, int manhattan) { this.blocks = Arrays.copyOf(blocks, blocks.length); this.n = n; this.hash = 0; this.manhattan = manhattan; for (int i = 0; i \u0026lt; blocks.length; i++) { if (this.blocks[i] == 0) { this.i0 = i; } else if (this.blocks[i] != i + 1) { this.hash *= 11; this.hash += this.blocks[i]; hamming++; } } } private static short[] copy(int[][] ar) { short[] rtn = new short[ar.length * ar.length]; for (int r = 0; r \u0026lt; ar.length; r++) { for (int c = 0; c \u0026lt; ar.length; c++) { rtn[rcToIndex(ar.length, r, c)] = (short) ar[r][c]; } } return rtn; } /** r=0~n-1, c=0~n-1, index=0~n^2-1 */ private static int rcToIndex(int n, int r, int c) { return n * r + c; } /** r=0~n-1, c=0~n-1, i=1~n^2 */ private static int[] indexToRc(int n, int i) { i--; return new int[] { i / n, i % n }; } public int dimension() { return this.n; } public int hamming() { return hamming; } public int manhattan() { return manhattan; } public boolean isGoal() { return hamming == 0; } public Board twin() { int i1 = i0 \u0026gt;= n ? i0 - n : i0 + n; int i2 = i1 % n \u0026gt; 0 ? i1 - 1 : i1 + 1; swap(this.blocks, i1, i2); Board rtn = new Board(this.n, this.blocks); swap(this.blocks, i1, i2); return rtn; } private static void swap(short[] ar, int i, int j) { short temp = ar[i]; ar[i] = ar[j]; ar[j] = temp; } public boolean equals(Object y) { if (!(y instanceof Board)) return false; Board by = (Board) y; if (this.hash != by.hash) return false; for (int i = 0; i \u0026lt; this.blocks.length; i++) { if (this.blocks[i] != by.blocks[i]) return false; } return true; } public Iterable\u0026lt;Board\u0026gt; neighbors() { return createNeighbors(); } private List\u0026lt;Board\u0026gt; createNeighbors() { List\u0026lt;Board\u0026gt; list = new ArrayList\u0026lt;\u0026gt;(4); final int curC = i0 % n; final int curR = i0 / n; if (i0 \u0026gt;= n) { // 空白上移、數字下移 \tswap(this.blocks, i0, i0 - n); //\tlist.add(new Board(this.n, this.blocks)); \tint realR = (this.blocks[i0] - 1) / n; list.add(new Board(this.n, this.blocks, this.manhattan + (realR \u0026gt;= curR ? -1 : 1))); swap(this.blocks, i0, i0 - n); } if (i0 \u0026lt; this.blocks.length - n) { // 空白下移、數字上移 \tswap(this.blocks, i0, i0 + n); //\tlist.add(new Board(this.n, this.blocks)); \tint realR = (this.blocks[i0] - 1) / n; list.add(new Board(this.n, this.blocks, this.manhattan + (realR \u0026lt;= curR ? -1 : 1))); swap(this.blocks, i0, i0 + n); } if (i0 % n \u0026gt; 0) { // 空白左移、數字右移 \tswap(this.blocks, i0, i0 - 1); //\tlist.add(new Board(this.n, this.blocks)); \tint realC = (this.blocks[i0] - 1) % n; list.add(new Board(this.n, this.blocks, this.manhattan + (realC \u0026gt;= curC ? -1 : 1))); swap(this.blocks, i0, i0 - 1); } if (i0 % n \u0026lt; n - 1) { // 空白右移、數字左移 \tswap(this.blocks, i0, i0 + 1); //\tlist.add(new Board(this.n, this.blocks)); \tint realC = (this.blocks[i0] - 1) % n; list.add(new Board(this.n, this.blocks, this.manhattan + (realC \u0026lt;= curC ? -1 : 1))); swap(this.blocks, i0, i0 + 1); } return list; } public String toString() { StringBuilder s = new StringBuilder(); s.append(n + \u0026#34;\\n\u0026#34;); for (int i = 0; i \u0026lt; this.blocks.length; i++) { s.append(String.format(\u0026#34;%2d \u0026#34;, blocks[i])); if (i % n == n - 1) s.append(\u0026#34;\\n\u0026#34;); } return s.toString(); } } Solver.java import java.util.LinkedList; import edu.princeton.cs.algs4.MinPQ; public class Solver { private final Node goal; public Solver(Board initial) { if (initial == null) throw new java.lang.IllegalArgumentException(); this.goal = aStar(initial); } private static Node aStar(Board initBoard) { MinPQ\u0026lt;Node\u0026gt; pq = new MinPQ\u0026lt;\u0026gt;(16); pq.insert(new Node(null, initBoard, 0, true)); pq.insert(new Node(null, initBoard.twin(), 0, false)); while (!pq.isEmpty()) { Node cur = pq.delMin(); if (cur.board.isGoal()) return cur; for (Board neighbor : cur.board.neighbors()) { if (cur.pre == null || !neighbor.equals(cur.pre.board)) pq.insert(new Node(cur, neighbor, cur.move + 1, cur.isInitBoard)); } } return null; } private static class Node implements Comparable\u0026lt;Node\u0026gt; { final Node pre; final Board board; final int move; final int priority; final boolean isInitBoard; Node(Node pre, Board board, int move, boolean isInitBoard) { this.pre = pre; this.board = board; this.move = move; this.isInitBoard = isInitBoard; // 增加manhattan比重更快找到解，但不是最短路徑 //\tthis.priority = (board.manhattan() * 5 + move) * 2 + board.hamming(); \tthis.priority = board.manhattan() + move; } @Override public int compareTo(Node o) { // 這裡用if都會超時 //\tif( this.priorityM == o.priorityM ) //\treturn this.priorityH - o.priorityH; //\treturn this.priorityM - o.priorityM; \treturn this.priority - o.priority; } } private static int priorityH(Node n) { return n.board.hamming() + n.move; } private static int priorityM(Node n) { return n.board.manhattan() + n.move; } public boolean isSolvable() { return this.goal != null \u0026amp;\u0026amp; this.goal.isInitBoard; } public int moves() { // min number of moves to solve initial board; -1 if unsolvable \tif (isSolvable()) return this.goal.move; return -1; } public Iterable\u0026lt;Board\u0026gt; solution() { // sequence of boards in a shortest solution; null if unsolvable \tif (!isSolvable()) return null; LinkedList\u0026lt;Board\u0026gt; rtn = new LinkedList\u0026lt;\u0026gt;(); Node cur = this.goal; while (cur != null) { rtn.addFirst(cur.board); cur = cur.pre; } return rtn; } }"
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week5/",
+	"title": "Week 5 編程作業:Kd-Trees",
+	"tags": ["coursera", "Algorithms, Part I", "algorithm", "tree", "binary search"],
+	"description": "",
+	"content": " 編程作業: Kd-Trees 100分關鍵在如果當前最短距離\u0026gt;區域到點最短距離時才找，區域到點的最短距離可先用點到線的距離比過\nPointSET.java import java.util.LinkedList; import java.util.List; import java.util.TreeSet; import edu.princeton.cs.algs4.Point2D; import edu.princeton.cs.algs4.RectHV; public class PointSET { private TreeSet\u0026lt;Point2D\u0026gt; set; public PointSET() { this.set = new TreeSet\u0026lt;\u0026gt;(); } public boolean isEmpty() { return this.set.isEmpty(); } public int size() { return this.set.size(); } public void insert(Point2D p) { requireNonNull(p); this.set.add(p); } public boolean contains(Point2D p) { requireNonNull(p); return this.set.contains(p); } public void draw() { for (Point2D p : this.set) p.draw(); } public Iterable\u0026lt;Point2D\u0026gt; range(RectHV rect) { requireNonNull(rect); List\u0026lt;Point2D\u0026gt; rtn = new LinkedList\u0026lt;\u0026gt;(); for (Point2D anyP : this.set) { if (rect.contains(anyP)) { rtn.add(anyP); } } return rtn; } public Point2D nearest(Point2D p) { requireNonNull(p); double minDis = Double.MAX_VALUE; Point2D rtn = null; for (Point2D anyP : this.set) { double dis = p.distanceSquaredTo(anyP); if (dis \u0026lt; minDis) { minDis = dis; rtn = anyP; } } return rtn; } private static void requireNonNull(Object o) { if (o == null) throw new java.lang.IllegalArgumentException(); } } KdTree.java import java.util.LinkedList; import java.util.List; import edu.princeton.cs.algs4.Point2D; import edu.princeton.cs.algs4.RectHV; import edu.princeton.cs.algs4.StdDraw; public class KdTree { private Node root; private int size; public KdTree() { } public boolean isEmpty() { return this.root == null; } public int size() { return this.size; } public void insert(Point2D p) { requireNonNull(p); this.root = put(root, p, true); } private Node put(Node n, Point2D p, boolean byX) { if (n == null) { this.size++; Node rtn = new Node(p); //\trtn.index = this.size; \treturn rtn; } if (n.p.x() == p.x() \u0026amp;\u0026amp; n.p.y() == p.y()) return n; boolean goLeft = (byX \u0026amp;\u0026amp; p.x() \u0026lt; n.p.x()) || (!byX \u0026amp;\u0026amp; p.y() \u0026lt; n.p.y()); if (goLeft) { n.left = put(n.left, p, !byX); } else { n.right = put(n.right, p, !byX); } return n; } public boolean contains(Point2D p) { requireNonNull(p); return find(this.root, p, true) != null; } private Node find(Node n, Point2D p, boolean byX) { if (n == null) return null; if (n.p.x() == p.x() \u0026amp;\u0026amp; n.p.y() == p.y()) return n; boolean goLeft = (byX \u0026amp;\u0026amp; p.x() \u0026lt; n.p.x()) || (!byX \u0026amp;\u0026amp; p.y() \u0026lt; n.p.y()); if (goLeft) { return find(n.left, p, !byX); } else { return find(n.right, p, !byX); } } public void draw() { preorderDraw(this.root, true, new RectHV(0, 0, 1, 1)); } private static void preorderDraw(Node n, boolean byX, RectHV rect) { if (n == null) return; StdDraw.setPenColor(StdDraw.BLACK); StdDraw.setPenRadius(0.01); n.p.draw(); //\tStdDraw.text(n.p.x(), n.p.y(), String.valueOf(n.index));  if (byX) { StdDraw.setPenColor(StdDraw.RED); StdDraw.setPenRadius(0.003); StdDraw.line(n.p.x(), rect.ymin(), n.p.x(), rect.ymax()); preorderDraw(n.left, !byX, new RectHV(rect.xmin(), rect.ymin(), n.p.x(), rect.ymax())); preorderDraw(n.right, !byX, new RectHV(n.p.x(), rect.ymin(), rect.xmax(), rect.ymax())); } else { StdDraw.setPenColor(StdDraw.BLUE); StdDraw.setPenRadius(0.003); StdDraw.line(rect.xmin(), n.p.y(), rect.xmax(), n.p.y()); preorderDraw(n.left, !byX, new RectHV(rect.xmin(), rect.ymin(), rect.xmax(), n.p.y())); preorderDraw(n.right, !byX, new RectHV(rect.xmin(), n.p.y(), rect.xmax(), rect.ymax())); } } public Iterable\u0026lt;Point2D\u0026gt; range(RectHV rect) { requireNonNull(rect); List\u0026lt;Point2D\u0026gt; rtn = new LinkedList\u0026lt;\u0026gt;(); find(this.root, rect, true, rtn); return rtn; } private static void find(Node n, RectHV rect, boolean byX, List\u0026lt;Point2D\u0026gt; rtn) { if (n == null) return; if (rect.contains(n.p)) { rtn.add(n.p); find(n.left, rect, !byX, rtn); find(n.right, rect, !byX, rtn); return; } if (byX) { if (rect.xmin() \u0026lt;= n.p.x() \u0026amp;\u0026amp; n.p.x() \u0026lt;= rect.xmax()) { find(n.left, rect, !byX, rtn); find(n.right, rect, !byX, rtn); } else if (rect.xmax() \u0026lt; n.p.x()) { find(n.left, rect, !byX, rtn); } else { find(n.right, rect, !byX, rtn); } } else { if (rect.ymin() \u0026lt;= n.p.y() \u0026amp;\u0026amp; n.p.y() \u0026lt;= rect.ymax()) { find(n.left, rect, !byX, rtn); find(n.right, rect, !byX, rtn); } else if (rect.ymax() \u0026lt; n.p.y()) { find(n.left, rect, !byX, rtn); } else { find(n.right, rect, !byX, rtn); } } } public Point2D nearest(Point2D p) { requireNonNull(p); FindNearestData data = new FindNearestData(); findNearest(this.root, p, true, data, new RectHV(0, 0, 1, 1)); Point2D nearest = data.nearest == null ? null : data.nearest.p; return nearest; } private void findNearest(Node n, Point2D p, boolean byX, FindNearestData data, RectHV findIn) { //\tSystem.out.println(\u0026#34;findNearest \u0026#34; + n); \tif (n == null) return; double disToLine = byX ? n.p.x() - p.x() : n.p.y() - p.y(); disToLine = Math.abs(disToLine); if (data.minDis \u0026gt;= disToLine) { double disToP = n.p.distanceTo(p); if (disToP \u0026lt; data.minDis) { data.minDis = disToP; data.nearest = n; } if (data.minDis == 0) return; } boolean goLeftFirst = (byX \u0026amp;\u0026amp; p.x() \u0026lt; n.p.x()) || (!byX \u0026amp;\u0026amp; p.y() \u0026lt; n.p.y()); if (goLeftFirst) { if (n.left != null) { findNearest(n.left, p, !byX, data, nextRect(findIn, n, byX, true)); } if (n.right != null \u0026amp;\u0026amp; data.minDis \u0026gt; disToLine) { RectHV nextRect = nextRect(findIn, n, byX, false); if (data.minDis \u0026gt; nextRect.distanceTo(p)) findNearest(n.right, p, !byX, data, nextRect); } } else { if (n.right != null) { findNearest(n.right, p, !byX, data, nextRect(findIn, n, byX, false)); } if (n.left != null \u0026amp;\u0026amp; data.minDis \u0026gt; disToLine) { RectHV nextRect = nextRect(findIn, n, byX, true); if (data.minDis \u0026gt; nextRect.distanceTo(p)) findNearest(n.left, p, !byX, data, nextRect); } } } private static RectHV nextRect(RectHV curFindIn, Node curNode, boolean curByX, boolean goLeft) { if (curByX) { if (goLeft) return new RectHV(curFindIn.xmin(), curFindIn.ymin(), curNode.p.x(), curFindIn.ymax()); else return new RectHV(curNode.p.x(), curFindIn.ymin(), curFindIn.xmax(), curFindIn.ymax()); } else { if (goLeft) return new RectHV(curFindIn.xmin(), curFindIn.ymin(), curFindIn.xmax(), curNode.p.y()); else return new RectHV(curFindIn.xmin(), curNode.p.y(), curFindIn.xmax(), curFindIn.ymax()); } } private static class FindNearestData { Node nearest = null; double minDis = Double.MAX_VALUE; } private static void requireNonNull(Object o) { if (o == null) throw new java.lang.IllegalArgumentException(); } private static class Node { Node left; Node right; Point2D p; //\tint index = -1;  Node(Point2D p) { this.p = p; } @Override public String toString() { return String.valueOf(p); } } }"
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/",
+	"title": "Algorithms, Part I",
+	"tags": [],
+	"description": "",
+	"content": ""
 },
 {
 	"uri": "https://kiwislice.github.io/html-css-js-memo/java/spring/",
 	"title": "Spring",
 	"tags": [],
 	"description": "",
-	"content": ".\n"
+	"content": ""
 },
 {
 	"uri": "https://kiwislice.github.io/html-css-js-memo/java/spring/custom-scope/",
@@ -35,22 +91,134 @@
 	"content": "先準備自定義的Scope物件(此範例為JSF的ViewScope)\nimport org.springframework.beans.factory.ObjectFactory; import org.springframework.beans.factory.config.Scope; public class ViewScope implements Scope { public static final String SCOPE_NAME = \u0026#34;custom_view\u0026#34;; /** 取得給定名稱物件，不存在則建立 */ @Override public Object get(String name, ObjectFactory\u0026lt;?\u0026gt; objectFactory) { Map\u0026lt;String, Object\u0026gt; viewMap = FacesContext.getCurrentInstance().getViewRoot().getViewMap(); if (viewMap.containsKey(name)) { return viewMap.get(name); } else { Object object = objectFactory.getObject(); viewMap.put(name, object); return object; } } @Override public String getConversationId() { return null; } @Override public void registerDestructionCallback(String name, Runnable callback) { } /** 移除指定物件 */ @Override public Object remove(String name) { return FacesContext.getCurrentInstance().getViewRoot().getViewMap().remove(name); } @Override public Object resolveContextualObject(String arg0) { return null; } } 準備1個BeanFactoryPostProcessor，負責登記Scpoe名稱與對應的Scope物件\nimport org.springframework.beans.BeansException; import org.springframework.beans.factory.config.BeanFactoryPostProcessor; import org.springframework.beans.factory.config.ConfigurableListableBeanFactory; public class CustomerBeanFactoryPostProcessor implements BeanFactoryPostProcessor { @Override public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException { beanFactory.registerScope(ViewScope.SCOPE_NAME, new ViewScope()); } } 將客製的BeanFactoryPostProcessor登記為Bean\n@Configuration public class CustomScopeConfig { @Bean public static BeanFactoryPostProcessor beanFactoryPostProcessor() { return new CustomerBeanFactoryPostProcessor(); } } 使用方式\n@Component @Scope(ViewScope.SCOPE_NAME) public class PageView { }"
 },
 {
+	"uri": "https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/",
+	"title": "Coursera",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
 	"uri": "https://kiwislice.github.io/html-css-js-memo/java/",
 	"title": "Java",
 	"tags": [],
 	"description": "",
-	"content": ".\n"
+	"content": ""
 },
 {
 	"uri": "https://kiwislice.github.io/html-css-js-memo/tools/",
 	"title": "Tools",
 	"tags": [],
 	"description": "",
-	"content": ".\n"
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/algorithm/",
+	"title": "Algorithm",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/algorithms-part-i/",
+	"title": "Algorithms, Part I",
+	"tags": [],
+	"description": "",
+	"content": ""
 },
 {
 	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/",
 	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/a-star/",
+	"title": "a star",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/algorithm/",
+	"title": "algorithm",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/binary-search/",
+	"title": "binary search",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/coursera/",
+	"title": "coursera",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/priority-queue/",
+	"title": "priority queue",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/queue/",
+	"title": "queue",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/sort/",
+	"title": "sort",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/stack/",
+	"title": "stack",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/tree/",
+	"title": "tree",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/union-find/",
+	"title": "union-find",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/",
+	"title": "學習筆記",
+	"tags": [],
+	"description": "",
+	"content": " 學習筆記 紀錄各種測試與試作品.\nHtml-Css-Js常用網站  CSS w3schools Bootstrap4 w3schools Bootstrap官網 CodePen：線上編輯、測試、展示網站 免費處理中GIF下載 JS等價表  Java Web常用網站  Spring Security Reference Spring Web MVC Reference Spring Boot Reference Guide Spring Data JPA Reference Lombok Maven Repository JSF Tag   其他  OWSAP Markdown Pastebin Coursera Swagger  "
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/javascript/",
+	"title": "javascript",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/textarea/",
+	"title": "textarea",
 	"tags": [],
 	"description": "",
 	"content": ""
@@ -68,13 +236,6 @@
 	"tags": [],
 	"description": "",
 	"content": ""
-},
-{
-	"uri": "https://kiwislice.github.io/html-css-js-memo/",
-	"title": "學習筆記",
-	"tags": [],
-	"description": "",
-	"content": " 學習筆記 紀錄各種測試與試作品.\nHtml-Css-Js常用網站  CSS w3schools Bootstrap4 w3schools Bootstrap官網 CodePen：線上編輯、測試、展示網站 免費處理中GIF下載 JS等價表  Java Web常用網站  Spring Security Reference Spring Web MVC Reference Spring Boot Reference Guide Spring Data JPA Reference Lombok  資安相關  OWSAP  "
 },
 {
 	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/service/",

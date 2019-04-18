@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>coursera on 學習筆記</title>
+    <link>https://kiwislice.github.io/html-css-js-memo/tags/coursera/</link>
+    <description>Recent content in coursera on 學習筆記</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Thu, 18 Apr 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://kiwislice.github.io/html-css-js-memo/tags/coursera/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Week 1 編程作業:Percolation</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week1/</link>
+      <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week1/</guid>
+      <description>編程作業: Percolation 100分關鍵在使用2個WeightedQuickUnionUF，一個繪圖用，一個判斷滲透用
+Percolation.java import edu.princeton.cs.algs4.WeightedQuickUnionUF; public class Percolation { private static final int FULL_ROOT = 0; private final int n; private final boolean[] open; private final WeightedQuickUnionUF uf; private final WeightedQuickUnionUF ufForCheckPercolates; private final int END_ROOT; private int openSize; private boolean percolates; public Percolation(int n) { if (n &amp;lt;= 0) throw new java.lang.IllegalArgumentException(); this.n = n; final int size = n * n + 2; this.open = new boolean[size]; this.</description>
+    </item>
+    
+    <item>
+      <title>Week 2 編程作業:Deques and Randomized Queues</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week2/</link>
+      <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week2/</guid>
+      <description>編程作業: Deques and Randomized Queues Deque使用節點，RandomizedQueue使用陣列，100分沒有太困難
+Deque.java import java.util.Iterator; public class Deque&amp;lt;Item&amp;gt; implements Iterable&amp;lt;Item&amp;gt; { private final Node head; private final Node tail; private int size; public Deque() { this.head = new Node(); this.tail = new Node(); this.head.next = this.tail; this.tail.pre = this.head; } public boolean isEmpty() { return this.size == 0; } public int size() { return this.size; } public void addFirst(Item item) { checkNullItem(item); Node newNode = new Node(item); insertAfter(this.</description>
+    </item>
+    
+    <item>
+      <title>Week 3 編程作業:Collinear Points</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week3/</link>
+      <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week3/</guid>
+      <description>編程作業: Collinear Points 100分關鍵是FastCollinearPoints在判斷線段重複時不使用Set或Sort，而是只有當前點是當前線段的左下端點時才加入
+Point.java /****************************************************************************** * Compilation: javac Point.java * Execution: java Point * Dependencies: none * * An immutable data type for points in the plane. * For use on Coursera, Algorithms Part I programming assignment. * ******************************************************************************/ import java.util.Comparator; import edu.princeton.cs.algs4.StdDraw; public class Point implements Comparable&amp;lt;Point&amp;gt; { private final int x; // x-coordinate of this point 	private final int y; // y-coordinate of this point  /** * Initializes a new point.</description>
+    </item>
+    
+    <item>
+      <title>Week 4 編程作業:8 Puzzle</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week4/</link>
+      <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week4/</guid>
+      <description>編程作業: 8 Puzzle 只有99分
+Board.java import java.util.ArrayList; import java.util.Arrays; import java.util.List; public class Board { private final short[] blocks; private final int n; private int i0; private int hamming; private int manhattan; private long hash; public Board(int[][] blocks) { this(blocks.length, copy(blocks)); } private Board(int n, short[] blocks) { this.blocks = Arrays.copyOf(blocks, blocks.length); this.n = n; this.hash = 0; for (int i = 0; i &amp;lt; blocks.length; i++) { if (this.</description>
+    </item>
+    
+    <item>
+      <title>Week 5 編程作業:Kd-Trees</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week5/</link>
+      <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week5/</guid>
+      <description>編程作業: Kd-Trees 100分關鍵在如果當前最短距離&amp;gt;區域到點最短距離時才找，區域到點的最短距離可先用點到線的距離比過
+PointSET.java import java.util.LinkedList; import java.util.List; import java.util.TreeSet; import edu.princeton.cs.algs4.Point2D; import edu.princeton.cs.algs4.RectHV; public class PointSET { private TreeSet&amp;lt;Point2D&amp;gt; set; public PointSET() { this.set = new TreeSet&amp;lt;&amp;gt;(); } public boolean isEmpty() { return this.set.isEmpty(); } public int size() { return this.set.size(); } public void insert(Point2D p) { requireNonNull(p); this.set.add(p); } public boolean contains(Point2D p) { requireNonNull(p); return this.set.contains(p); } public void draw() { for (Point2D p : this.set) p.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -13,11 +13,11 @@
     
     <item>
       <title>文字截斷</title>
-      <link>https://kiwislice.github.io/html-css-js-memo/css/text-truncate/</link>
+      <link>https://kiwislice.github.io/html-css-js-memo/html-css-js/text-truncate/</link>
       <pubDate>Fri, 12 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://kiwislice.github.io/html-css-js-memo/css/text-truncate/</guid>
-      <description> 單行： .text-truncate { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }  https://codepen.io/PJCHENder/pen/QOgVLR  多行：  https://css-tricks.com/line-clampin/  </description>
+      <guid>https://kiwislice.github.io/html-css-js-memo/html-css-js/text-truncate/</guid>
+      <description> 單行： .text-truncate { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }  https://codepen.io/PJCHENder/pen/QOgVLR  多行：  https://css-tricks.com/line-clampin/ https://codepen.io/nxworld/pen/wxZPwL  </description>
     </item>
     
   </channel>

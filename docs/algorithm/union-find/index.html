@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>學習筆記</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2019-04-18T11:43:12 CST">
+<title>Uinon-Find Algorithm :: 學習筆記</title>
+<link rel="shortcut icon" href="/html-css-js-memo/images/favicon.png" type="image/x-icon" />
+<link href="/html-css-js-memo/css/font-awesome.min.css" rel="stylesheet">
+<link href="/html-css-js-memo/css/nucleus.css" rel="stylesheet">
+<link href="/html-css-js-memo/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/html-css-js-memo/css/bootstrap.min.css">
+<script src="/html-css-js-memo/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "https:\/\/kiwislice.github.io\/html-css-js-memo\/";
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-79101-13', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  <link rel="stylesheet" href="/html-css-js-memo/css/custom.css">
+  <script src="/html-css-js-memo/js/custom.js"></script>
+  
+
+    
+  </head>
+  <body data-url="/html-css-js-memo/algorithm/union-find/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    
+	<a class="baselink" href="https://kiwislice.github.io/html-css-js-memo/"><i class="fa fa-fw fa-home"></i></a>
+	
+  
+
+
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="https://github.com/kiwislice/html-css-js-memo"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+          
+    <li data-nav-id="/html-css-js-memo/html-css-js/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/html-css-js/">Html-Css-Js</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/html-css-js-memo/html-css-js/get-cursor-position-textarea/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/html-css-js/get-cursor-position-textarea/">
+            取得Textarea游標位置
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/html-css-js-memo/html-css-js/text-truncate/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/html-css-js/text-truncate/">
+            文字截斷
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/html-css-js-memo/java/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/java/">Java</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+        </ul>
+    </li>
+    <li data-nav-id="/html-css-js-memo/tools/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/tools/">Tools</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/html-css-js-memo/tools/register-windows-service/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/tools/register-windows-service/">
+            登記Windows服務
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/html-css-js-memo/algorithm/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/algorithm/">Algorithm</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/html-css-js-memo/algorithm/union-find/" class="dd-item active">
+        <div>
+          <a href="/html-css-js-memo/algorithm/union-find/">
+            Uinon-Find Algorithm
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/html-css-js-memo/algorithm/coursera/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/algorithm/coursera/">Coursera</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/html-css-js-memo/algorithm/coursera/algorithms-part-i/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/algorithm/coursera/algorithms-part-i/">Algorithms, Part I</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week1/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week1/">
+            Week 1 編程作業:Percolation
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week2/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week2/">
+            Week 2 編程作業:Deques and Randomized Queues
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week3/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week3/">
+            Week 3 編程作業:Collinear Points
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week4/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week4/">
+            Week 4 編程作業:8 Puzzle
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week5/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week5/">
+            Week 5 編程作業:Kd-Trees
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section><center>
+
+<a class="github-button" href="https://github.com/kiwislice/html-css-js-memo/archive/master.zip" data-icon="octicon-cloud-download" aria-label="Download vjeantet/hugo-theme-docdock on GitHub">Download</a>
+
+
+<a class="github-button" href="https://github.com/kiwislice/html-css-js-memo" data-icon="octicon-star" data-show-count="false" aria-label="Star vjeantet/hugo-theme-docdock on GitHub">Star</a>
+
+
+<a class="github-button" href="https://github.com/kiwislice/html-css-js-memo/fork" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork vjeantet/hugo-theme-docdock on GitHub">Fork</a>
+
+</center>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/html-css-js-memo/html-css-js/" >
+   Html-Css-Js</option>
+    <option value="/html-css-js-memo/java/" >
+   Java</option>
+    <option value="/html-css-js-memo/tools/" >
+   Tools</option>
+    <option value="/html-css-js-memo/algorithm/" >
+   Algorithm</option> 
+      <option value="/html-css-js-memo/algorithm/union-find/"  selected>- Uinon-Find Algorithm</option>
+    <option value="/html-css-js-memo/algorithm/coursera/" >
+  - 
+   Coursera</option>
+  
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="英文關鍵字搜尋...">
+        </div>
+        <script type="text/javascript" src="/html-css-js-memo/js/lunr.min.js"></script>
+		
+        <script type="text/javascript" src="/html-css-js-memo/js/auto-complete.js"></script>
+        <link href="/html-css-js-memo/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "https:\/\/kiwislice.github.io\/html-css-js-memo\/";
+          
+        </script>
+        <script type="text/javascript" src="/html-css-js-memo/js/search.js"></script>
+      </div>
+    
+
+    <h1>Uinon-Find Algorithm</h1>
+    
+    
+    
+    
+
+<h3 id="用途">用途</h3>
+
+<p>判斷2個目標是否在同一組、判斷2個目標是否相連</p>
+
+<h3 id="實現">實現</h3>
+
+<ul>
+<li><p>用1維陣列表示N個目標</p></li>
+
+<li><p><code>array[n]</code>表示第n個目標的父節點</p></li>
+
+<li><p>每個群組可視為一棵樹，任意2點有相同根節點表示同組</p></li>
+
+<li><p><code>array[i]==i</code>表示到達根節點</p></li>
+
+<li><p>將2點設為同組只需</p></li>
+</ul>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  <span style="color:#00a8c8">public</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">unite</span><span style="color:#f92672">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">p</span><span style="color:#f92672">,</span> <span style="color:#00a8c8">int</span> <span style="color:#111">q</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      <span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#111">root</span><span style="color:#f92672">(</span><span style="color:#111">p</span><span style="color:#f92672">);</span>
+      <span style="color:#00a8c8">int</span> <span style="color:#111">j</span> <span style="color:#f92672">=</span> <span style="color:#111">root</span><span style="color:#f92672">(</span><span style="color:#111">q</span><span style="color:#f92672">);</span>
+      <span style="color:#111">id</span><span style="color:#f92672">[</span><span style="color:#111">i</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#111">j</span><span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span></code></pre></div>
+<h3 id="瓶頸">瓶頸</h3>
+
+<ul>
+<li>樹太深時尋找根節點費時</li>
+</ul>
+
+<h3 id="優化">優化</h3>
+
+<ul>
+<li>另外開個陣列紀錄群組大小，合併時將小樹放到大樹下，減少深度</li>
+<li>在訪問根的過程中，將所有節點的父節點都順手改為父父節點，減少深度</li>
+</ul>
+
+<h3 id="參考資料">參考資料</h3>
+
+<ul>
+<li><a href="https://www.cs.princeton.edu/~rs/AlgsDS07/01UnionFind.pdf">https://www.cs.princeton.edu/~rs/AlgsDS07/01UnionFind.pdf</a></li>
+</ul>
+
+
+    
+    
+        
+  
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+    <div class="tags"> 
+      
+        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/algorithm">algorithm</a>
+      
+        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/union-find">union-find</a>
+      
+    </div>
+    
+
+    
+
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 18/04/2019
+    </div>
+    
+
+    
+    <div class="github-link">
+      <a href="https://github.com/kiwislice/html-css-js-memo/edit/master/content/algorithm/union-find.md" target="blank"><i class="fa fa-code-fork"></i>
+        </a>
+    </div>
+    
+  </div>
+
+
+	<div>
+
+
+  
+    <p>By kiwislice.</p>
+
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/html-css-js-memo/js/clipboard.min.js"></script>
+
+<link href="/html-css-js-memo/css/featherlight.min.css" rel="stylesheet">
+<script src="/html-css-js-memo/js/featherlight.min.js"></script>
+
+
+
+<script src="/html-css-js-memo/theme-flex/script.js"></script>
+
+
+    
+
+    
+    
+
+    
+  <script data-no-instant>document.write('<script src="/livereload.js?port=1313&mindelay=10"></' + 'script>')</script></body>
+</html>

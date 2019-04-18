@@ -25,9 +25,16 @@ description = ""
 - [Spring Boot Reference Guide](<https://docs.spring.io/spring-boot/docs/2.1.3.RELEASE/reference/htmlsingle/>)
 - [Spring Data JPA Reference](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/)
 - [Lombok](https://projectlombok.org/)
+- [Maven Repository](https://mvnrepository.com/)
+- [JSF Tag](https://docs.oracle.com/javaee/7/javaserver-faces-2-2/vdldocs-facelets/toc.htm)
+- 
 
 
 
-## 資安相關
+## 其他
 
 - [OWSAP](https://www.owasp.org/index.php/Main_Page)
+- [Markdown](https://markdown.tw/)
+- [Pastebin](https://pastebin.com/)
+- [Coursera](https://www.coursera.org/)
+- [Swagger](https://swagger.io/)

@@ -8,9 +8,21 @@
 {{ partial "pagination.html" $paginator }}
 </div>
 
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col" class="w-20">Title</th>
+            <th scope="col">Summary</th>
+        </tr>
+    </thead>
+    <tbody>
+       
 {{ range $index, $page := $paginator.Pages }}
 	{{ .Render "li" }}
 {{ end }}
+
+    </tbody>
+</table>
 
 
 <div style="margin-bottom:2rem"></div>

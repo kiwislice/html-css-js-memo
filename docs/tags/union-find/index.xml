@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>union-find on 學習筆記</title>
+    <link>https://kiwislice.github.io/html-css-js-memo/tags/union-find/</link>
+    <description>Recent content in union-find on 學習筆記</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Thu, 18 Apr 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://kiwislice.github.io/html-css-js-memo/tags/union-find/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Uinon-Find Algorithm</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/algorithm/union-find/</link>
+      <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/algorithm/union-find/</guid>
+      <description> 用途 判斷2個目標是否在同一組、判斷2個目標是否相連
+實現  用1維陣列表示N個目標
+ array[n]表示第n個目標的父節點
+ 每個群組可視為一棵樹，任意2點有相同根節點表示同組
+ array[i]==i表示到達根節點
+ 將2點設為同組只需
+  public void unite(int p, int q) { int i = root(p); int j = root(q); id[i] = j; } 瓶頸  樹太深時尋找根節點費時  優化  另外開個陣列紀錄群組大小，合併時將小樹放到大樹下，減少深度 在訪問根的過程中，將所有節點的父節點都順手改為父父節點，減少深度  參考資料  https://www.cs.princeton.edu/~rs/AlgsDS07/01UnionFind.pdf  </description>
+    </item>
+    
+    <item>
+      <title>Week 1 編程作業:Percolation</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week1/</link>
+      <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week1/</guid>
+      <description>編程作業: Percolation 100分關鍵在使用2個WeightedQuickUnionUF，一個繪圖用，一個判斷滲透用
+Percolation.java import edu.princeton.cs.algs4.WeightedQuickUnionUF; public class Percolation { private static final int FULL_ROOT = 0; private final int n; private final boolean[] open; private final WeightedQuickUnionUF uf; private final WeightedQuickUnionUF ufForCheckPercolates; private final int END_ROOT; private int openSize; private boolean percolates; public Percolation(int n) { if (n &amp;lt;= 0) throw new java.lang.IllegalArgumentException(); this.n = n; final int size = n * n + 2; this.open = new boolean[size]; this.</description>
+    </item>
+    
+  </channel>
+</rss>

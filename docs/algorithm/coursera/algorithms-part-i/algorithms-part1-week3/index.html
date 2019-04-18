@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>學習筆記</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2019-04-18T11:43:12 CST">
+<title>Week 3 編程作業:Collinear Points :: 學習筆記</title>
+<link rel="shortcut icon" href="/html-css-js-memo/images/favicon.png" type="image/x-icon" />
+<link href="/html-css-js-memo/css/font-awesome.min.css" rel="stylesheet">
+<link href="/html-css-js-memo/css/nucleus.css" rel="stylesheet">
+<link href="/html-css-js-memo/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/html-css-js-memo/css/bootstrap.min.css">
+<script src="/html-css-js-memo/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "https:\/\/kiwislice.github.io\/html-css-js-memo\/";
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-79101-13', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  <link rel="stylesheet" href="/html-css-js-memo/css/custom.css">
+  <script src="/html-css-js-memo/js/custom.js"></script>
+  
+
+    
+  </head>
+  <body data-url="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week3/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    
+	<a class="baselink" href="https://kiwislice.github.io/html-css-js-memo/"><i class="fa fa-fw fa-home"></i></a>
+	
+  
+
+
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="https://github.com/kiwislice/html-css-js-memo"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+          
+    <li data-nav-id="/html-css-js-memo/html-css-js/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/html-css-js/">Html-Css-Js</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/html-css-js-memo/html-css-js/get-cursor-position-textarea/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/html-css-js/get-cursor-position-textarea/">
+            取得Textarea游標位置
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/html-css-js-memo/html-css-js/text-truncate/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/html-css-js/text-truncate/">
+            文字截斷
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/html-css-js-memo/java/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/java/">Java</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/html-css-js-memo/java/spring/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/java/spring/">Spring</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/html-css-js-memo/java/spring/custom-scope/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/java/spring/custom-scope/">
+            自定義Scope
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/html-css-js-memo/tools/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/tools/">Tools</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/html-css-js-memo/tools/register-windows-service/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/tools/register-windows-service/">
+            登記Windows服務
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/html-css-js-memo/algorithm/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/algorithm/">Algorithm</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/html-css-js-memo/algorithm/union-find/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/algorithm/union-find/">
+            Uinon-Find Algorithm
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/html-css-js-memo/algorithm/coursera/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/algorithm/coursera/">Coursera</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/html-css-js-memo/algorithm/coursera/algorithms-part-i/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/algorithm/coursera/algorithms-part-i/">Algorithms, Part I</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week1/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week1/">
+            Week 1 編程作業:Percolation
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week2/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week2/">
+            Week 2 編程作業:Deques and Randomized Queues
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week3/" class="dd-item active">
+        <div>
+          <a href="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week3/">
+            Week 3 編程作業:Collinear Points
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week4/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week4/">
+            Week 4 編程作業:8 Puzzle
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week5/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week5/">
+            Week 5 編程作業:Kd-Trees
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section><center>
+
+<a class="github-button" href="https://github.com/kiwislice/html-css-js-memo/archive/master.zip" data-icon="octicon-cloud-download" aria-label="Download vjeantet/hugo-theme-docdock on GitHub">Download</a>
+
+
+<a class="github-button" href="https://github.com/kiwislice/html-css-js-memo" data-icon="octicon-star" data-show-count="false" aria-label="Star vjeantet/hugo-theme-docdock on GitHub">Star</a>
+
+
+<a class="github-button" href="https://github.com/kiwislice/html-css-js-memo/fork" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork vjeantet/hugo-theme-docdock on GitHub">Fork</a>
+
+</center>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/html-css-js-memo/html-css-js/" >
+   Html-Css-Js</option>
+    <option value="/html-css-js-memo/java/" >
+   Java</option>
+    <option value="/html-css-js-memo/tools/" >
+   Tools</option>
+    <option value="/html-css-js-memo/algorithm/" >
+   Algorithm</option> 
+      <option value="/html-css-js-memo/algorithm/union-find/" >- Uinon-Find Algorithm</option>
+    <option value="/html-css-js-memo/algorithm/coursera/" >
+  - 
+   Coursera</option> 
+    <option value="/html-css-js-memo/algorithm/coursera/algorithms-part-i/" >
+  -- 
+   Algorithms, Part I</option> 
+      <option value="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week1/" >--- Week 1 編程作業:Percolation</option>
+      <option value="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week2/" >--- Week 2 編程作業:Deques and Randomized Queues</option>
+      <option value="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week3/"  selected>--- Week 3 編程作業:Collinear Points</option>
+      <option value="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week4/" >--- Week 4 編程作業:8 Puzzle</option>
+      <option value="/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week5/" >--- Week 5 編程作業:Kd-Trees</option>
+  
+  
+  
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="英文關鍵字搜尋...">
+        </div>
+        <script type="text/javascript" src="/html-css-js-memo/js/lunr.min.js"></script>
+		
+        <script type="text/javascript" src="/html-css-js-memo/js/auto-complete.js"></script>
+        <link href="/html-css-js-memo/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "https:\/\/kiwislice.github.io\/html-css-js-memo\/";
+          
+        </script>
+        <script type="text/javascript" src="/html-css-js-memo/js/search.js"></script>
+      </div>
+    
+
+    <h1>Week 3 編程作業:Collinear Points</h1>
+    
+    
+    
+    
+
+<h2 id="編程作業-collinear-points">編程作業: Collinear Points</h2>
+
+<p>100分關鍵是FastCollinearPoints在判斷線段重複時不使用Set或Sort，而是只有當前點是當前線段的左下端點時才加入</p>
+
+<h3 id="point-java">Point.java</h3>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/******************************************************************************
+</span><span style="color:#75715e"> *  Compilation:  javac Point.java
+</span><span style="color:#75715e"> *  Execution:    java Point
+</span><span style="color:#75715e"> *  Dependencies: none
+</span><span style="color:#75715e"> *  
+</span><span style="color:#75715e"> *  An immutable data type for points in the plane.
+</span><span style="color:#75715e"> *  For use on Coursera, Algorithms Part I programming assignment.
+</span><span style="color:#75715e"> *
+</span><span style="color:#75715e"> ******************************************************************************/</span>
+
+<span style="color:#f92672">import</span> <span style="color:#111">java.util.Comparator</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> <span style="color:#111">edu.princeton.cs.algs4.StdDraw</span><span style="color:#f92672">;</span>
+
+<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">Point</span> <span style="color:#00a8c8">implements</span> <span style="color:#111">Comparable</span><span style="color:#f92672">&lt;</span><span style="color:#111">Point</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
+
+	<span style="color:#00a8c8">private</span> <span style="color:#00a8c8">final</span> <span style="color:#00a8c8">int</span> <span style="color:#111">x</span><span style="color:#f92672">;</span> <span style="color:#75715e">// x-coordinate of this point
+</span><span style="color:#75715e"></span>	<span style="color:#00a8c8">private</span> <span style="color:#00a8c8">final</span> <span style="color:#00a8c8">int</span> <span style="color:#111">y</span><span style="color:#f92672">;</span> <span style="color:#75715e">// y-coordinate of this point
+</span><span style="color:#75715e"></span>
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * Initializes a new point.
+</span><span style="color:#75715e">	 *
+</span><span style="color:#75715e">	 * @param x the &lt;em&gt;x&lt;/em&gt;-coordinate of the point
+</span><span style="color:#75715e">	 * @param y the &lt;em&gt;y&lt;/em&gt;-coordinate of the point
+</span><span style="color:#75715e">	 */</span>
+	<span style="color:#00a8c8">public</span> <span style="color:#75af00">Point</span><span style="color:#f92672">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">x</span><span style="color:#f92672">,</span> <span style="color:#00a8c8">int</span> <span style="color:#111">y</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#75715e">/* DO NOT MODIFY */</span>
+		<span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">x</span> <span style="color:#f92672">=</span> <span style="color:#111">x</span><span style="color:#f92672">;</span>
+		<span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">y</span> <span style="color:#f92672">=</span> <span style="color:#111">y</span><span style="color:#f92672">;</span>
+	<span style="color:#f92672">}</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * Draws this point to standard draw.
+</span><span style="color:#75715e">	 */</span>
+	<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">draw</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+		<span style="color:#75715e">/* DO NOT MODIFY */</span>
+		<span style="color:#111">StdDraw</span><span style="color:#f92672">.</span><span style="color:#75af00">point</span><span style="color:#f92672">(</span><span style="color:#111">x</span><span style="color:#f92672">,</span> <span style="color:#111">y</span><span style="color:#f92672">);</span>
+	<span style="color:#f92672">}</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * Draws the line segment between this point and the specified point to standard
+</span><span style="color:#75715e">	 * draw.
+</span><span style="color:#75715e">	 *
+</span><span style="color:#75715e">	 * @param that the other point
+</span><span style="color:#75715e">	 */</span>
+	<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">drawTo</span><span style="color:#f92672">(</span><span style="color:#111">Point</span> <span style="color:#111">that</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#75715e">/* DO NOT MODIFY */</span>
+		<span style="color:#111">StdDraw</span><span style="color:#f92672">.</span><span style="color:#75af00">line</span><span style="color:#f92672">(</span><span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">x</span><span style="color:#f92672">,</span> <span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">y</span><span style="color:#f92672">,</span> <span style="color:#111">that</span><span style="color:#f92672">.</span><span style="color:#75af00">x</span><span style="color:#f92672">,</span> <span style="color:#111">that</span><span style="color:#f92672">.</span><span style="color:#75af00">y</span><span style="color:#f92672">);</span>
+	<span style="color:#f92672">}</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * Returns the slope between this point and the specified point. Formally, if
+</span><span style="color:#75715e">	 * the two points are (x0, y0) and (x1, y1), then the slope is (y1 - y0) / (x1 -
+</span><span style="color:#75715e">	 * x0). For completeness, the slope is defined to be +0.0 if the line segment
+</span><span style="color:#75715e">	 * connecting the two points is horizontal; Double.POSITIVE_INFINITY if the line
+</span><span style="color:#75715e">	 * segment is vertical; and Double.NEGATIVE_INFINITY if (x0, y0) and (x1, y1)
+</span><span style="color:#75715e">	 * are equal.
+</span><span style="color:#75715e">	 *
+</span><span style="color:#75715e">	 * @param that the other point
+</span><span style="color:#75715e">	 * @return the slope between this point and the specified point
+</span><span style="color:#75715e">	 */</span>
+	<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">double</span> <span style="color:#75af00">slopeTo</span><span style="color:#f92672">(</span><span style="color:#111">Point</span> <span style="color:#111">that</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#75715e">/* YOUR CODE HERE */</span>
+		<span style="color:#00a8c8">if</span> <span style="color:#f92672">(</span><span style="color:#111">that</span> <span style="color:#f92672">==</span> <span style="color:#00a8c8">null</span><span style="color:#f92672">)</span>
+			<span style="color:#00a8c8">throw</span> <span style="color:#00a8c8">new</span> <span style="color:#111">java</span><span style="color:#f92672">.</span><span style="color:#75af00">lang</span><span style="color:#f92672">.</span><span style="color:#75af00">NullPointerException</span><span style="color:#f92672">();</span>
+
+		<span style="color:#00a8c8">if</span> <span style="color:#f92672">(</span><span style="color:#111">that</span><span style="color:#f92672">.</span><span style="color:#75af00">x</span> <span style="color:#f92672">==</span> <span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">x</span><span style="color:#f92672">)</span>
+			<span style="color:#00a8c8">return</span> <span style="color:#111">that</span><span style="color:#f92672">.</span><span style="color:#75af00">y</span> <span style="color:#f92672">==</span> <span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">y</span> <span style="color:#f92672">?</span> <span style="color:#111">Double</span><span style="color:#f92672">.</span><span style="color:#75af00">NEGATIVE_INFINITY</span> <span style="color:#f92672">:</span> <span style="color:#111">Double</span><span style="color:#f92672">.</span><span style="color:#75af00">POSITIVE_INFINITY</span><span style="color:#f92672">;</span>
+		<span style="color:#00a8c8">return</span> <span style="color:#111">that</span><span style="color:#f92672">.</span><span style="color:#75af00">y</span> <span style="color:#f92672">==</span> <span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">y</span> <span style="color:#f92672">?</span> <span style="color:#111">0</span> <span style="color:#f92672">:</span> <span style="color:#f92672">(</span><span style="color:#111">that</span><span style="color:#f92672">.</span><span style="color:#75af00">y</span> <span style="color:#f92672">-</span> <span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">y</span><span style="color:#f92672">)</span> <span style="color:#f92672">*</span> <span style="color:#111">1</span><span style="color:#f92672">.</span><span style="color:#75af00">0</span> <span style="color:#f92672">/</span> <span style="color:#f92672">(</span><span style="color:#111">that</span><span style="color:#f92672">.</span><span style="color:#75af00">x</span> <span style="color:#f92672">-</span> <span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">x</span><span style="color:#f92672">);</span>
+	<span style="color:#f92672">}</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * Compares two points by y-coordinate, breaking ties by x-coordinate. Formally,
+</span><span style="color:#75715e">	 * the invoking point (x0, y0) is less than the argument point (x1, y1) if and
+</span><span style="color:#75715e">	 * only if either y0 &lt; y1 or if y0 = y1 and x0 &lt; x1.
+</span><span style="color:#75715e">	 *
+</span><span style="color:#75715e">	 * @param that the other point
+</span><span style="color:#75715e">	 * @return the value &lt;tt&gt;0&lt;/tt&gt; if this point is equal to the argument point (x0
+</span><span style="color:#75715e">	 *         = x1 and y0 = y1); a negative integer if this point is less than the
+</span><span style="color:#75715e">	 *         argument point; and a positive integer if this point is greater than
+</span><span style="color:#75715e">	 *         the argument point
+</span><span style="color:#75715e">	 */</span>
+	<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">int</span> <span style="color:#75af00">compareTo</span><span style="color:#f92672">(</span><span style="color:#111">Point</span> <span style="color:#111">that</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#75715e">/* YOUR CODE HERE */</span>
+		<span style="color:#00a8c8">if</span> <span style="color:#f92672">(</span><span style="color:#111">that</span> <span style="color:#f92672">==</span> <span style="color:#00a8c8">null</span><span style="color:#f92672">)</span>
+			<span style="color:#00a8c8">throw</span> <span style="color:#00a8c8">new</span> <span style="color:#111">java</span><span style="color:#f92672">.</span><span style="color:#75af00">lang</span><span style="color:#f92672">.</span><span style="color:#75af00">NullPointerException</span><span style="color:#f92672">();</span>
+
+		<span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">y</span> <span style="color:#f92672">-</span> <span style="color:#111">that</span><span style="color:#f92672">.</span><span style="color:#75af00">y</span><span style="color:#f92672">;</span>
+		<span style="color:#00a8c8">return</span> <span style="color:#111">i</span> <span style="color:#f92672">==</span> <span style="color:#111">0</span> <span style="color:#f92672">?</span> <span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">x</span> <span style="color:#f92672">-</span> <span style="color:#111">that</span><span style="color:#f92672">.</span><span style="color:#75af00">x</span> <span style="color:#f92672">:</span> <span style="color:#111">i</span><span style="color:#f92672">;</span>
+	<span style="color:#f92672">}</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * Compares two points by the slope they make with this point. The slope is
+</span><span style="color:#75715e">	 * defined as in the slopeTo() method.
+</span><span style="color:#75715e">	 *
+</span><span style="color:#75715e">	 * @return the Comparator that defines this ordering on points
+</span><span style="color:#75715e">	 */</span>
+	<span style="color:#00a8c8">public</span> <span style="color:#111">Comparator</span><span style="color:#f92672">&lt;</span><span style="color:#111">Point</span><span style="color:#f92672">&gt;</span> <span style="color:#75af00">slopeOrder</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+		<span style="color:#75715e">/* YOUR CODE HERE */</span>
+		<span style="color:#00a8c8">return</span> <span style="color:#00a8c8">new</span> <span style="color:#111">Comparator</span><span style="color:#f92672">&lt;</span><span style="color:#111">Point</span><span style="color:#f92672">&gt;()</span> <span style="color:#f92672">{</span>
+			<span style="color:#75af00">@Override</span>
+			<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">int</span> <span style="color:#75af00">compare</span><span style="color:#f92672">(</span><span style="color:#111">Point</span> <span style="color:#111">p1</span><span style="color:#f92672">,</span> <span style="color:#111">Point</span> <span style="color:#111">p2</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+				<span style="color:#00a8c8">if</span> <span style="color:#f92672">(</span><span style="color:#111">p1</span> <span style="color:#f92672">==</span> <span style="color:#00a8c8">null</span> <span style="color:#f92672">||</span> <span style="color:#111">p2</span> <span style="color:#f92672">==</span> <span style="color:#00a8c8">null</span><span style="color:#f92672">)</span>
+					<span style="color:#00a8c8">throw</span> <span style="color:#00a8c8">new</span> <span style="color:#111">java</span><span style="color:#f92672">.</span><span style="color:#75af00">lang</span><span style="color:#f92672">.</span><span style="color:#75af00">NullPointerException</span><span style="color:#f92672">();</span>
+				<span style="color:#00a8c8">return</span> <span style="color:#111">Double</span><span style="color:#f92672">.</span><span style="color:#75af00">compare</span><span style="color:#f92672">(</span><span style="color:#111">slopeTo</span><span style="color:#f92672">(</span><span style="color:#111">p1</span><span style="color:#f92672">),</span> <span style="color:#111">slopeTo</span><span style="color:#f92672">(</span><span style="color:#111">p2</span><span style="color:#f92672">));</span>
+			<span style="color:#f92672">}</span>
+		<span style="color:#f92672">};</span>
+	<span style="color:#f92672">}</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * Returns a string representation of this point. This method is provide for
+</span><span style="color:#75715e">	 * debugging; your program should not rely on the format of the string
+</span><span style="color:#75715e">	 * representation.
+</span><span style="color:#75715e">	 *
+</span><span style="color:#75715e">	 * @return a string representation of this point
+</span><span style="color:#75715e">	 */</span>
+	<span style="color:#00a8c8">public</span> <span style="color:#111">String</span> <span style="color:#75af00">toString</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+		<span style="color:#75715e">/* DO NOT MODIFY */</span>
+		<span style="color:#00a8c8">return</span> <span style="color:#d88200">&#34;(&#34;</span> <span style="color:#f92672">+</span> <span style="color:#111">x</span> <span style="color:#f92672">+</span> <span style="color:#d88200">&#34;, &#34;</span> <span style="color:#f92672">+</span> <span style="color:#111">y</span> <span style="color:#f92672">+</span> <span style="color:#d88200">&#34;)&#34;</span><span style="color:#f92672">;</span>
+	<span style="color:#f92672">}</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">	 * Unit tests the Point data type.
+</span><span style="color:#75715e">	 */</span>
+	<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">static</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">main</span><span style="color:#f92672">(</span><span style="color:#111">String</span><span style="color:#f92672">[]</span> <span style="color:#111">args</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+
+	<span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span></code></pre></div>
+<h3 id="brutecollinearpoints-java">BruteCollinearPoints.java</h3>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> <span style="color:#111">java.util.ArrayList</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> <span style="color:#111">java.util.Arrays</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> <span style="color:#111">java.util.List</span><span style="color:#f92672">;</span>
+
+<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">BruteCollinearPoints</span> <span style="color:#f92672">{</span>
+
+	<span style="color:#00a8c8">private</span> <span style="color:#00a8c8">final</span> <span style="color:#111">List</span><span style="color:#f92672">&lt;</span><span style="color:#111">LineSegment</span><span style="color:#f92672">&gt;</span> <span style="color:#111">list</span><span style="color:#f92672">;</span>
+
+	<span style="color:#00a8c8">public</span> <span style="color:#75af00">BruteCollinearPoints</span><span style="color:#f92672">(</span><span style="color:#111">Point</span><span style="color:#f92672">[]</span> <span style="color:#111">points</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#00a8c8">if</span> <span style="color:#f92672">(</span><span style="color:#111">points</span> <span style="color:#f92672">==</span> <span style="color:#00a8c8">null</span><span style="color:#f92672">)</span>
+			<span style="color:#00a8c8">throw</span> <span style="color:#00a8c8">new</span> <span style="color:#111">java</span><span style="color:#f92672">.</span><span style="color:#75af00">lang</span><span style="color:#f92672">.</span><span style="color:#75af00">IllegalArgumentException</span><span style="color:#f92672">();</span>
+
+		<span style="color:#111">checkPoints</span><span style="color:#f92672">(</span><span style="color:#111">points</span><span style="color:#f92672">);</span>
+		<span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">list</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">new</span> <span style="color:#111">ArrayList</span><span style="color:#f92672">&lt;&gt;();</span>
+		<span style="color:#00a8c8">if</span> <span style="color:#f92672">(</span><span style="color:#111">points</span><span style="color:#f92672">.</span><span style="color:#75af00">length</span> <span style="color:#f92672">&gt;=</span> <span style="color:#111">4</span><span style="color:#f92672">)</span>
+			<span style="color:#111">brute</span><span style="color:#f92672">(</span><span style="color:#111">points</span><span style="color:#f92672">);</span>
+	<span style="color:#f92672">}</span>
+
+	<span style="color:#00a8c8">private</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">brute</span><span style="color:#f92672">(</span><span style="color:#111">Point</span><span style="color:#f92672">[]</span> <span style="color:#111">points</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#00a8c8">for</span> <span style="color:#f92672">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">a</span> <span style="color:#f92672">=</span> <span style="color:#111">0</span><span style="color:#f92672">;</span> <span style="color:#111">a</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">points</span><span style="color:#f92672">.</span><span style="color:#75af00">length</span> <span style="color:#f92672">-</span> <span style="color:#111">3</span><span style="color:#f92672">;</span> <span style="color:#111">a</span><span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+			<span style="color:#00a8c8">for</span> <span style="color:#f92672">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">b</span> <span style="color:#f92672">=</span> <span style="color:#111">a</span> <span style="color:#f92672">+</span> <span style="color:#111">1</span><span style="color:#f92672">;</span> <span style="color:#111">b</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">points</span><span style="color:#f92672">.</span><span style="color:#75af00">length</span> <span style="color:#f92672">-</span> <span style="color:#111">2</span><span style="color:#f92672">;</span> <span style="color:#111">b</span><span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+				<span style="color:#00a8c8">for</span> <span style="color:#f92672">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">c</span> <span style="color:#f92672">=</span> <span style="color:#111">b</span> <span style="color:#f92672">+</span> <span style="color:#111">1</span><span style="color:#f92672">;</span> <span style="color:#111">c</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">points</span><span style="color:#f92672">.</span><span style="color:#75af00">length</span> <span style="color:#f92672">-</span> <span style="color:#111">1</span><span style="color:#f92672">;</span> <span style="color:#111">c</span><span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+					<span style="color:#00a8c8">for</span> <span style="color:#f92672">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">d</span> <span style="color:#f92672">=</span> <span style="color:#111">c</span> <span style="color:#f92672">+</span> <span style="color:#111">1</span><span style="color:#f92672">;</span> <span style="color:#111">d</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">points</span><span style="color:#f92672">.</span><span style="color:#75af00">length</span><span style="color:#f92672">;</span> <span style="color:#111">d</span><span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+						<span style="color:#00a8c8">if</span> <span style="color:#f92672">(</span><span style="color:#111">collinear</span><span style="color:#f92672">(</span><span style="color:#111">points</span><span style="color:#f92672">[</span><span style="color:#111">a</span><span style="color:#f92672">],</span> <span style="color:#111">points</span><span style="color:#f92672">[</span><span style="color:#111">b</span><span style="color:#f92672">],</span> <span style="color:#111">points</span><span style="color:#f92672">[</span><span style="color:#111">c</span><span style="color:#f92672">],</span> <span style="color:#111">points</span><span style="color:#f92672">[</span><span style="color:#111">d</span><span style="color:#f92672">]))</span>
+							<span style="color:#111">addLineSegment</span><span style="color:#f92672">(</span><span style="color:#111">points</span><span style="color:#f92672">[</span><span style="color:#111">a</span><span style="color:#f92672">],</span> <span style="color:#111">points</span><span style="color:#f92672">[</span><span style="color:#111">b</span><span style="color:#f92672">],</span> <span style="color:#111">points</span><span style="color:#f92672">[</span><span style="color:#111">c</span><span style="color:#f92672">],</span> <span style="color:#111">points</span><span style="color:#f92672">[</span><span style="color:#111">d</span><span style="color:#f92672">]);</span>
+					<span style="color:#f92672">}</span>
+				<span style="color:#f92672">}</span>
+			<span style="color:#f92672">}</span>
+		<span style="color:#f92672">}</span>
+	<span style="color:#f92672">}</span>
+
+	<span style="color:#00a8c8">private</span> <span style="color:#00a8c8">static</span> <span style="color:#00a8c8">boolean</span> <span style="color:#75af00">collinear</span><span style="color:#f92672">(</span><span style="color:#111">Point</span> <span style="color:#111">a</span><span style="color:#f92672">,</span> <span style="color:#111">Point</span> <span style="color:#111">b</span><span style="color:#f92672">,</span> <span style="color:#111">Point</span> <span style="color:#111">c</span><span style="color:#f92672">,</span> <span style="color:#111">Point</span> <span style="color:#111">d</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#00a8c8">final</span> <span style="color:#00a8c8">double</span> <span style="color:#111">slopeAB</span> <span style="color:#f92672">=</span> <span style="color:#111">a</span><span style="color:#f92672">.</span><span style="color:#75af00">slopeTo</span><span style="color:#f92672">(</span><span style="color:#111">b</span><span style="color:#f92672">);</span>
+		<span style="color:#00a8c8">return</span> <span style="color:#111">slopeAB</span> <span style="color:#f92672">==</span> <span style="color:#111">a</span><span style="color:#f92672">.</span><span style="color:#75af00">slopeTo</span><span style="color:#f92672">(</span><span style="color:#111">c</span><span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">slopeAB</span> <span style="color:#f92672">==</span> <span style="color:#111">a</span><span style="color:#f92672">.</span><span style="color:#75af00">slopeTo</span><span style="color:#f92672">(</span><span style="color:#111">d</span><span style="color:#f92672">);</span>
+	<span style="color:#f92672">}</span>
+
+	<span style="color:#00a8c8">private</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">addLineSegment</span><span style="color:#f92672">(</span><span style="color:#111">Point</span><span style="color:#f92672">...</span> <span style="color:#111">ps</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#111">Arrays</span><span style="color:#f92672">.</span><span style="color:#75af00">sort</span><span style="color:#f92672">(</span><span style="color:#111">ps</span><span style="color:#f92672">);</span>
+		<span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">list</span><span style="color:#f92672">.</span><span style="color:#75af00">add</span><span style="color:#f92672">(</span><span style="color:#00a8c8">new</span> <span style="color:#111">LineSegment</span><span style="color:#f92672">(</span><span style="color:#111">ps</span><span style="color:#f92672">[</span><span style="color:#111">0</span><span style="color:#f92672">],</span> <span style="color:#111">ps</span><span style="color:#f92672">[</span><span style="color:#111">ps</span><span style="color:#f92672">.</span><span style="color:#75af00">length</span> <span style="color:#f92672">-</span> <span style="color:#111">1</span><span style="color:#f92672">]));</span>
+	<span style="color:#f92672">}</span>
+
+	<span style="color:#00a8c8">private</span> <span style="color:#00a8c8">static</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">checkPoints</span><span style="color:#f92672">(</span><span style="color:#111">Point</span><span style="color:#f92672">...</span> <span style="color:#111">ps</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#00a8c8">for</span> <span style="color:#f92672">(</span><span style="color:#111">Point</span> <span style="color:#111">p</span> <span style="color:#f92672">:</span> <span style="color:#111">ps</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			<span style="color:#00a8c8">if</span> <span style="color:#f92672">(</span><span style="color:#111">p</span> <span style="color:#f92672">==</span> <span style="color:#00a8c8">null</span><span style="color:#f92672">)</span>
+				<span style="color:#00a8c8">throw</span> <span style="color:#00a8c8">new</span> <span style="color:#111">java</span><span style="color:#f92672">.</span><span style="color:#75af00">lang</span><span style="color:#f92672">.</span><span style="color:#75af00">IllegalArgumentException</span><span style="color:#f92672">();</span>
+		<span style="color:#f92672">}</span>
+		<span style="color:#00a8c8">for</span> <span style="color:#f92672">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#111">0</span><span style="color:#f92672">;</span> <span style="color:#111">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">ps</span><span style="color:#f92672">.</span><span style="color:#75af00">length</span> <span style="color:#f92672">-</span> <span style="color:#111">1</span><span style="color:#f92672">;</span> <span style="color:#111">i</span><span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+			<span style="color:#00a8c8">for</span> <span style="color:#f92672">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">j</span> <span style="color:#f92672">=</span> <span style="color:#111">i</span> <span style="color:#f92672">+</span> <span style="color:#111">1</span><span style="color:#f92672">;</span> <span style="color:#111">j</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">ps</span><span style="color:#f92672">.</span><span style="color:#75af00">length</span><span style="color:#f92672">;</span> <span style="color:#111">j</span><span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+				<span style="color:#00a8c8">if</span> <span style="color:#f92672">(</span><span style="color:#111">ps</span><span style="color:#f92672">[</span><span style="color:#111">i</span><span style="color:#f92672">].</span><span style="color:#75af00">compareTo</span><span style="color:#f92672">(</span><span style="color:#111">ps</span><span style="color:#f92672">[</span><span style="color:#111">j</span><span style="color:#f92672">])</span> <span style="color:#f92672">==</span> <span style="color:#111">0</span><span style="color:#f92672">)</span>
+					<span style="color:#00a8c8">throw</span> <span style="color:#00a8c8">new</span> <span style="color:#111">java</span><span style="color:#f92672">.</span><span style="color:#75af00">lang</span><span style="color:#f92672">.</span><span style="color:#75af00">IllegalArgumentException</span><span style="color:#f92672">();</span>
+			<span style="color:#f92672">}</span>
+		<span style="color:#f92672">}</span>
+	<span style="color:#f92672">}</span>
+
+	<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">int</span> <span style="color:#75af00">numberOfSegments</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+		<span style="color:#00a8c8">return</span> <span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">list</span><span style="color:#f92672">.</span><span style="color:#75af00">size</span><span style="color:#f92672">();</span>
+	<span style="color:#f92672">}</span>
+
+	<span style="color:#00a8c8">public</span> <span style="color:#111">LineSegment</span><span style="color:#f92672">[]</span> <span style="color:#75af00">segments</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+		<span style="color:#00a8c8">return</span> <span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">list</span><span style="color:#f92672">.</span><span style="color:#75af00">toArray</span><span style="color:#f92672">(</span><span style="color:#00a8c8">new</span> <span style="color:#111">LineSegment</span><span style="color:#f92672">[</span><span style="color:#111">0</span><span style="color:#f92672">]);</span>
+	<span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span></code></pre></div>
+<h3 id="fastcollinearpoints-java">FastCollinearPoints.java</h3>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> <span style="color:#111">java.util.ArrayList</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> <span style="color:#111">java.util.Arrays</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> <span style="color:#111">java.util.Comparator</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> <span style="color:#111">java.util.List</span><span style="color:#f92672">;</span>
+
+<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">FastCollinearPoints</span> <span style="color:#f92672">{</span>
+
+	<span style="color:#00a8c8">private</span> <span style="color:#00a8c8">final</span> <span style="color:#111">List</span><span style="color:#f92672">&lt;</span><span style="color:#111">LineSegment</span><span style="color:#f92672">&gt;</span> <span style="color:#111">list</span><span style="color:#f92672">;</span>
+	<span style="color:#00a8c8">private</span> <span style="color:#00a8c8">final</span> <span style="color:#111">ComputePoint</span><span style="color:#f92672">[]</span> <span style="color:#111">cps</span><span style="color:#f92672">;</span>
+
+	<span style="color:#00a8c8">public</span> <span style="color:#75af00">FastCollinearPoints</span><span style="color:#f92672">(</span><span style="color:#111">Point</span><span style="color:#f92672">[]</span> <span style="color:#111">points</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#111">checkNullPoints</span><span style="color:#f92672">(</span><span style="color:#111">points</span><span style="color:#f92672">);</span>
+
+		<span style="color:#111">Point</span><span style="color:#f92672">[]</span> <span style="color:#111">clone</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">new</span> <span style="color:#111">Point</span><span style="color:#f92672">[</span><span style="color:#111">points</span><span style="color:#f92672">.</span><span style="color:#75af00">length</span><span style="color:#f92672">];</span>
+		<span style="color:#111">System</span><span style="color:#f92672">.</span><span style="color:#75af00">arraycopy</span><span style="color:#f92672">(</span><span style="color:#111">points</span><span style="color:#f92672">,</span> <span style="color:#111">0</span><span style="color:#f92672">,</span> <span style="color:#111">clone</span><span style="color:#f92672">,</span> <span style="color:#111">0</span><span style="color:#f92672">,</span> <span style="color:#111">points</span><span style="color:#f92672">.</span><span style="color:#75af00">length</span><span style="color:#f92672">);</span>
+		<span style="color:#111">checkRepeatPoints</span><span style="color:#f92672">(</span><span style="color:#111">clone</span><span style="color:#f92672">);</span>
+
+		<span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">list</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">new</span> <span style="color:#111">ArrayList</span><span style="color:#f92672">&lt;&gt;();</span>
+
+		<span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">cps</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">new</span> <span style="color:#111">ComputePoint</span><span style="color:#f92672">[</span><span style="color:#111">points</span><span style="color:#f92672">.</span><span style="color:#75af00">length</span><span style="color:#f92672">];</span>
+		<span style="color:#00a8c8">for</span> <span style="color:#f92672">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#111">0</span><span style="color:#f92672">;</span> <span style="color:#111">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">points</span><span style="color:#f92672">.</span><span style="color:#75af00">length</span><span style="color:#f92672">;</span> <span style="color:#111">i</span><span style="color:#f92672">++)</span>
+			<span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">cps</span><span style="color:#f92672">[</span><span style="color:#111">i</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">new</span> <span style="color:#111">ComputePoint</span><span style="color:#f92672">();</span>
+
+		<span style="color:#00a8c8">for</span> <span style="color:#f92672">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#111">0</span><span style="color:#f92672">;</span> <span style="color:#111">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">points</span><span style="color:#f92672">.</span><span style="color:#75af00">length</span> <span style="color:#f92672">-</span> <span style="color:#111">3</span><span style="color:#f92672">;</span> <span style="color:#111">i</span><span style="color:#f92672">++)</span>
+			<span style="color:#111">fast</span><span style="color:#f92672">(</span><span style="color:#111">clone</span><span style="color:#f92672">,</span> <span style="color:#111">i</span><span style="color:#f92672">);</span>
+	<span style="color:#f92672">}</span>
+
+	<span style="color:#00a8c8">private</span> <span style="color:#00a8c8">static</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">checkNullPoints</span><span style="color:#f92672">(</span><span style="color:#111">Point</span><span style="color:#f92672">[]</span> <span style="color:#111">ps</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#00a8c8">if</span> <span style="color:#f92672">(</span><span style="color:#111">ps</span> <span style="color:#f92672">==</span> <span style="color:#00a8c8">null</span><span style="color:#f92672">)</span>
+			<span style="color:#00a8c8">throw</span> <span style="color:#00a8c8">new</span> <span style="color:#111">java</span><span style="color:#f92672">.</span><span style="color:#75af00">lang</span><span style="color:#f92672">.</span><span style="color:#75af00">IllegalArgumentException</span><span style="color:#f92672">();</span>
+
+		<span style="color:#00a8c8">for</span> <span style="color:#f92672">(</span><span style="color:#111">Point</span> <span style="color:#111">p</span> <span style="color:#f92672">:</span> <span style="color:#111">ps</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			<span style="color:#00a8c8">if</span> <span style="color:#f92672">(</span><span style="color:#111">p</span> <span style="color:#f92672">==</span> <span style="color:#00a8c8">null</span><span style="color:#f92672">)</span>
+				<span style="color:#00a8c8">throw</span> <span style="color:#00a8c8">new</span> <span style="color:#111">java</span><span style="color:#f92672">.</span><span style="color:#75af00">lang</span><span style="color:#f92672">.</span><span style="color:#75af00">IllegalArgumentException</span><span style="color:#f92672">();</span>
+		<span style="color:#f92672">}</span>
+	<span style="color:#f92672">}</span>
+
+	<span style="color:#00a8c8">private</span> <span style="color:#00a8c8">static</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">checkRepeatPoints</span><span style="color:#f92672">(</span><span style="color:#111">Point</span><span style="color:#f92672">[]</span> <span style="color:#111">ps</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#111">Arrays</span><span style="color:#f92672">.</span><span style="color:#75af00">sort</span><span style="color:#f92672">(</span><span style="color:#111">ps</span><span style="color:#f92672">);</span>
+		<span style="color:#00a8c8">for</span> <span style="color:#f92672">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#111">1</span><span style="color:#f92672">;</span> <span style="color:#111">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">ps</span><span style="color:#f92672">.</span><span style="color:#75af00">length</span><span style="color:#f92672">;</span> <span style="color:#111">i</span><span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+			<span style="color:#00a8c8">if</span> <span style="color:#f92672">(</span><span style="color:#111">ps</span><span style="color:#f92672">[</span><span style="color:#111">i</span> <span style="color:#f92672">-</span> <span style="color:#111">1</span><span style="color:#f92672">].</span><span style="color:#75af00">compareTo</span><span style="color:#f92672">(</span><span style="color:#111">ps</span><span style="color:#f92672">[</span><span style="color:#111">i</span><span style="color:#f92672">])</span> <span style="color:#f92672">==</span> <span style="color:#111">0</span><span style="color:#f92672">)</span>
+				<span style="color:#00a8c8">throw</span> <span style="color:#00a8c8">new</span> <span style="color:#111">java</span><span style="color:#f92672">.</span><span style="color:#75af00">lang</span><span style="color:#f92672">.</span><span style="color:#75af00">IllegalArgumentException</span><span style="color:#f92672">();</span>
+		<span style="color:#f92672">}</span>
+	<span style="color:#f92672">}</span>
+
+	<span style="color:#00a8c8">private</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">fast</span><span style="color:#f92672">(</span><span style="color:#111">Point</span><span style="color:#f92672">[]</span> <span style="color:#111">ps</span><span style="color:#f92672">,</span> <span style="color:#00a8c8">int</span> <span style="color:#111">cur</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#111">Point</span> <span style="color:#111">curP</span> <span style="color:#f92672">=</span> <span style="color:#111">ps</span><span style="color:#f92672">[</span><span style="color:#111">cur</span><span style="color:#f92672">];</span>
+
+		<span style="color:#00a8c8">for</span> <span style="color:#f92672">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#111">0</span><span style="color:#f92672">;</span> <span style="color:#111">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">ps</span><span style="color:#f92672">.</span><span style="color:#75af00">length</span><span style="color:#f92672">;</span> <span style="color:#111">i</span><span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+			<span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">cps</span><span style="color:#f92672">[</span><span style="color:#111">i</span><span style="color:#f92672">].</span><span style="color:#75af00">p</span> <span style="color:#f92672">=</span> <span style="color:#111">ps</span><span style="color:#f92672">[</span><span style="color:#111">i</span><span style="color:#f92672">];</span>
+			<span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">cps</span><span style="color:#f92672">[</span><span style="color:#111">i</span><span style="color:#f92672">].</span><span style="color:#75af00">slope</span> <span style="color:#f92672">=</span> <span style="color:#111">curP</span><span style="color:#f92672">.</span><span style="color:#75af00">slopeTo</span><span style="color:#f92672">(</span><span style="color:#111">ps</span><span style="color:#f92672">[</span><span style="color:#111">i</span><span style="color:#f92672">]);</span>
+		<span style="color:#f92672">}</span>
+
+		<span style="color:#111">Arrays</span><span style="color:#f92672">.</span><span style="color:#75af00">sort</span><span style="color:#f92672">(</span><span style="color:#111">cps</span><span style="color:#f92672">,</span> <span style="color:#111">ComputePoint</span><span style="color:#f92672">.</span><span style="color:#75af00">SORT_BY_SLOPE</span><span style="color:#f92672">);</span>
+
+		<span style="color:#00a8c8">int</span> <span style="color:#111">c</span> <span style="color:#f92672">=</span> <span style="color:#111">1</span><span style="color:#f92672">;</span>
+		<span style="color:#00a8c8">for</span> <span style="color:#f92672">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#111">1</span><span style="color:#f92672">;</span> <span style="color:#111">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">ps</span><span style="color:#f92672">.</span><span style="color:#75af00">length</span><span style="color:#f92672">;</span> <span style="color:#111">i</span><span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+			<span style="color:#00a8c8">if</span> <span style="color:#f92672">(</span><span style="color:#111">cps</span><span style="color:#f92672">[</span><span style="color:#111">i</span> <span style="color:#f92672">-</span> <span style="color:#111">1</span><span style="color:#f92672">].</span><span style="color:#75af00">slope</span> <span style="color:#f92672">==</span> <span style="color:#111">cps</span><span style="color:#f92672">[</span><span style="color:#111">i</span><span style="color:#f92672">].</span><span style="color:#75af00">slope</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+				<span style="color:#111">c</span><span style="color:#f92672">++;</span>
+				<span style="color:#00a8c8">continue</span><span style="color:#f92672">;</span>
+			<span style="color:#f92672">}</span>
+			<span style="color:#00a8c8">if</span> <span style="color:#f92672">(</span><span style="color:#111">c</span> <span style="color:#f92672">&gt;=</span> <span style="color:#111">3</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+				<span style="color:#111">addLine</span><span style="color:#f92672">(</span><span style="color:#111">curP</span><span style="color:#f92672">,</span> <span style="color:#111">i</span> <span style="color:#f92672">-</span> <span style="color:#111">c</span><span style="color:#f92672">,</span> <span style="color:#111">c</span><span style="color:#f92672">);</span>
+			<span style="color:#f92672">}</span>
+			<span style="color:#111">c</span> <span style="color:#f92672">=</span> <span style="color:#111">1</span><span style="color:#f92672">;</span>
+		<span style="color:#f92672">}</span>
+		<span style="color:#00a8c8">if</span> <span style="color:#f92672">(</span><span style="color:#111">c</span> <span style="color:#f92672">&gt;=</span> <span style="color:#111">3</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+			<span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#111">ps</span><span style="color:#f92672">.</span><span style="color:#75af00">length</span><span style="color:#f92672">;</span>
+			<span style="color:#111">addLine</span><span style="color:#f92672">(</span><span style="color:#111">curP</span><span style="color:#f92672">,</span> <span style="color:#111">i</span> <span style="color:#f92672">-</span> <span style="color:#111">c</span><span style="color:#f92672">,</span> <span style="color:#111">c</span><span style="color:#f92672">);</span>
+		<span style="color:#f92672">}</span>
+	<span style="color:#f92672">}</span>
+
+	<span style="color:#00a8c8">private</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">addLine</span><span style="color:#f92672">(</span><span style="color:#111">Point</span> <span style="color:#111">curP</span><span style="color:#f92672">,</span> <span style="color:#00a8c8">int</span> <span style="color:#111">cpsS</span><span style="color:#f92672">,</span> <span style="color:#00a8c8">int</span> <span style="color:#111">len</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#111">Point</span> <span style="color:#111">min</span> <span style="color:#f92672">=</span> <span style="color:#111">min</span><span style="color:#f92672">(</span><span style="color:#111">curP</span><span style="color:#f92672">,</span> <span style="color:#111">cps</span><span style="color:#f92672">[</span><span style="color:#111">cpsS</span><span style="color:#f92672">].</span><span style="color:#75af00">p</span><span style="color:#f92672">);</span>
+		<span style="color:#111">Point</span> <span style="color:#111">max</span> <span style="color:#f92672">=</span> <span style="color:#111">max</span><span style="color:#f92672">(</span><span style="color:#111">curP</span><span style="color:#f92672">,</span> <span style="color:#111">cps</span><span style="color:#f92672">[</span><span style="color:#111">cpsS</span> <span style="color:#f92672">+</span> <span style="color:#111">len</span> <span style="color:#f92672">-</span> <span style="color:#111">1</span><span style="color:#f92672">].</span><span style="color:#75af00">p</span><span style="color:#f92672">);</span>
+
+		<span style="color:#00a8c8">if</span> <span style="color:#f92672">(</span><span style="color:#111">curP</span> <span style="color:#f92672">!=</span> <span style="color:#111">min</span><span style="color:#f92672">)</span>
+			<span style="color:#00a8c8">return</span><span style="color:#f92672">;</span>
+
+		<span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">list</span><span style="color:#f92672">.</span><span style="color:#75af00">add</span><span style="color:#f92672">(</span><span style="color:#00a8c8">new</span> <span style="color:#111">LineSegment</span><span style="color:#f92672">(</span><span style="color:#111">min</span><span style="color:#f92672">,</span> <span style="color:#111">max</span><span style="color:#f92672">));</span>
+	<span style="color:#f92672">}</span>
+
+	<span style="color:#00a8c8">private</span> <span style="color:#00a8c8">static</span> <span style="color:#111">Point</span> <span style="color:#75af00">min</span><span style="color:#f92672">(</span><span style="color:#111">Point</span> <span style="color:#111">a</span><span style="color:#f92672">,</span> <span style="color:#111">Point</span> <span style="color:#111">b</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#00a8c8">return</span> <span style="color:#111">a</span><span style="color:#f92672">.</span><span style="color:#75af00">compareTo</span><span style="color:#f92672">(</span><span style="color:#111">b</span><span style="color:#f92672">)</span> <span style="color:#f92672">&gt;</span> <span style="color:#111">0</span> <span style="color:#f92672">?</span> <span style="color:#111">b</span> <span style="color:#f92672">:</span> <span style="color:#111">a</span><span style="color:#f92672">;</span>
+	<span style="color:#f92672">}</span>
+
+	<span style="color:#00a8c8">private</span> <span style="color:#00a8c8">static</span> <span style="color:#111">Point</span> <span style="color:#75af00">max</span><span style="color:#f92672">(</span><span style="color:#111">Point</span> <span style="color:#111">a</span><span style="color:#f92672">,</span> <span style="color:#111">Point</span> <span style="color:#111">b</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+		<span style="color:#00a8c8">return</span> <span style="color:#111">a</span><span style="color:#f92672">.</span><span style="color:#75af00">compareTo</span><span style="color:#f92672">(</span><span style="color:#111">b</span><span style="color:#f92672">)</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">0</span> <span style="color:#f92672">?</span> <span style="color:#111">b</span> <span style="color:#f92672">:</span> <span style="color:#111">a</span><span style="color:#f92672">;</span>
+	<span style="color:#f92672">}</span>
+
+	<span style="color:#00a8c8">private</span> <span style="color:#00a8c8">static</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">ComputePoint</span> <span style="color:#f92672">{</span>
+		<span style="color:#111">Point</span> <span style="color:#111">p</span><span style="color:#f92672">;</span>
+		<span style="color:#00a8c8">double</span> <span style="color:#111">slope</span><span style="color:#f92672">;</span>
+
+		<span style="color:#00a8c8">static</span> <span style="color:#00a8c8">final</span> <span style="color:#111">Comparator</span><span style="color:#f92672">&lt;</span><span style="color:#111">ComputePoint</span><span style="color:#f92672">&gt;</span> <span style="color:#111">SORT_BY_SLOPE</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">new</span> <span style="color:#111">Comparator</span><span style="color:#f92672">&lt;</span><span style="color:#111">FastCollinearPoints</span><span style="color:#f92672">.</span><span style="color:#75af00">ComputePoint</span><span style="color:#f92672">&gt;()</span> <span style="color:#f92672">{</span>
+			<span style="color:#75af00">@Override</span>
+			<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">int</span> <span style="color:#75af00">compare</span><span style="color:#f92672">(</span><span style="color:#111">ComputePoint</span> <span style="color:#111">o1</span><span style="color:#f92672">,</span> <span style="color:#111">ComputePoint</span> <span style="color:#111">o2</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+				<span style="color:#00a8c8">return</span> <span style="color:#111">Double</span><span style="color:#f92672">.</span><span style="color:#75af00">compare</span><span style="color:#f92672">(</span><span style="color:#111">o1</span><span style="color:#f92672">.</span><span style="color:#75af00">slope</span><span style="color:#f92672">,</span> <span style="color:#111">o2</span><span style="color:#f92672">.</span><span style="color:#75af00">slope</span><span style="color:#f92672">);</span>
+			<span style="color:#f92672">}</span>
+		<span style="color:#f92672">};</span>
+		<span style="color:#00a8c8">static</span> <span style="color:#00a8c8">final</span> <span style="color:#111">Comparator</span><span style="color:#f92672">&lt;</span><span style="color:#111">ComputePoint</span><span style="color:#f92672">&gt;</span> <span style="color:#111">SORT_BY_P</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">new</span> <span style="color:#111">Comparator</span><span style="color:#f92672">&lt;</span><span style="color:#111">FastCollinearPoints</span><span style="color:#f92672">.</span><span style="color:#75af00">ComputePoint</span><span style="color:#f92672">&gt;()</span> <span style="color:#f92672">{</span>
+			<span style="color:#75af00">@Override</span>
+			<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">int</span> <span style="color:#75af00">compare</span><span style="color:#f92672">(</span><span style="color:#111">ComputePoint</span> <span style="color:#111">o1</span><span style="color:#f92672">,</span> <span style="color:#111">ComputePoint</span> <span style="color:#111">o2</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+				<span style="color:#00a8c8">return</span> <span style="color:#111">o1</span><span style="color:#f92672">.</span><span style="color:#75af00">p</span><span style="color:#f92672">.</span><span style="color:#75af00">compareTo</span><span style="color:#f92672">(</span><span style="color:#111">o2</span><span style="color:#f92672">.</span><span style="color:#75af00">p</span><span style="color:#f92672">);</span>
+			<span style="color:#f92672">}</span>
+		<span style="color:#f92672">};</span>
+	<span style="color:#f92672">}</span>
+
+	<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">int</span> <span style="color:#75af00">numberOfSegments</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+		<span style="color:#00a8c8">return</span> <span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">list</span><span style="color:#f92672">.</span><span style="color:#75af00">size</span><span style="color:#f92672">();</span>
+	<span style="color:#f92672">}</span>
+
+	<span style="color:#00a8c8">public</span> <span style="color:#111">LineSegment</span><span style="color:#f92672">[]</span> <span style="color:#75af00">segments</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+		<span style="color:#00a8c8">return</span> <span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">list</span><span style="color:#f92672">.</span><span style="color:#75af00">toArray</span><span style="color:#f92672">(</span><span style="color:#00a8c8">new</span> <span style="color:#111">LineSegment</span><span style="color:#f92672">[</span><span style="color:#111">0</span><span style="color:#f92672">]);</span>
+	<span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span></code></pre></div>
+
+    
+    
+        
+  
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+    <div class="tags"> 
+      
+        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/coursera">coursera</a>
+      
+        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/algorithms-part-i">Algorithms, Part I</a>
+      
+        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/algorithm">algorithm</a>
+      
+        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/sort">sort</a>
+      
+    </div>
+    
+
+    
+
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 18/04/2019
+    </div>
+    
+
+    
+    <div class="github-link">
+      <a href="https://github.com/kiwislice/html-css-js-memo/edit/master/content/algorithm/coursera/Algorithms,%20Part%20I/algorithms-part1-week3.md" target="blank"><i class="fa fa-code-fork"></i>
+        </a>
+    </div>
+    
+  </div>
+
+
+	<div>
+
+
+  
+    <p>By kiwislice.</p>
+
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/html-css-js-memo/js/clipboard.min.js"></script>
+
+<link href="/html-css-js-memo/css/featherlight.min.css" rel="stylesheet">
+<script src="/html-css-js-memo/js/featherlight.min.js"></script>
+
+
+
+<script src="/html-css-js-memo/theme-flex/script.js"></script>
+
+
+    
+
+    
+    
+
+    
+  <script data-no-instant>document.write('<script src="/livereload.js?port=1313&mindelay=10"></' + 'script>')</script></body>
+</html>
