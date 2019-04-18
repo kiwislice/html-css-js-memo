@@ -6,7 +6,11 @@ title = "學習筆記"
 theme = "hugo-theme-docdock"
 themesdir = "themes"
 pygmentsCodeFences = true
-pygmentsStyle = "monokailight"
+# 程式碼顏色改這裡 https://xyproto.github.io/splash/docs/longer/all.html
+pygmentsStyle = "dracula"
+#pygmentsStyle = "rainbow_dash"
+
+
 
 defaultContentLanguageInSubdir= false
 enableMissingTranslationPlaceholders = false

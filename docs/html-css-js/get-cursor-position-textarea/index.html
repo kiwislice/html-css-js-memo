@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-04-18T16:42:12 CST">
+<meta name="revised" content="2019-04-18T17:38:08 CST">
 <title>取得Textarea游標位置 :: 學習筆記</title>
 <link rel="shortcut icon" href="/html-css-js-memo/images/favicon.png" type="image/x-icon" />
 <link href="/html-css-js-memo/css/font-awesome.min.css" rel="stylesheet">
@@ -301,10 +301,10 @@
     
 
 <p>透過JS可取得textarea的<code>selectionStart</code>和<code>selectionEnd</code>屬性</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00a8c8">function</span><span style="color:#111">(</span><span style="color:#75af00">textareaId</span><span style="color:#111">)</span> <span style="color:#111">{</span>
-    <span style="color:#00a8c8">var</span> <span style="color:#75af00">ta</span> <span style="color:#f92672">=</span> <span style="color:#111">document</span><span style="color:#111">.</span><span style="color:#75af00">getElementById</span><span style="color:#111">(</span><span style="color:#75af00">textareaClientId</span><span style="color:#111">);</span>
-    <span style="color:#00a8c8">return</span> <span style="color:#75af00">ta</span><span style="color:#111">.</span><span style="color:#75af00">selectionStart</span><span style="color:#111">;</span>
-<span style="color:#111">}</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">function</span>(textareaId) {
+    <span style="color:#8be9fd;font-style:italic">var</span> ta <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">document</span>.getElementById(textareaClientId);
+    <span style="color:#ff79c6">return</span> ta.selectionStart;
+}
 </code></pre></div>
 <h4 id="參考">參考</h4>
 

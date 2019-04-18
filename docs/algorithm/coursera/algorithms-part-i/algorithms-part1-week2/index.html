@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-04-18T16:42:12 CST">
+<meta name="revised" content="2019-04-18T17:38:08 CST">
 <title>Week 2 編程作業:Deques and Randomized Queues :: 學習筆記</title>
 <link rel="shortcut icon" href="/html-css-js-memo/images/favicon.png" type="image/x-icon" />
 <link href="/html-css-js-memo/css/font-awesome.min.css" rel="stylesheet">
@@ -320,263 +320,263 @@
 <p>Deque使用節點，RandomizedQueue使用陣列，100分沒有太困難</p>
 
 <h3 id="deque-java">Deque.java</h3>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> <span style="color:#111">java.util.Iterator</span><span style="color:#f92672">;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#ff79c6">import</span> java.util.Iterator<span style="color:#ff79c6">;</span>
 
-<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">Deque</span><span style="color:#f92672">&lt;</span><span style="color:#111">Item</span><span style="color:#f92672">&gt;</span> <span style="color:#00a8c8">implements</span> <span style="color:#111">Iterable</span><span style="color:#f92672">&lt;</span><span style="color:#111">Item</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
+<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">Deque</span><span style="color:#ff79c6">&lt;</span>Item<span style="color:#ff79c6">&gt;</span> <span style="color:#8be9fd;font-style:italic">implements</span> Iterable<span style="color:#ff79c6">&lt;</span>Item<span style="color:#ff79c6">&gt;</span> <span style="color:#ff79c6">{</span>
 
-	<span style="color:#00a8c8">private</span> <span style="color:#00a8c8">final</span> <span style="color:#111">Node</span> <span style="color:#111">head</span><span style="color:#f92672">;</span>
-	<span style="color:#00a8c8">private</span> <span style="color:#00a8c8">final</span> <span style="color:#111">Node</span> <span style="color:#111">tail</span><span style="color:#f92672">;</span>
-	<span style="color:#00a8c8">private</span> <span style="color:#00a8c8">int</span> <span style="color:#111">size</span><span style="color:#f92672">;</span>
+	<span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd;font-style:italic">final</span> Node head<span style="color:#ff79c6">;</span>
+	<span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd;font-style:italic">final</span> Node tail<span style="color:#ff79c6">;</span>
+	<span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd">int</span> size<span style="color:#ff79c6">;</span>
 
-	<span style="color:#00a8c8">public</span> <span style="color:#75af00">Deque</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-		<span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">head</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">new</span> <span style="color:#111">Node</span><span style="color:#f92672">();</span>
-		<span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">tail</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">new</span> <span style="color:#111">Node</span><span style="color:#f92672">();</span>
-		<span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">head</span><span style="color:#f92672">.</span><span style="color:#75af00">next</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">tail</span><span style="color:#f92672">;</span>
-		<span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">tail</span><span style="color:#f92672">.</span><span style="color:#75af00">pre</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">head</span><span style="color:#f92672">;</span>
-	<span style="color:#f92672">}</span>
+	<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#50fa7b">Deque</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+		<span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">head</span> <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> Node<span style="color:#ff79c6">();</span>
+		<span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">tail</span> <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> Node<span style="color:#ff79c6">();</span>
+		<span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">head</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">next</span> <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">tail</span><span style="color:#ff79c6">;</span>
+		<span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">tail</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">pre</span> <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">head</span><span style="color:#ff79c6">;</span>
+	<span style="color:#ff79c6">}</span>
 
-	<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">boolean</span> <span style="color:#75af00">isEmpty</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-		<span style="color:#00a8c8">return</span> <span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">size</span> <span style="color:#f92672">==</span> <span style="color:#111">0</span><span style="color:#f92672">;</span>
-	<span style="color:#f92672">}</span>
+	<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">boolean</span> <span style="color:#50fa7b">isEmpty</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+		<span style="color:#ff79c6">return</span> <span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">size</span> <span style="color:#ff79c6">==</span> 0<span style="color:#ff79c6">;</span>
+	<span style="color:#ff79c6">}</span>
 
-	<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">int</span> <span style="color:#75af00">size</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-		<span style="color:#00a8c8">return</span> <span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">size</span><span style="color:#f92672">;</span>
-	<span style="color:#f92672">}</span>
+	<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">int</span> <span style="color:#50fa7b">size</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+		<span style="color:#ff79c6">return</span> <span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">size</span><span style="color:#ff79c6">;</span>
+	<span style="color:#ff79c6">}</span>
 
-	<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">addFirst</span><span style="color:#f92672">(</span><span style="color:#111">Item</span> <span style="color:#111">item</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-		<span style="color:#111">checkNullItem</span><span style="color:#f92672">(</span><span style="color:#111">item</span><span style="color:#f92672">);</span>
-		<span style="color:#111">Node</span> <span style="color:#111">newNode</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">new</span> <span style="color:#111">Node</span><span style="color:#f92672">(</span><span style="color:#111">item</span><span style="color:#f92672">);</span>
-		<span style="color:#111">insertAfter</span><span style="color:#f92672">(</span><span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">head</span><span style="color:#f92672">,</span> <span style="color:#111">newNode</span><span style="color:#f92672">);</span>
-	<span style="color:#f92672">}</span>
+	<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">addFirst</span><span style="color:#ff79c6">(</span>Item item<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
+		checkNullItem<span style="color:#ff79c6">(</span>item<span style="color:#ff79c6">);</span>
+		Node newNode <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> Node<span style="color:#ff79c6">(</span>item<span style="color:#ff79c6">);</span>
+		insertAfter<span style="color:#ff79c6">(</span><span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">head</span><span style="color:#ff79c6">,</span> newNode<span style="color:#ff79c6">);</span>
+	<span style="color:#ff79c6">}</span>
 
-	<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">addLast</span><span style="color:#f92672">(</span><span style="color:#111">Item</span> <span style="color:#111">item</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-		<span style="color:#111">checkNullItem</span><span style="color:#f92672">(</span><span style="color:#111">item</span><span style="color:#f92672">);</span>
-		<span style="color:#111">Node</span> <span style="color:#111">newNode</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">new</span> <span style="color:#111">Node</span><span style="color:#f92672">(</span><span style="color:#111">item</span><span style="color:#f92672">);</span>
-		<span style="color:#111">insertAfter</span><span style="color:#f92672">(</span><span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">tail</span><span style="color:#f92672">.</span><span style="color:#75af00">pre</span><span style="color:#f92672">,</span> <span style="color:#111">newNode</span><span style="color:#f92672">);</span>
-	<span style="color:#f92672">}</span>
+	<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">addLast</span><span style="color:#ff79c6">(</span>Item item<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
+		checkNullItem<span style="color:#ff79c6">(</span>item<span style="color:#ff79c6">);</span>
+		Node newNode <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> Node<span style="color:#ff79c6">(</span>item<span style="color:#ff79c6">);</span>
+		insertAfter<span style="color:#ff79c6">(</span><span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">tail</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">pre</span><span style="color:#ff79c6">,</span> newNode<span style="color:#ff79c6">);</span>
+	<span style="color:#ff79c6">}</span>
 
-	<span style="color:#00a8c8">private</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">insertAfter</span><span style="color:#f92672">(</span><span style="color:#111">Node</span> <span style="color:#111">a</span><span style="color:#f92672">,</span> <span style="color:#111">Node</span> <span style="color:#111">insert</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-		<span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">size</span><span style="color:#f92672">++;</span>
-		<span style="color:#111">Node</span> <span style="color:#111">b</span> <span style="color:#f92672">=</span> <span style="color:#111">a</span><span style="color:#f92672">.</span><span style="color:#75af00">next</span><span style="color:#f92672">;</span>
-		<span style="color:#111">insert</span><span style="color:#f92672">.</span><span style="color:#75af00">next</span> <span style="color:#f92672">=</span> <span style="color:#111">b</span><span style="color:#f92672">;</span>
-		<span style="color:#111">insert</span><span style="color:#f92672">.</span><span style="color:#75af00">pre</span> <span style="color:#f92672">=</span> <span style="color:#111">a</span><span style="color:#f92672">;</span>
-		<span style="color:#111">a</span><span style="color:#f92672">.</span><span style="color:#75af00">next</span> <span style="color:#f92672">=</span> <span style="color:#111">insert</span><span style="color:#f92672">;</span>
-		<span style="color:#111">b</span><span style="color:#f92672">.</span><span style="color:#75af00">pre</span> <span style="color:#f92672">=</span> <span style="color:#111">insert</span><span style="color:#f92672">;</span>
-	<span style="color:#f92672">}</span>
+	<span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">insertAfter</span><span style="color:#ff79c6">(</span>Node a<span style="color:#ff79c6">,</span> Node insert<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
+		<span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">size</span><span style="color:#ff79c6">++;</span>
+		Node b <span style="color:#ff79c6">=</span> a<span style="color:#ff79c6">.</span><span style="color:#50fa7b">next</span><span style="color:#ff79c6">;</span>
+		insert<span style="color:#ff79c6">.</span><span style="color:#50fa7b">next</span> <span style="color:#ff79c6">=</span> b<span style="color:#ff79c6">;</span>
+		insert<span style="color:#ff79c6">.</span><span style="color:#50fa7b">pre</span> <span style="color:#ff79c6">=</span> a<span style="color:#ff79c6">;</span>
+		a<span style="color:#ff79c6">.</span><span style="color:#50fa7b">next</span> <span style="color:#ff79c6">=</span> insert<span style="color:#ff79c6">;</span>
+		b<span style="color:#ff79c6">.</span><span style="color:#50fa7b">pre</span> <span style="color:#ff79c6">=</span> insert<span style="color:#ff79c6">;</span>
+	<span style="color:#ff79c6">}</span>
 
-	<span style="color:#00a8c8">private</span> <span style="color:#00a8c8">static</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">checkNullItem</span><span style="color:#f92672">(</span><span style="color:#111">Object</span> <span style="color:#111">item</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-		<span style="color:#00a8c8">if</span> <span style="color:#f92672">(</span><span style="color:#111">item</span> <span style="color:#f92672">==</span> <span style="color:#00a8c8">null</span><span style="color:#f92672">)</span>
-			<span style="color:#00a8c8">throw</span> <span style="color:#00a8c8">new</span> <span style="color:#111">java</span><span style="color:#f92672">.</span><span style="color:#75af00">lang</span><span style="color:#f92672">.</span><span style="color:#75af00">IllegalArgumentException</span><span style="color:#f92672">();</span>
-	<span style="color:#f92672">}</span>
+	<span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">checkNullItem</span><span style="color:#ff79c6">(</span>Object item<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
+		<span style="color:#ff79c6">if</span> <span style="color:#ff79c6">(</span>item <span style="color:#ff79c6">==</span> <span style="color:#ff79c6">null</span><span style="color:#ff79c6">)</span>
+			<span style="color:#ff79c6">throw</span> <span style="color:#ff79c6">new</span> java<span style="color:#ff79c6">.</span><span style="color:#50fa7b">lang</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">IllegalArgumentException</span><span style="color:#ff79c6">();</span>
+	<span style="color:#ff79c6">}</span>
 
-	<span style="color:#00a8c8">public</span> <span style="color:#111">Item</span> <span style="color:#75af00">removeFirst</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-		<span style="color:#00a8c8">if</span> <span style="color:#f92672">(</span><span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">size</span> <span style="color:#f92672">==</span> <span style="color:#111">0</span><span style="color:#f92672">)</span>
-			<span style="color:#00a8c8">throw</span> <span style="color:#00a8c8">new</span> <span style="color:#111">java</span><span style="color:#f92672">.</span><span style="color:#75af00">util</span><span style="color:#f92672">.</span><span style="color:#75af00">NoSuchElementException</span><span style="color:#f92672">();</span>
+	<span style="color:#8be9fd;font-style:italic">public</span> Item <span style="color:#50fa7b">removeFirst</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+		<span style="color:#ff79c6">if</span> <span style="color:#ff79c6">(</span><span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">size</span> <span style="color:#ff79c6">==</span> 0<span style="color:#ff79c6">)</span>
+			<span style="color:#ff79c6">throw</span> <span style="color:#ff79c6">new</span> java<span style="color:#ff79c6">.</span><span style="color:#50fa7b">util</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">NoSuchElementException</span><span style="color:#ff79c6">();</span>
 
-		<span style="color:#00a8c8">return</span> <span style="color:#111">remove</span><span style="color:#f92672">(</span><span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">head</span><span style="color:#f92672">.</span><span style="color:#75af00">next</span><span style="color:#f92672">);</span>
-	<span style="color:#f92672">}</span>
+		<span style="color:#ff79c6">return</span> remove<span style="color:#ff79c6">(</span><span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">head</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">next</span><span style="color:#ff79c6">);</span>
+	<span style="color:#ff79c6">}</span>
 
-	<span style="color:#00a8c8">public</span> <span style="color:#111">Item</span> <span style="color:#75af00">removeLast</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-		<span style="color:#00a8c8">if</span> <span style="color:#f92672">(</span><span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">size</span> <span style="color:#f92672">==</span> <span style="color:#111">0</span><span style="color:#f92672">)</span>
-			<span style="color:#00a8c8">throw</span> <span style="color:#00a8c8">new</span> <span style="color:#111">java</span><span style="color:#f92672">.</span><span style="color:#75af00">util</span><span style="color:#f92672">.</span><span style="color:#75af00">NoSuchElementException</span><span style="color:#f92672">();</span>
+	<span style="color:#8be9fd;font-style:italic">public</span> Item <span style="color:#50fa7b">removeLast</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+		<span style="color:#ff79c6">if</span> <span style="color:#ff79c6">(</span><span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">size</span> <span style="color:#ff79c6">==</span> 0<span style="color:#ff79c6">)</span>
+			<span style="color:#ff79c6">throw</span> <span style="color:#ff79c6">new</span> java<span style="color:#ff79c6">.</span><span style="color:#50fa7b">util</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">NoSuchElementException</span><span style="color:#ff79c6">();</span>
 
-		<span style="color:#00a8c8">return</span> <span style="color:#111">remove</span><span style="color:#f92672">(</span><span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">tail</span><span style="color:#f92672">.</span><span style="color:#75af00">pre</span><span style="color:#f92672">);</span>
-	<span style="color:#f92672">}</span>
+		<span style="color:#ff79c6">return</span> remove<span style="color:#ff79c6">(</span><span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">tail</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">pre</span><span style="color:#ff79c6">);</span>
+	<span style="color:#ff79c6">}</span>
 
-	<span style="color:#00a8c8">private</span> <span style="color:#111">Item</span> <span style="color:#75af00">remove</span><span style="color:#f92672">(</span><span style="color:#111">Node</span> <span style="color:#111">n</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-		<span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">size</span><span style="color:#f92672">--;</span>
-		<span style="color:#111">Node</span> <span style="color:#111">a</span> <span style="color:#f92672">=</span> <span style="color:#111">n</span><span style="color:#f92672">.</span><span style="color:#75af00">pre</span><span style="color:#f92672">;</span>
-		<span style="color:#111">Node</span> <span style="color:#111">b</span> <span style="color:#f92672">=</span> <span style="color:#111">n</span><span style="color:#f92672">.</span><span style="color:#75af00">next</span><span style="color:#f92672">;</span>
-		<span style="color:#111">n</span><span style="color:#f92672">.</span><span style="color:#75af00">next</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">null</span><span style="color:#f92672">;</span>
-		<span style="color:#111">n</span><span style="color:#f92672">.</span><span style="color:#75af00">pre</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">null</span><span style="color:#f92672">;</span>
-		<span style="color:#111">a</span><span style="color:#f92672">.</span><span style="color:#75af00">next</span> <span style="color:#f92672">=</span> <span style="color:#111">b</span><span style="color:#f92672">;</span>
-		<span style="color:#111">b</span><span style="color:#f92672">.</span><span style="color:#75af00">pre</span> <span style="color:#f92672">=</span> <span style="color:#111">a</span><span style="color:#f92672">;</span>
-		<span style="color:#00a8c8">return</span> <span style="color:#111">n</span><span style="color:#f92672">.</span><span style="color:#75af00">item</span><span style="color:#f92672">;</span>
-	<span style="color:#f92672">}</span>
+	<span style="color:#8be9fd;font-style:italic">private</span> Item <span style="color:#50fa7b">remove</span><span style="color:#ff79c6">(</span>Node n<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
+		<span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">size</span><span style="color:#ff79c6">--;</span>
+		Node a <span style="color:#ff79c6">=</span> n<span style="color:#ff79c6">.</span><span style="color:#50fa7b">pre</span><span style="color:#ff79c6">;</span>
+		Node b <span style="color:#ff79c6">=</span> n<span style="color:#ff79c6">.</span><span style="color:#50fa7b">next</span><span style="color:#ff79c6">;</span>
+		n<span style="color:#ff79c6">.</span><span style="color:#50fa7b">next</span> <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">null</span><span style="color:#ff79c6">;</span>
+		n<span style="color:#ff79c6">.</span><span style="color:#50fa7b">pre</span> <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">null</span><span style="color:#ff79c6">;</span>
+		a<span style="color:#ff79c6">.</span><span style="color:#50fa7b">next</span> <span style="color:#ff79c6">=</span> b<span style="color:#ff79c6">;</span>
+		b<span style="color:#ff79c6">.</span><span style="color:#50fa7b">pre</span> <span style="color:#ff79c6">=</span> a<span style="color:#ff79c6">;</span>
+		<span style="color:#ff79c6">return</span> n<span style="color:#ff79c6">.</span><span style="color:#50fa7b">item</span><span style="color:#ff79c6">;</span>
+	<span style="color:#ff79c6">}</span>
 
-	<span style="color:#00a8c8">public</span> <span style="color:#111">Iterator</span><span style="color:#f92672">&lt;</span><span style="color:#111">Item</span><span style="color:#f92672">&gt;</span> <span style="color:#75af00">iterator</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-		<span style="color:#00a8c8">return</span> <span style="color:#00a8c8">new</span> <span style="color:#111">DequeIterator</span><span style="color:#f92672">();</span>
-	<span style="color:#f92672">}</span>
+	<span style="color:#8be9fd;font-style:italic">public</span> Iterator<span style="color:#ff79c6">&lt;</span>Item<span style="color:#ff79c6">&gt;</span> <span style="color:#50fa7b">iterator</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+		<span style="color:#ff79c6">return</span> <span style="color:#ff79c6">new</span> DequeIterator<span style="color:#ff79c6">();</span>
+	<span style="color:#ff79c6">}</span>
 
-	<span style="color:#00a8c8">private</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">DequeIterator</span> <span style="color:#00a8c8">implements</span> <span style="color:#111">Iterator</span><span style="color:#f92672">&lt;</span><span style="color:#111">Item</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
+	<span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">DequeIterator</span> <span style="color:#8be9fd;font-style:italic">implements</span> Iterator<span style="color:#ff79c6">&lt;</span>Item<span style="color:#ff79c6">&gt;</span> <span style="color:#ff79c6">{</span>
 
-		<span style="color:#00a8c8">private</span> <span style="color:#111">Node</span> <span style="color:#111">cur</span> <span style="color:#f92672">=</span> <span style="color:#111">head</span><span style="color:#f92672">;</span>
+		<span style="color:#8be9fd;font-style:italic">private</span> Node cur <span style="color:#ff79c6">=</span> head<span style="color:#ff79c6">;</span>
 
-		<span style="color:#75af00">@Override</span>
-		<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">boolean</span> <span style="color:#75af00">hasNext</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-			<span style="color:#00a8c8">return</span> <span style="color:#111">cur</span><span style="color:#f92672">.</span><span style="color:#75af00">next</span> <span style="color:#f92672">!=</span> <span style="color:#111">tail</span><span style="color:#f92672">;</span>
-		<span style="color:#f92672">}</span>
+		@Override
+		<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">boolean</span> <span style="color:#50fa7b">hasNext</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+			<span style="color:#ff79c6">return</span> cur<span style="color:#ff79c6">.</span><span style="color:#50fa7b">next</span> <span style="color:#ff79c6">!=</span> tail<span style="color:#ff79c6">;</span>
+		<span style="color:#ff79c6">}</span>
 
-		<span style="color:#75af00">@Override</span>
-		<span style="color:#00a8c8">public</span> <span style="color:#111">Item</span> <span style="color:#75af00">next</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-			<span style="color:#00a8c8">if</span> <span style="color:#f92672">(!</span><span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">hasNext</span><span style="color:#f92672">())</span>
-				<span style="color:#00a8c8">throw</span> <span style="color:#00a8c8">new</span> <span style="color:#111">java</span><span style="color:#f92672">.</span><span style="color:#75af00">util</span><span style="color:#f92672">.</span><span style="color:#75af00">NoSuchElementException</span><span style="color:#f92672">();</span>
+		@Override
+		<span style="color:#8be9fd;font-style:italic">public</span> Item <span style="color:#50fa7b">next</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+			<span style="color:#ff79c6">if</span> <span style="color:#ff79c6">(!</span><span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">hasNext</span><span style="color:#ff79c6">())</span>
+				<span style="color:#ff79c6">throw</span> <span style="color:#ff79c6">new</span> java<span style="color:#ff79c6">.</span><span style="color:#50fa7b">util</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">NoSuchElementException</span><span style="color:#ff79c6">();</span>
 
-			<span style="color:#111">cur</span> <span style="color:#f92672">=</span> <span style="color:#111">cur</span><span style="color:#f92672">.</span><span style="color:#75af00">next</span><span style="color:#f92672">;</span>
-			<span style="color:#00a8c8">return</span> <span style="color:#111">cur</span><span style="color:#f92672">.</span><span style="color:#75af00">item</span><span style="color:#f92672">;</span>
-		<span style="color:#f92672">}</span>
+			cur <span style="color:#ff79c6">=</span> cur<span style="color:#ff79c6">.</span><span style="color:#50fa7b">next</span><span style="color:#ff79c6">;</span>
+			<span style="color:#ff79c6">return</span> cur<span style="color:#ff79c6">.</span><span style="color:#50fa7b">item</span><span style="color:#ff79c6">;</span>
+		<span style="color:#ff79c6">}</span>
 
-	<span style="color:#f92672">}</span>
+	<span style="color:#ff79c6">}</span>
 
-	<span style="color:#00a8c8">private</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">Node</span> <span style="color:#f92672">{</span>
-		<span style="color:#111">Item</span> <span style="color:#111">item</span><span style="color:#f92672">;</span>
-		<span style="color:#111">Node</span> <span style="color:#111">next</span><span style="color:#f92672">;</span>
-		<span style="color:#111">Node</span> <span style="color:#111">pre</span><span style="color:#f92672">;</span>
+	<span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">Node</span> <span style="color:#ff79c6">{</span>
+		Item item<span style="color:#ff79c6">;</span>
+		Node next<span style="color:#ff79c6">;</span>
+		Node pre<span style="color:#ff79c6">;</span>
 
-		<span style="color:#111">Node</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-		<span style="color:#f92672">}</span>
+		Node<span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+		<span style="color:#ff79c6">}</span>
 
-		<span style="color:#111">Node</span><span style="color:#f92672">(</span><span style="color:#111">Item</span> <span style="color:#111">item</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-			<span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">item</span> <span style="color:#f92672">=</span> <span style="color:#111">item</span><span style="color:#f92672">;</span>
-		<span style="color:#f92672">}</span>
-	<span style="color:#f92672">}</span>
+		Node<span style="color:#ff79c6">(</span>Item item<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
+			<span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">item</span> <span style="color:#ff79c6">=</span> item<span style="color:#ff79c6">;</span>
+		<span style="color:#ff79c6">}</span>
+	<span style="color:#ff79c6">}</span>
 
-	<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">static</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">main</span><span style="color:#f92672">(</span><span style="color:#111">String</span><span style="color:#f92672">[]</span> <span style="color:#111">args</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-		<span style="color:#111">Deque</span><span style="color:#f92672">&lt;</span><span style="color:#111">Integer</span><span style="color:#f92672">&gt;</span> <span style="color:#111">dq</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">new</span> <span style="color:#111">Deque</span><span style="color:#f92672">&lt;&gt;();</span>
+	<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">main</span><span style="color:#ff79c6">(</span>String<span style="color:#ff79c6">[]</span> args<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
+		Deque<span style="color:#ff79c6">&lt;</span>Integer<span style="color:#ff79c6">&gt;</span> dq <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> Deque<span style="color:#ff79c6">&lt;&gt;();</span>
 
-		<span style="color:#111">dq</span><span style="color:#f92672">.</span><span style="color:#75af00">addFirst</span><span style="color:#f92672">(</span><span style="color:#111">1</span><span style="color:#f92672">);</span>
-		<span style="color:#111">dq</span><span style="color:#f92672">.</span><span style="color:#75af00">addFirst</span><span style="color:#f92672">(</span><span style="color:#111">2</span><span style="color:#f92672">);</span>
-		<span style="color:#111">dq</span><span style="color:#f92672">.</span><span style="color:#75af00">addLast</span><span style="color:#f92672">(</span><span style="color:#111">3</span><span style="color:#f92672">);</span>
+		dq<span style="color:#ff79c6">.</span><span style="color:#50fa7b">addFirst</span><span style="color:#ff79c6">(</span>1<span style="color:#ff79c6">);</span>
+		dq<span style="color:#ff79c6">.</span><span style="color:#50fa7b">addFirst</span><span style="color:#ff79c6">(</span>2<span style="color:#ff79c6">);</span>
+		dq<span style="color:#ff79c6">.</span><span style="color:#50fa7b">addLast</span><span style="color:#ff79c6">(</span>3<span style="color:#ff79c6">);</span>
 
-		<span style="color:#111">System</span><span style="color:#f92672">.</span><span style="color:#75af00">out</span><span style="color:#f92672">.</span><span style="color:#75af00">println</span><span style="color:#f92672">(</span><span style="color:#111">dq</span><span style="color:#f92672">.</span><span style="color:#75af00">removeLast</span><span style="color:#f92672">());</span>
-		<span style="color:#111">System</span><span style="color:#f92672">.</span><span style="color:#75af00">out</span><span style="color:#f92672">.</span><span style="color:#75af00">println</span><span style="color:#f92672">(</span><span style="color:#111">dq</span><span style="color:#f92672">.</span><span style="color:#75af00">removeLast</span><span style="color:#f92672">());</span>
-		<span style="color:#111">System</span><span style="color:#f92672">.</span><span style="color:#75af00">out</span><span style="color:#f92672">.</span><span style="color:#75af00">println</span><span style="color:#f92672">(</span><span style="color:#111">dq</span><span style="color:#f92672">.</span><span style="color:#75af00">removeLast</span><span style="color:#f92672">());</span>
+		System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span>dq<span style="color:#ff79c6">.</span><span style="color:#50fa7b">removeLast</span><span style="color:#ff79c6">());</span>
+		System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span>dq<span style="color:#ff79c6">.</span><span style="color:#50fa7b">removeLast</span><span style="color:#ff79c6">());</span>
+		System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span>dq<span style="color:#ff79c6">.</span><span style="color:#50fa7b">removeLast</span><span style="color:#ff79c6">());</span>
 
-	<span style="color:#f92672">}</span>
+	<span style="color:#ff79c6">}</span>
 
-<span style="color:#f92672">}</span></code></pre></div>
+<span style="color:#ff79c6">}</span></code></pre></div>
 <h3 id="randomizedqueue-java">RandomizedQueue.java</h3>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> <span style="color:#111">java.util.Iterator</span><span style="color:#f92672">;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#ff79c6">import</span> java.util.Iterator<span style="color:#ff79c6">;</span>
 
-<span style="color:#f92672">import</span> <span style="color:#111">edu.princeton.cs.algs4.StdRandom</span><span style="color:#f92672">;</span>
+<span style="color:#ff79c6">import</span> edu.princeton.cs.algs4.StdRandom<span style="color:#ff79c6">;</span>
 
-<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">RandomizedQueue</span><span style="color:#f92672">&lt;</span><span style="color:#111">Item</span><span style="color:#f92672">&gt;</span> <span style="color:#00a8c8">implements</span> <span style="color:#111">Iterable</span><span style="color:#f92672">&lt;</span><span style="color:#111">Item</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
+<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">RandomizedQueue</span><span style="color:#ff79c6">&lt;</span>Item<span style="color:#ff79c6">&gt;</span> <span style="color:#8be9fd;font-style:italic">implements</span> Iterable<span style="color:#ff79c6">&lt;</span>Item<span style="color:#ff79c6">&gt;</span> <span style="color:#ff79c6">{</span>
 
-	<span style="color:#00a8c8">private</span> <span style="color:#00a8c8">static</span> <span style="color:#00a8c8">final</span> <span style="color:#00a8c8">int</span> <span style="color:#111">MIN_SIZE</span> <span style="color:#f92672">=</span> <span style="color:#111">16</span><span style="color:#f92672">;</span>
-	<span style="color:#00a8c8">private</span> <span style="color:#111">Item</span><span style="color:#f92672">[]</span> <span style="color:#111">ar</span><span style="color:#f92672">;</span>
-	<span style="color:#00a8c8">private</span> <span style="color:#00a8c8">int</span> <span style="color:#111">size</span><span style="color:#f92672">;</span>
+	<span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd;font-style:italic">final</span> <span style="color:#8be9fd">int</span> MIN_SIZE <span style="color:#ff79c6">=</span> 16<span style="color:#ff79c6">;</span>
+	<span style="color:#8be9fd;font-style:italic">private</span> Item<span style="color:#ff79c6">[]</span> ar<span style="color:#ff79c6">;</span>
+	<span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd">int</span> size<span style="color:#ff79c6">;</span>
 
-	<span style="color:#00a8c8">public</span> <span style="color:#75af00">RandomizedQueue</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-		<span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">ar</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#111">Item</span><span style="color:#f92672">[])</span> <span style="color:#00a8c8">new</span> <span style="color:#111">Object</span><span style="color:#f92672">[</span><span style="color:#111">MIN_SIZE</span><span style="color:#f92672">];</span>
-	<span style="color:#f92672">}</span>
+	<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#50fa7b">RandomizedQueue</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+		<span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">ar</span> <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">(</span>Item<span style="color:#ff79c6">[])</span> <span style="color:#ff79c6">new</span> Object<span style="color:#ff79c6">[</span>MIN_SIZE<span style="color:#ff79c6">];</span>
+	<span style="color:#ff79c6">}</span>
 
-	<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">boolean</span> <span style="color:#75af00">isEmpty</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-		<span style="color:#00a8c8">return</span> <span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">size</span> <span style="color:#f92672">==</span> <span style="color:#111">0</span><span style="color:#f92672">;</span>
-	<span style="color:#f92672">}</span>
+	<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">boolean</span> <span style="color:#50fa7b">isEmpty</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+		<span style="color:#ff79c6">return</span> <span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">size</span> <span style="color:#ff79c6">==</span> 0<span style="color:#ff79c6">;</span>
+	<span style="color:#ff79c6">}</span>
 
-	<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">int</span> <span style="color:#75af00">size</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-		<span style="color:#00a8c8">return</span> <span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">size</span><span style="color:#f92672">;</span>
-	<span style="color:#f92672">}</span>
+	<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">int</span> <span style="color:#50fa7b">size</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+		<span style="color:#ff79c6">return</span> <span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">size</span><span style="color:#ff79c6">;</span>
+	<span style="color:#ff79c6">}</span>
 
-	<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">enqueue</span><span style="color:#f92672">(</span><span style="color:#111">Item</span> <span style="color:#111">item</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-		<span style="color:#00a8c8">if</span> <span style="color:#f92672">(</span><span style="color:#111">item</span> <span style="color:#f92672">==</span> <span style="color:#00a8c8">null</span><span style="color:#f92672">)</span>
-			<span style="color:#00a8c8">throw</span> <span style="color:#00a8c8">new</span> <span style="color:#111">java</span><span style="color:#f92672">.</span><span style="color:#75af00">lang</span><span style="color:#f92672">.</span><span style="color:#75af00">IllegalArgumentException</span><span style="color:#f92672">();</span>
-		<span style="color:#111">sizeup</span><span style="color:#f92672">();</span>
-		<span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">ar</span><span style="color:#f92672">[</span><span style="color:#111">size</span><span style="color:#f92672">++]</span> <span style="color:#f92672">=</span> <span style="color:#111">item</span><span style="color:#f92672">;</span>
-	<span style="color:#f92672">}</span>
+	<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">enqueue</span><span style="color:#ff79c6">(</span>Item item<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
+		<span style="color:#ff79c6">if</span> <span style="color:#ff79c6">(</span>item <span style="color:#ff79c6">==</span> <span style="color:#ff79c6">null</span><span style="color:#ff79c6">)</span>
+			<span style="color:#ff79c6">throw</span> <span style="color:#ff79c6">new</span> java<span style="color:#ff79c6">.</span><span style="color:#50fa7b">lang</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">IllegalArgumentException</span><span style="color:#ff79c6">();</span>
+		sizeup<span style="color:#ff79c6">();</span>
+		<span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">ar</span><span style="color:#ff79c6">[</span>size<span style="color:#ff79c6">++]</span> <span style="color:#ff79c6">=</span> item<span style="color:#ff79c6">;</span>
+	<span style="color:#ff79c6">}</span>
 
-	<span style="color:#00a8c8">public</span> <span style="color:#111">Item</span> <span style="color:#75af00">dequeue</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-		<span style="color:#00a8c8">if</span> <span style="color:#f92672">(</span><span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">size</span> <span style="color:#f92672">==</span> <span style="color:#111">0</span><span style="color:#f92672">)</span>
-			<span style="color:#00a8c8">throw</span> <span style="color:#00a8c8">new</span> <span style="color:#111">java</span><span style="color:#f92672">.</span><span style="color:#75af00">util</span><span style="color:#f92672">.</span><span style="color:#75af00">NoSuchElementException</span><span style="color:#f92672">();</span>
+	<span style="color:#8be9fd;font-style:italic">public</span> Item <span style="color:#50fa7b">dequeue</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+		<span style="color:#ff79c6">if</span> <span style="color:#ff79c6">(</span><span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">size</span> <span style="color:#ff79c6">==</span> 0<span style="color:#ff79c6">)</span>
+			<span style="color:#ff79c6">throw</span> <span style="color:#ff79c6">new</span> java<span style="color:#ff79c6">.</span><span style="color:#50fa7b">util</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">NoSuchElementException</span><span style="color:#ff79c6">();</span>
 
-		<span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#111">StdRandom</span><span style="color:#f92672">.</span><span style="color:#75af00">uniform</span><span style="color:#f92672">(</span><span style="color:#111">0</span><span style="color:#f92672">,</span> <span style="color:#111">size</span><span style="color:#f92672">);</span>
-		<span style="color:#111">Item</span> <span style="color:#111">rtn</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">ar</span><span style="color:#f92672">[</span><span style="color:#111">i</span><span style="color:#f92672">];</span>
-		<span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">ar</span><span style="color:#f92672">[</span><span style="color:#111">i</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">ar</span><span style="color:#f92672">[</span><span style="color:#111">size</span> <span style="color:#f92672">-</span> <span style="color:#111">1</span><span style="color:#f92672">];</span>
-		<span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">ar</span><span style="color:#f92672">[</span><span style="color:#111">size</span> <span style="color:#f92672">-</span> <span style="color:#111">1</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">null</span><span style="color:#f92672">;</span>
-		<span style="color:#111">size</span><span style="color:#f92672">--;</span>
-		<span style="color:#111">sizedown</span><span style="color:#f92672">();</span>
-		<span style="color:#00a8c8">return</span> <span style="color:#111">rtn</span><span style="color:#f92672">;</span>
-	<span style="color:#f92672">}</span>
+		<span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> StdRandom<span style="color:#ff79c6">.</span><span style="color:#50fa7b">uniform</span><span style="color:#ff79c6">(</span>0<span style="color:#ff79c6">,</span> size<span style="color:#ff79c6">);</span>
+		Item rtn <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">ar</span><span style="color:#ff79c6">[</span>i<span style="color:#ff79c6">];</span>
+		<span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">ar</span><span style="color:#ff79c6">[</span>i<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">ar</span><span style="color:#ff79c6">[</span>size <span style="color:#ff79c6">-</span> 1<span style="color:#ff79c6">];</span>
+		<span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">ar</span><span style="color:#ff79c6">[</span>size <span style="color:#ff79c6">-</span> 1<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">null</span><span style="color:#ff79c6">;</span>
+		size<span style="color:#ff79c6">--;</span>
+		sizedown<span style="color:#ff79c6">();</span>
+		<span style="color:#ff79c6">return</span> rtn<span style="color:#ff79c6">;</span>
+	<span style="color:#ff79c6">}</span>
 
-	<span style="color:#00a8c8">private</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">sizeup</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-		<span style="color:#00a8c8">if</span> <span style="color:#f92672">(</span><span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">size</span> <span style="color:#f92672">&lt;</span> <span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">ar</span><span style="color:#f92672">.</span><span style="color:#75af00">length</span><span style="color:#f92672">)</span>
-			<span style="color:#00a8c8">return</span><span style="color:#f92672">;</span>
+	<span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">sizeup</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+		<span style="color:#ff79c6">if</span> <span style="color:#ff79c6">(</span><span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">size</span> <span style="color:#ff79c6">&lt;</span> <span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">ar</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">length</span><span style="color:#ff79c6">)</span>
+			<span style="color:#ff79c6">return</span><span style="color:#ff79c6">;</span>
 
-		<span style="color:#111">Item</span><span style="color:#f92672">[]</span> <span style="color:#111">newar</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#111">Item</span><span style="color:#f92672">[])</span> <span style="color:#00a8c8">new</span> <span style="color:#111">Object</span><span style="color:#f92672">[</span><span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">ar</span><span style="color:#f92672">.</span><span style="color:#75af00">length</span> <span style="color:#f92672">*</span> <span style="color:#111">2</span><span style="color:#f92672">];</span>
-		<span style="color:#111">System</span><span style="color:#f92672">.</span><span style="color:#75af00">arraycopy</span><span style="color:#f92672">(</span><span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">ar</span><span style="color:#f92672">,</span> <span style="color:#111">0</span><span style="color:#f92672">,</span> <span style="color:#111">newar</span><span style="color:#f92672">,</span> <span style="color:#111">0</span><span style="color:#f92672">,</span> <span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">size</span><span style="color:#f92672">);</span>
-		<span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">ar</span> <span style="color:#f92672">=</span> <span style="color:#111">newar</span><span style="color:#f92672">;</span>
-	<span style="color:#f92672">}</span>
+		Item<span style="color:#ff79c6">[]</span> newar <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">(</span>Item<span style="color:#ff79c6">[])</span> <span style="color:#ff79c6">new</span> Object<span style="color:#ff79c6">[</span><span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">ar</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">length</span> <span style="color:#ff79c6">*</span> 2<span style="color:#ff79c6">];</span>
+		System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">arraycopy</span><span style="color:#ff79c6">(</span><span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">ar</span><span style="color:#ff79c6">,</span> 0<span style="color:#ff79c6">,</span> newar<span style="color:#ff79c6">,</span> 0<span style="color:#ff79c6">,</span> <span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">size</span><span style="color:#ff79c6">);</span>
+		<span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">ar</span> <span style="color:#ff79c6">=</span> newar<span style="color:#ff79c6">;</span>
+	<span style="color:#ff79c6">}</span>
 
-	<span style="color:#00a8c8">private</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">sizedown</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-		<span style="color:#00a8c8">if</span> <span style="color:#f92672">(</span><span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">ar</span><span style="color:#f92672">.</span><span style="color:#75af00">length</span> <span style="color:#f92672">==</span> <span style="color:#111">MIN_SIZE</span> <span style="color:#f92672">||</span> <span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">size</span> <span style="color:#f92672">&gt;=</span> <span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">ar</span><span style="color:#f92672">.</span><span style="color:#75af00">length</span> <span style="color:#f92672">/</span> <span style="color:#111">4</span><span style="color:#f92672">)</span>
-			<span style="color:#00a8c8">return</span><span style="color:#f92672">;</span>
+	<span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">sizedown</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+		<span style="color:#ff79c6">if</span> <span style="color:#ff79c6">(</span><span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">ar</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">length</span> <span style="color:#ff79c6">==</span> MIN_SIZE <span style="color:#ff79c6">||</span> <span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">size</span> <span style="color:#ff79c6">&gt;=</span> <span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">ar</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">length</span> <span style="color:#ff79c6">/</span> 4<span style="color:#ff79c6">)</span>
+			<span style="color:#ff79c6">return</span><span style="color:#ff79c6">;</span>
 
-		<span style="color:#111">Item</span><span style="color:#f92672">[]</span> <span style="color:#111">newar</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#111">Item</span><span style="color:#f92672">[])</span> <span style="color:#00a8c8">new</span> <span style="color:#111">Object</span><span style="color:#f92672">[</span><span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">ar</span><span style="color:#f92672">.</span><span style="color:#75af00">length</span> <span style="color:#f92672">/</span> <span style="color:#111">2</span><span style="color:#f92672">];</span>
-		<span style="color:#111">System</span><span style="color:#f92672">.</span><span style="color:#75af00">arraycopy</span><span style="color:#f92672">(</span><span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">ar</span><span style="color:#f92672">,</span> <span style="color:#111">0</span><span style="color:#f92672">,</span> <span style="color:#111">newar</span><span style="color:#f92672">,</span> <span style="color:#111">0</span><span style="color:#f92672">,</span> <span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">size</span><span style="color:#f92672">);</span>
-		<span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">ar</span> <span style="color:#f92672">=</span> <span style="color:#111">newar</span><span style="color:#f92672">;</span>
-	<span style="color:#f92672">}</span>
+		Item<span style="color:#ff79c6">[]</span> newar <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">(</span>Item<span style="color:#ff79c6">[])</span> <span style="color:#ff79c6">new</span> Object<span style="color:#ff79c6">[</span><span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">ar</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">length</span> <span style="color:#ff79c6">/</span> 2<span style="color:#ff79c6">];</span>
+		System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">arraycopy</span><span style="color:#ff79c6">(</span><span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">ar</span><span style="color:#ff79c6">,</span> 0<span style="color:#ff79c6">,</span> newar<span style="color:#ff79c6">,</span> 0<span style="color:#ff79c6">,</span> <span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">size</span><span style="color:#ff79c6">);</span>
+		<span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">ar</span> <span style="color:#ff79c6">=</span> newar<span style="color:#ff79c6">;</span>
+	<span style="color:#ff79c6">}</span>
 
-	<span style="color:#00a8c8">public</span> <span style="color:#111">Item</span> <span style="color:#75af00">sample</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-		<span style="color:#00a8c8">if</span> <span style="color:#f92672">(</span><span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">size</span> <span style="color:#f92672">==</span> <span style="color:#111">0</span><span style="color:#f92672">)</span>
-			<span style="color:#00a8c8">throw</span> <span style="color:#00a8c8">new</span> <span style="color:#111">java</span><span style="color:#f92672">.</span><span style="color:#75af00">util</span><span style="color:#f92672">.</span><span style="color:#75af00">NoSuchElementException</span><span style="color:#f92672">();</span>
+	<span style="color:#8be9fd;font-style:italic">public</span> Item <span style="color:#50fa7b">sample</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+		<span style="color:#ff79c6">if</span> <span style="color:#ff79c6">(</span><span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">size</span> <span style="color:#ff79c6">==</span> 0<span style="color:#ff79c6">)</span>
+			<span style="color:#ff79c6">throw</span> <span style="color:#ff79c6">new</span> java<span style="color:#ff79c6">.</span><span style="color:#50fa7b">util</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">NoSuchElementException</span><span style="color:#ff79c6">();</span>
 
-		<span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#111">StdRandom</span><span style="color:#f92672">.</span><span style="color:#75af00">uniform</span><span style="color:#f92672">(</span><span style="color:#111">0</span><span style="color:#f92672">,</span> <span style="color:#111">size</span><span style="color:#f92672">);</span>
-		<span style="color:#00a8c8">return</span> <span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">ar</span><span style="color:#f92672">[</span><span style="color:#111">i</span><span style="color:#f92672">];</span>
-	<span style="color:#f92672">}</span>
+		<span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> StdRandom<span style="color:#ff79c6">.</span><span style="color:#50fa7b">uniform</span><span style="color:#ff79c6">(</span>0<span style="color:#ff79c6">,</span> size<span style="color:#ff79c6">);</span>
+		<span style="color:#ff79c6">return</span> <span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">ar</span><span style="color:#ff79c6">[</span>i<span style="color:#ff79c6">];</span>
+	<span style="color:#ff79c6">}</span>
 
-	<span style="color:#00a8c8">public</span> <span style="color:#111">Iterator</span><span style="color:#f92672">&lt;</span><span style="color:#111">Item</span><span style="color:#f92672">&gt;</span> <span style="color:#75af00">iterator</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-		<span style="color:#00a8c8">return</span> <span style="color:#00a8c8">new</span> <span style="color:#111">RQIterator</span><span style="color:#f92672">();</span>
-	<span style="color:#f92672">}</span>
+	<span style="color:#8be9fd;font-style:italic">public</span> Iterator<span style="color:#ff79c6">&lt;</span>Item<span style="color:#ff79c6">&gt;</span> <span style="color:#50fa7b">iterator</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+		<span style="color:#ff79c6">return</span> <span style="color:#ff79c6">new</span> RQIterator<span style="color:#ff79c6">();</span>
+	<span style="color:#ff79c6">}</span>
 
-	<span style="color:#00a8c8">private</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">RQIterator</span> <span style="color:#00a8c8">implements</span> <span style="color:#111">Iterator</span><span style="color:#f92672">&lt;</span><span style="color:#111">Item</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
+	<span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">RQIterator</span> <span style="color:#8be9fd;font-style:italic">implements</span> Iterator<span style="color:#ff79c6">&lt;</span>Item<span style="color:#ff79c6">&gt;</span> <span style="color:#ff79c6">{</span>
 
-		<span style="color:#00a8c8">private</span> <span style="color:#00a8c8">final</span> <span style="color:#00a8c8">int</span><span style="color:#f92672">[]</span> <span style="color:#111">is</span> <span style="color:#f92672">=</span> <span style="color:#111">StdRandom</span><span style="color:#f92672">.</span><span style="color:#75af00">permutation</span><span style="color:#f92672">(</span><span style="color:#111">size</span><span style="color:#f92672">);</span>
-		<span style="color:#00a8c8">private</span> <span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#111">0</span><span style="color:#f92672">;</span>
+		<span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd;font-style:italic">final</span> <span style="color:#8be9fd">int</span><span style="color:#ff79c6">[]</span> is <span style="color:#ff79c6">=</span> StdRandom<span style="color:#ff79c6">.</span><span style="color:#50fa7b">permutation</span><span style="color:#ff79c6">(</span>size<span style="color:#ff79c6">);</span>
+		<span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> 0<span style="color:#ff79c6">;</span>
 
-		<span style="color:#75af00">@Override</span>
-		<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">boolean</span> <span style="color:#75af00">hasNext</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-			<span style="color:#00a8c8">return</span> <span style="color:#111">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">size</span><span style="color:#f92672">;</span>
-		<span style="color:#f92672">}</span>
+		@Override
+		<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">boolean</span> <span style="color:#50fa7b">hasNext</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+			<span style="color:#ff79c6">return</span> i <span style="color:#ff79c6">&lt;</span> size<span style="color:#ff79c6">;</span>
+		<span style="color:#ff79c6">}</span>
 
-		<span style="color:#75af00">@Override</span>
-		<span style="color:#00a8c8">public</span> <span style="color:#111">Item</span> <span style="color:#75af00">next</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-			<span style="color:#00a8c8">if</span> <span style="color:#f92672">(!</span><span style="color:#00a8c8">this</span><span style="color:#f92672">.</span><span style="color:#75af00">hasNext</span><span style="color:#f92672">())</span>
-				<span style="color:#00a8c8">throw</span> <span style="color:#00a8c8">new</span> <span style="color:#111">java</span><span style="color:#f92672">.</span><span style="color:#75af00">util</span><span style="color:#f92672">.</span><span style="color:#75af00">NoSuchElementException</span><span style="color:#f92672">();</span>
+		@Override
+		<span style="color:#8be9fd;font-style:italic">public</span> Item <span style="color:#50fa7b">next</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+			<span style="color:#ff79c6">if</span> <span style="color:#ff79c6">(!</span><span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">hasNext</span><span style="color:#ff79c6">())</span>
+				<span style="color:#ff79c6">throw</span> <span style="color:#ff79c6">new</span> java<span style="color:#ff79c6">.</span><span style="color:#50fa7b">util</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">NoSuchElementException</span><span style="color:#ff79c6">();</span>
 
-			<span style="color:#00a8c8">return</span> <span style="color:#111">ar</span><span style="color:#f92672">[</span><span style="color:#111">is</span><span style="color:#f92672">[</span><span style="color:#111">i</span><span style="color:#f92672">++]];</span>
-		<span style="color:#f92672">}</span>
+			<span style="color:#ff79c6">return</span> ar<span style="color:#ff79c6">[</span>is<span style="color:#ff79c6">[</span>i<span style="color:#ff79c6">++]];</span>
+		<span style="color:#ff79c6">}</span>
 
-	<span style="color:#f92672">}</span>
+	<span style="color:#ff79c6">}</span>
 
-	<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">static</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">main</span><span style="color:#f92672">(</span><span style="color:#111">String</span><span style="color:#f92672">[]</span> <span style="color:#111">args</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-		<span style="color:#111">RandomizedQueue</span><span style="color:#f92672">&lt;</span><span style="color:#111">Integer</span><span style="color:#f92672">&gt;</span> <span style="color:#111">rq</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">new</span> <span style="color:#111">RandomizedQueue</span><span style="color:#f92672">&lt;&gt;();</span>
+	<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">main</span><span style="color:#ff79c6">(</span>String<span style="color:#ff79c6">[]</span> args<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
+		RandomizedQueue<span style="color:#ff79c6">&lt;</span>Integer<span style="color:#ff79c6">&gt;</span> rq <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> RandomizedQueue<span style="color:#ff79c6">&lt;&gt;();</span>
 
-		<span style="color:#00a8c8">for</span> <span style="color:#f92672">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#111">0</span><span style="color:#f92672">;</span> <span style="color:#111">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">50</span><span style="color:#f92672">;</span> <span style="color:#111">i</span><span style="color:#f92672">++)</span>
-			<span style="color:#111">rq</span><span style="color:#f92672">.</span><span style="color:#75af00">enqueue</span><span style="color:#f92672">(</span><span style="color:#111">i</span><span style="color:#f92672">);</span>
+		<span style="color:#ff79c6">for</span> <span style="color:#ff79c6">(</span><span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> 0<span style="color:#ff79c6">;</span> i <span style="color:#ff79c6">&lt;</span> 50<span style="color:#ff79c6">;</span> i<span style="color:#ff79c6">++)</span>
+			rq<span style="color:#ff79c6">.</span><span style="color:#50fa7b">enqueue</span><span style="color:#ff79c6">(</span>i<span style="color:#ff79c6">);</span>
 
-		<span style="color:#00a8c8">for</span> <span style="color:#f92672">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">:</span> <span style="color:#111">rq</span><span style="color:#f92672">)</span>
-			<span style="color:#111">System</span><span style="color:#f92672">.</span><span style="color:#75af00">out</span><span style="color:#f92672">.</span><span style="color:#75af00">println</span><span style="color:#f92672">(</span><span style="color:#111">i</span><span style="color:#f92672">);</span>
+		<span style="color:#ff79c6">for</span> <span style="color:#ff79c6">(</span><span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">:</span> rq<span style="color:#ff79c6">)</span>
+			System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span>i<span style="color:#ff79c6">);</span>
 
-		<span style="color:#111">System</span><span style="color:#f92672">.</span><span style="color:#75af00">out</span><span style="color:#f92672">.</span><span style="color:#75af00">println</span><span style="color:#f92672">(</span><span style="color:#d88200">&#34;========&#34;</span><span style="color:#f92672">);</span>
-		<span style="color:#00a8c8">for</span> <span style="color:#f92672">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#111">0</span><span style="color:#f92672">;</span> <span style="color:#111">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">50</span><span style="color:#f92672">;</span> <span style="color:#111">i</span><span style="color:#f92672">++)</span>
-			<span style="color:#111">System</span><span style="color:#f92672">.</span><span style="color:#75af00">out</span><span style="color:#f92672">.</span><span style="color:#75af00">println</span><span style="color:#f92672">(</span><span style="color:#111">rq</span><span style="color:#f92672">.</span><span style="color:#75af00">dequeue</span><span style="color:#f92672">());</span>
+		System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;========&#34;</span><span style="color:#ff79c6">);</span>
+		<span style="color:#ff79c6">for</span> <span style="color:#ff79c6">(</span><span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> 0<span style="color:#ff79c6">;</span> i <span style="color:#ff79c6">&lt;</span> 50<span style="color:#ff79c6">;</span> i<span style="color:#ff79c6">++)</span>
+			System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span>rq<span style="color:#ff79c6">.</span><span style="color:#50fa7b">dequeue</span><span style="color:#ff79c6">());</span>
 
-	<span style="color:#f92672">}</span>
+	<span style="color:#ff79c6">}</span>
 
-<span style="color:#f92672">}</span></code></pre></div>
+<span style="color:#ff79c6">}</span></code></pre></div>
 <h3 id="permutation-java">Permutation.java</h3>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> <span style="color:#111">edu.princeton.cs.algs4.StdIn</span><span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> <span style="color:#111">edu.princeton.cs.algs4.StdOut</span><span style="color:#f92672">;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#ff79c6">import</span> edu.princeton.cs.algs4.StdIn<span style="color:#ff79c6">;</span>
+<span style="color:#ff79c6">import</span> edu.princeton.cs.algs4.StdOut<span style="color:#ff79c6">;</span>
 
-<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">Permutation</span> <span style="color:#f92672">{</span>
+<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">Permutation</span> <span style="color:#ff79c6">{</span>
 
-	<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">static</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">main</span><span style="color:#f92672">(</span><span style="color:#111">String</span><span style="color:#f92672">[]</span> <span style="color:#111">args</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-		<span style="color:#00a8c8">int</span> <span style="color:#111">k</span> <span style="color:#f92672">=</span> <span style="color:#111">Integer</span><span style="color:#f92672">.</span><span style="color:#75af00">parseInt</span><span style="color:#f92672">(</span><span style="color:#111">args</span><span style="color:#f92672">[</span><span style="color:#111">0</span><span style="color:#f92672">]);</span>
-<span style="color:#75715e">//		int k = 3;
-</span><span style="color:#75715e"></span>
-		<span style="color:#111">RandomizedQueue</span><span style="color:#f92672">&lt;</span><span style="color:#111">String</span><span style="color:#f92672">&gt;</span> <span style="color:#111">rq</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">new</span> <span style="color:#111">RandomizedQueue</span><span style="color:#f92672">&lt;&gt;();</span>
+	<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">main</span><span style="color:#ff79c6">(</span>String<span style="color:#ff79c6">[]</span> args<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
+		<span style="color:#8be9fd">int</span> k <span style="color:#ff79c6">=</span> Integer<span style="color:#ff79c6">.</span><span style="color:#50fa7b">parseInt</span><span style="color:#ff79c6">(</span>args<span style="color:#ff79c6">[</span>0<span style="color:#ff79c6">]);</span>
+<span style="color:#6272a4">//		int k = 3;
+</span><span style="color:#6272a4"></span>
+		RandomizedQueue<span style="color:#ff79c6">&lt;</span>String<span style="color:#ff79c6">&gt;</span> rq <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> RandomizedQueue<span style="color:#ff79c6">&lt;&gt;();</span>
 
-		<span style="color:#00a8c8">while</span><span style="color:#f92672">(!</span><span style="color:#111">StdIn</span><span style="color:#f92672">.</span><span style="color:#75af00">isEmpty</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
-			<span style="color:#111">String</span> <span style="color:#111">s</span> <span style="color:#f92672">=</span> <span style="color:#111">StdIn</span><span style="color:#f92672">.</span><span style="color:#75af00">readString</span><span style="color:#f92672">();</span>
-			<span style="color:#111">rq</span><span style="color:#f92672">.</span><span style="color:#75af00">enqueue</span><span style="color:#f92672">(</span><span style="color:#111">s</span><span style="color:#f92672">);</span>
-		<span style="color:#f92672">}</span>
+		<span style="color:#ff79c6">while</span><span style="color:#ff79c6">(!</span>StdIn<span style="color:#ff79c6">.</span><span style="color:#50fa7b">isEmpty</span><span style="color:#ff79c6">())</span> <span style="color:#ff79c6">{</span>
+			String s <span style="color:#ff79c6">=</span> StdIn<span style="color:#ff79c6">.</span><span style="color:#50fa7b">readString</span><span style="color:#ff79c6">();</span>
+			rq<span style="color:#ff79c6">.</span><span style="color:#50fa7b">enqueue</span><span style="color:#ff79c6">(</span>s<span style="color:#ff79c6">);</span>
+		<span style="color:#ff79c6">}</span>
 		
-		<span style="color:#00a8c8">for</span> <span style="color:#f92672">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#111">0</span><span style="color:#f92672">;</span> <span style="color:#111">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">k</span><span style="color:#f92672">;</span> <span style="color:#111">i</span><span style="color:#f92672">++)</span>
-			<span style="color:#111">StdOut</span><span style="color:#f92672">.</span><span style="color:#75af00">println</span><span style="color:#f92672">(</span><span style="color:#111">rq</span><span style="color:#f92672">.</span><span style="color:#75af00">dequeue</span><span style="color:#f92672">());</span>
+		<span style="color:#ff79c6">for</span> <span style="color:#ff79c6">(</span><span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> 0<span style="color:#ff79c6">;</span> i <span style="color:#ff79c6">&lt;</span> k<span style="color:#ff79c6">;</span> i<span style="color:#ff79c6">++)</span>
+			StdOut<span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span>rq<span style="color:#ff79c6">.</span><span style="color:#50fa7b">dequeue</span><span style="color:#ff79c6">());</span>
 
-	<span style="color:#f92672">}</span>
+	<span style="color:#ff79c6">}</span>
 
-<span style="color:#f92672">}</span></code></pre></div>
+<span style="color:#ff79c6">}</span></code></pre></div>
 
     
     

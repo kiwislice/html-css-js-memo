@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-04-18T16:42:12 CST">
+<meta name="revised" content="2019-04-18T17:38:08 CST">
 <title>Uinon-Find Algorithm :: 學習筆記</title>
 <link rel="shortcut icon" href="/html-css-js-memo/images/favicon.png" type="image/x-icon" />
 <link href="/html-css-js-memo/css/font-awesome.min.css" rel="stylesheet">
@@ -320,11 +320,11 @@
 
 <li><p>將2點設為同組只需</p></li>
 </ul>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  <span style="color:#00a8c8">public</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">unite</span><span style="color:#f92672">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">p</span><span style="color:#f92672">,</span> <span style="color:#00a8c8">int</span> <span style="color:#111">q</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-      <span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#111">root</span><span style="color:#f92672">(</span><span style="color:#111">p</span><span style="color:#f92672">);</span>
-      <span style="color:#00a8c8">int</span> <span style="color:#111">j</span> <span style="color:#f92672">=</span> <span style="color:#111">root</span><span style="color:#f92672">(</span><span style="color:#111">q</span><span style="color:#f92672">);</span>
-      <span style="color:#111">id</span><span style="color:#f92672">[</span><span style="color:#111">i</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#111">j</span><span style="color:#f92672">;</span>
-  <span style="color:#f92672">}</span></code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">unite</span><span style="color:#ff79c6">(</span><span style="color:#8be9fd">int</span> p<span style="color:#ff79c6">,</span> <span style="color:#8be9fd">int</span> q<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
+      <span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> root<span style="color:#ff79c6">(</span>p<span style="color:#ff79c6">);</span>
+      <span style="color:#8be9fd">int</span> j <span style="color:#ff79c6">=</span> root<span style="color:#ff79c6">(</span>q<span style="color:#ff79c6">);</span>
+      id<span style="color:#ff79c6">[</span>i<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">=</span> j<span style="color:#ff79c6">;</span>
+  <span style="color:#ff79c6">}</span></code></pre></div>
 <h3 id="瓶頸">瓶頸</h3>
 
 <ul>

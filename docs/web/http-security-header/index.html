@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-04-18T16:42:12 CST">
+<meta name="revised" content="2019-04-18T17:38:08 CST">
 <title>Http安全性Header :: 學習筆記</title>
 <link rel="shortcut icon" href="/html-css-js-memo/images/favicon.png" type="image/x-icon" />
 <link href="/html-css-js-memo/css/font-awesome.min.css" rel="stylesheet">
@@ -307,8 +307,8 @@
 <p>HTTP回應標頭 (header) 用來指示文件是否能夠載入<code>&lt;frame&gt;</code>, <code>&lt;iframe&gt;</code>以及<code>&lt;object&gt;</code>，網站可以利用 X-Frame-Options 來確保本身內容不會遭惡意嵌入道其他網站、避免 clickjacking 攻擊</p>
 
 <p>範例：</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#960050;background-color:#1e0010">HTTP/2.0 200 OK
-</span><span style="color:#960050;background-color:#1e0010">X-Frame-Options: DENY</span></code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http">HTTP/2.0 200 OK
+X-Frame-Options: DENY</code></pre></div>
 <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/HTTP/X-Frame-Options">https://developer.mozilla.org/zh-TW/docs/Web/HTTP/X-Frame-Options</a></p>
 
 <h3 id="x-xss-protection">X-XSS-Protection</h3>
@@ -316,8 +316,8 @@
 <p>可在檢測到反映的跨站點腳本（<a href="https://zh.wikipedia.org/wiki/%E8%B7%A8%E7%B6%B2%E7%AB%99%E6%8C%87%E4%BB%A4%E7%A2%BC">XSS</a>）攻擊時阻止頁面加載</p>
 
 <p>範例：</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#960050;background-color:#1e0010">HTTP/2.0 200 OK
-</span><span style="color:#960050;background-color:#1e0010">X-XSS-Protection: 1; mode=block</span></code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http">HTTP/2.0 200 OK
+X-XSS-Protection: 1; mode=block</code></pre></div>
 <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Headers/X-XSS-Protection">https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Headers/X-XSS-Protection</a></p>
 
 <h3 id="x-content-type">X-Content-Type</h3>
@@ -325,8 +325,8 @@
 <p>HTTP回應標頭 (header) 用來指示該標記MIME類型的Content-Type標題不應該被改變，並且被遵循</p>
 
 <p>範例：</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#960050;background-color:#1e0010">HTTP/2.0 200 OK
-</span><span style="color:#960050;background-color:#1e0010">X-Content-Type-Options: nosniff</span></code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http">HTTP/2.0 200 OK
+X-Content-Type-Options: nosniff</code></pre></div>
 <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Headers/X-Content-Type-Options">https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Headers/X-Content-Type-Options</a></p>
 
 

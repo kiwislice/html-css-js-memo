@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-04-18T16:42:12 CST">
+<meta name="revised" content="2019-04-18T17:38:08 CST">
 <title>自定義Scope :: 學習筆記</title>
 <link rel="shortcut icon" href="/html-css-js-memo/images/favicon.png" type="image/x-icon" />
 <link href="/html-css-js-memo/css/font-awesome.min.css" rel="stylesheet">
@@ -303,72 +303,72 @@
     
     
     <p>先準備自定義的Scope物件(此範例為JSF的ViewScope)</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> <span style="color:#111">org.springframework.beans.factory.ObjectFactory</span><span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> <span style="color:#111">org.springframework.beans.factory.config.Scope</span><span style="color:#f92672">;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#ff79c6">import</span> org.springframework.beans.factory.ObjectFactory<span style="color:#ff79c6">;</span>
+<span style="color:#ff79c6">import</span> org.springframework.beans.factory.config.Scope<span style="color:#ff79c6">;</span>
 
-<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">ViewScope</span> <span style="color:#00a8c8">implements</span> <span style="color:#111">Scope</span> <span style="color:#f92672">{</span>
+<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">ViewScope</span> <span style="color:#8be9fd;font-style:italic">implements</span> Scope <span style="color:#ff79c6">{</span>
 
-	<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">static</span> <span style="color:#00a8c8">final</span> <span style="color:#111">String</span> <span style="color:#111">SCOPE_NAME</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;custom_view&#34;</span><span style="color:#f92672">;</span>
+	<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd;font-style:italic">final</span> String SCOPE_NAME <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;custom_view&#34;</span><span style="color:#ff79c6">;</span>
 
-    <span style="color:#75715e">/** 取得給定名稱物件，不存在則建立 */</span>
-	<span style="color:#75af00">@Override</span>
-	<span style="color:#00a8c8">public</span> <span style="color:#111">Object</span> <span style="color:#75af00">get</span><span style="color:#f92672">(</span><span style="color:#111">String</span> <span style="color:#111">name</span><span style="color:#f92672">,</span> <span style="color:#111">ObjectFactory</span><span style="color:#f92672">&lt;?&gt;</span> <span style="color:#111">objectFactory</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-		<span style="color:#111">Map</span><span style="color:#f92672">&lt;</span><span style="color:#111">String</span><span style="color:#f92672">,</span> <span style="color:#111">Object</span><span style="color:#f92672">&gt;</span> <span style="color:#111">viewMap</span> <span style="color:#f92672">=</span> <span style="color:#111">FacesContext</span><span style="color:#f92672">.</span><span style="color:#75af00">getCurrentInstance</span><span style="color:#f92672">().</span><span style="color:#75af00">getViewRoot</span><span style="color:#f92672">().</span><span style="color:#75af00">getViewMap</span><span style="color:#f92672">();</span>
-		<span style="color:#00a8c8">if</span> <span style="color:#f92672">(</span><span style="color:#111">viewMap</span><span style="color:#f92672">.</span><span style="color:#75af00">containsKey</span><span style="color:#f92672">(</span><span style="color:#111">name</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
-			<span style="color:#00a8c8">return</span> <span style="color:#111">viewMap</span><span style="color:#f92672">.</span><span style="color:#75af00">get</span><span style="color:#f92672">(</span><span style="color:#111">name</span><span style="color:#f92672">);</span>
-		<span style="color:#f92672">}</span> <span style="color:#00a8c8">else</span> <span style="color:#f92672">{</span>
-			<span style="color:#111">Object</span> <span style="color:#111">object</span> <span style="color:#f92672">=</span> <span style="color:#111">objectFactory</span><span style="color:#f92672">.</span><span style="color:#75af00">getObject</span><span style="color:#f92672">();</span>
-			<span style="color:#111">viewMap</span><span style="color:#f92672">.</span><span style="color:#75af00">put</span><span style="color:#f92672">(</span><span style="color:#111">name</span><span style="color:#f92672">,</span> <span style="color:#111">object</span><span style="color:#f92672">);</span>
-			<span style="color:#00a8c8">return</span> <span style="color:#111">object</span><span style="color:#f92672">;</span>
-		<span style="color:#f92672">}</span>
-	<span style="color:#f92672">}</span>
+    <span style="color:#6272a4">/** 取得給定名稱物件，不存在則建立 */</span>
+	@Override
+	<span style="color:#8be9fd;font-style:italic">public</span> Object <span style="color:#50fa7b">get</span><span style="color:#ff79c6">(</span>String name<span style="color:#ff79c6">,</span> ObjectFactory<span style="color:#ff79c6">&lt;?&gt;</span> objectFactory<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
+		Map<span style="color:#ff79c6">&lt;</span>String<span style="color:#ff79c6">,</span> Object<span style="color:#ff79c6">&gt;</span> viewMap <span style="color:#ff79c6">=</span> FacesContext<span style="color:#ff79c6">.</span><span style="color:#50fa7b">getCurrentInstance</span><span style="color:#ff79c6">().</span><span style="color:#50fa7b">getViewRoot</span><span style="color:#ff79c6">().</span><span style="color:#50fa7b">getViewMap</span><span style="color:#ff79c6">();</span>
+		<span style="color:#ff79c6">if</span> <span style="color:#ff79c6">(</span>viewMap<span style="color:#ff79c6">.</span><span style="color:#50fa7b">containsKey</span><span style="color:#ff79c6">(</span>name<span style="color:#ff79c6">))</span> <span style="color:#ff79c6">{</span>
+			<span style="color:#ff79c6">return</span> viewMap<span style="color:#ff79c6">.</span><span style="color:#50fa7b">get</span><span style="color:#ff79c6">(</span>name<span style="color:#ff79c6">);</span>
+		<span style="color:#ff79c6">}</span> <span style="color:#ff79c6">else</span> <span style="color:#ff79c6">{</span>
+			Object object <span style="color:#ff79c6">=</span> objectFactory<span style="color:#ff79c6">.</span><span style="color:#50fa7b">getObject</span><span style="color:#ff79c6">();</span>
+			viewMap<span style="color:#ff79c6">.</span><span style="color:#50fa7b">put</span><span style="color:#ff79c6">(</span>name<span style="color:#ff79c6">,</span> object<span style="color:#ff79c6">);</span>
+			<span style="color:#ff79c6">return</span> object<span style="color:#ff79c6">;</span>
+		<span style="color:#ff79c6">}</span>
+	<span style="color:#ff79c6">}</span>
 
-	<span style="color:#75af00">@Override</span>
-	<span style="color:#00a8c8">public</span> <span style="color:#111">String</span> <span style="color:#75af00">getConversationId</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-		<span style="color:#00a8c8">return</span> <span style="color:#00a8c8">null</span><span style="color:#f92672">;</span>
-	<span style="color:#f92672">}</span>
+	@Override
+	<span style="color:#8be9fd;font-style:italic">public</span> String <span style="color:#50fa7b">getConversationId</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+		<span style="color:#ff79c6">return</span> <span style="color:#ff79c6">null</span><span style="color:#ff79c6">;</span>
+	<span style="color:#ff79c6">}</span>
 
-	<span style="color:#75af00">@Override</span>
-	<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">registerDestructionCallback</span><span style="color:#f92672">(</span><span style="color:#111">String</span> <span style="color:#111">name</span><span style="color:#f92672">,</span> <span style="color:#111">Runnable</span> <span style="color:#111">callback</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+	@Override
+	<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">registerDestructionCallback</span><span style="color:#ff79c6">(</span>String name<span style="color:#ff79c6">,</span> Runnable callback<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
 
-	<span style="color:#f92672">}</span>
+	<span style="color:#ff79c6">}</span>
 
-    <span style="color:#75715e">/** 移除指定物件 */</span>
-	<span style="color:#75af00">@Override</span>
-	<span style="color:#00a8c8">public</span> <span style="color:#111">Object</span> <span style="color:#75af00">remove</span><span style="color:#f92672">(</span><span style="color:#111">String</span> <span style="color:#111">name</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-		<span style="color:#00a8c8">return</span> <span style="color:#111">FacesContext</span><span style="color:#f92672">.</span><span style="color:#75af00">getCurrentInstance</span><span style="color:#f92672">().</span><span style="color:#75af00">getViewRoot</span><span style="color:#f92672">().</span><span style="color:#75af00">getViewMap</span><span style="color:#f92672">().</span><span style="color:#75af00">remove</span><span style="color:#f92672">(</span><span style="color:#111">name</span><span style="color:#f92672">);</span>
-	<span style="color:#f92672">}</span>
+    <span style="color:#6272a4">/** 移除指定物件 */</span>
+	@Override
+	<span style="color:#8be9fd;font-style:italic">public</span> Object <span style="color:#50fa7b">remove</span><span style="color:#ff79c6">(</span>String name<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
+		<span style="color:#ff79c6">return</span> FacesContext<span style="color:#ff79c6">.</span><span style="color:#50fa7b">getCurrentInstance</span><span style="color:#ff79c6">().</span><span style="color:#50fa7b">getViewRoot</span><span style="color:#ff79c6">().</span><span style="color:#50fa7b">getViewMap</span><span style="color:#ff79c6">().</span><span style="color:#50fa7b">remove</span><span style="color:#ff79c6">(</span>name<span style="color:#ff79c6">);</span>
+	<span style="color:#ff79c6">}</span>
 
-	<span style="color:#75af00">@Override</span>
-	<span style="color:#00a8c8">public</span> <span style="color:#111">Object</span> <span style="color:#75af00">resolveContextualObject</span><span style="color:#f92672">(</span><span style="color:#111">String</span> <span style="color:#111">arg0</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-		<span style="color:#00a8c8">return</span> <span style="color:#00a8c8">null</span><span style="color:#f92672">;</span>
-	<span style="color:#f92672">}</span>
+	@Override
+	<span style="color:#8be9fd;font-style:italic">public</span> Object <span style="color:#50fa7b">resolveContextualObject</span><span style="color:#ff79c6">(</span>String arg0<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
+		<span style="color:#ff79c6">return</span> <span style="color:#ff79c6">null</span><span style="color:#ff79c6">;</span>
+	<span style="color:#ff79c6">}</span>
 
-<span style="color:#f92672">}</span></code></pre></div>
+<span style="color:#ff79c6">}</span></code></pre></div>
 <p>準備1個<code>BeanFactoryPostProcessor</code>，負責登記Scpoe名稱與對應的Scope物件</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> <span style="color:#111">org.springframework.beans.BeansException</span><span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> <span style="color:#111">org.springframework.beans.factory.config.BeanFactoryPostProcessor</span><span style="color:#f92672">;</span>
-<span style="color:#f92672">import</span> <span style="color:#111">org.springframework.beans.factory.config.ConfigurableListableBeanFactory</span><span style="color:#f92672">;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#ff79c6">import</span> org.springframework.beans.BeansException<span style="color:#ff79c6">;</span>
+<span style="color:#ff79c6">import</span> org.springframework.beans.factory.config.BeanFactoryPostProcessor<span style="color:#ff79c6">;</span>
+<span style="color:#ff79c6">import</span> org.springframework.beans.factory.config.ConfigurableListableBeanFactory<span style="color:#ff79c6">;</span>
 
-<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">CustomerBeanFactoryPostProcessor</span> <span style="color:#00a8c8">implements</span> <span style="color:#111">BeanFactoryPostProcessor</span> <span style="color:#f92672">{</span>
-	<span style="color:#75af00">@Override</span>
-	<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">postProcessBeanFactory</span><span style="color:#f92672">(</span><span style="color:#111">ConfigurableListableBeanFactory</span> <span style="color:#111">beanFactory</span><span style="color:#f92672">)</span> <span style="color:#00a8c8">throws</span> <span style="color:#111">BeansException</span> <span style="color:#f92672">{</span>
-		<span style="color:#111">beanFactory</span><span style="color:#f92672">.</span><span style="color:#75af00">registerScope</span><span style="color:#f92672">(</span><span style="color:#111">ViewScope</span><span style="color:#f92672">.</span><span style="color:#75af00">SCOPE_NAME</span><span style="color:#f92672">,</span> <span style="color:#00a8c8">new</span> <span style="color:#111">ViewScope</span><span style="color:#f92672">());</span>
-	<span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span></code></pre></div>
+<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">CustomerBeanFactoryPostProcessor</span> <span style="color:#8be9fd;font-style:italic">implements</span> BeanFactoryPostProcessor <span style="color:#ff79c6">{</span>
+	@Override
+	<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">postProcessBeanFactory</span><span style="color:#ff79c6">(</span>ConfigurableListableBeanFactory beanFactory<span style="color:#ff79c6">)</span> <span style="color:#8be9fd;font-style:italic">throws</span> BeansException <span style="color:#ff79c6">{</span>
+		beanFactory<span style="color:#ff79c6">.</span><span style="color:#50fa7b">registerScope</span><span style="color:#ff79c6">(</span>ViewScope<span style="color:#ff79c6">.</span><span style="color:#50fa7b">SCOPE_NAME</span><span style="color:#ff79c6">,</span> <span style="color:#ff79c6">new</span> ViewScope<span style="color:#ff79c6">());</span>
+	<span style="color:#ff79c6">}</span>
+<span style="color:#ff79c6">}</span></code></pre></div>
 <p>將客製的<code>BeanFactoryPostProcessor</code>登記為Bean</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75af00">@Configuration</span>
-<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">CustomScopeConfig</span> <span style="color:#f92672">{</span>
-	<span style="color:#75af00">@Bean</span>
-	<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">static</span> <span style="color:#111">BeanFactoryPostProcessor</span> <span style="color:#75af00">beanFactoryPostProcessor</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-		<span style="color:#00a8c8">return</span> <span style="color:#00a8c8">new</span> <span style="color:#111">CustomerBeanFactoryPostProcessor</span><span style="color:#f92672">();</span>
-	<span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span></code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">@Configuration
+<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">CustomScopeConfig</span> <span style="color:#ff79c6">{</span>
+	@Bean
+	<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> BeanFactoryPostProcessor <span style="color:#50fa7b">beanFactoryPostProcessor</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+		<span style="color:#ff79c6">return</span> <span style="color:#ff79c6">new</span> CustomerBeanFactoryPostProcessor<span style="color:#ff79c6">();</span>
+	<span style="color:#ff79c6">}</span>
+<span style="color:#ff79c6">}</span></code></pre></div>
 <p>使用方式</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75af00">@Component</span>
-<span style="color:#75af00">@Scope</span><span style="color:#f92672">(</span><span style="color:#111">ViewScope</span><span style="color:#f92672">.</span><span style="color:#75af00">SCOPE_NAME</span><span style="color:#f92672">)</span>
-<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">PageView</span> <span style="color:#f92672">{</span>
-<span style="color:#f92672">}</span></code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">@Component
+@Scope<span style="color:#ff79c6">(</span>ViewScope<span style="color:#ff79c6">.</span><span style="color:#50fa7b">SCOPE_NAME</span><span style="color:#ff79c6">)</span>
+<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">PageView</span> <span style="color:#ff79c6">{</span>
+<span style="color:#ff79c6">}</span></code></pre></div>
 
     
     
