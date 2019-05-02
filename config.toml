@@ -69,3 +69,18 @@ weight = 10
 #name = "<i class='fa fa-bullhorn'></i> <label>Credits</label>"
 #url = "/credits"
 #weight = 30
+
+
+[params.homepage_meta_tags]
+meta_description = "Kiwislice's notes."
+meta_og_title = "Kiwislice的學習筆記"
+meta_og_type = "website"
+meta_og_url = "https://kiwislice.github.io/html-css-js-memo/"
+meta_og_image = ""
+meta_og_description = "Kiwislice's notes."
+meta_twitter_card = ""
+meta_twitter_site = ""
+meta_twitter_creator = ""
+
+
+
