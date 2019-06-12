@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-05-02T10:56:24 CST">
+<meta name="revised" content="2019-06-12T09:13:58 CST">
 
 <meta name="description" content="Kiwislice&#39;s notes." />
 <meta property="og:title" content="Kiwislice的學習筆記" />
@@ -110,10 +110,46 @@
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
+      <li data-nav-id="/html-css-js-memo/java/spring/javax-validation/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/java/spring/javax-validation/">
+            使用javax.validation
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/html-css-js-memo/java/spring/hibernate-timezone/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/java/spring/hibernate-timezone/">
+            Hibernate時區設定
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
       <li data-nav-id="/html-css-js-memo/java/spring/custom-scope/" class="dd-item">
         <div>
           <a href="/html-css-js-memo/java/spring/custom-scope/">
             自定義Scope
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/html-css-js-memo/java/jpa/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/java/jpa/">Jpa</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/html-css-js-memo/java/jpa/one-to-many/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/java/jpa/one-to-many/">
+            @OneToMany
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/html-css-js-memo/java/jpa/entity-extends/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/java/jpa/entity-extends/">
+            Entity的繼承
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -198,6 +234,21 @@
       <a href="/html-css-js-memo/algorithm/coursera/">Coursera</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
+    <li data-nav-id="/html-css-js-memo/algorithm/coursera/algorithms-part-ii/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/algorithm/coursera/algorithms-part-ii/">Algorithms, Part II</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/html-css-js-memo/algorithm/coursera/algorithms-part-ii/algorithms-part2-week1/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/algorithm/coursera/algorithms-part-ii/algorithms-part2-week1/">
+            Week 1 編程作業:WordNet
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
     <li data-nav-id="/html-css-js-memo/algorithm/coursera/algorithms-part-i/" class="dd-item haschildren
         ">
       <div>
@@ -278,8 +329,13 @@
     <option value="/html-css-js-memo/java/spring/"  selected>
   - 
    Spring</option> 
+      <option value="/html-css-js-memo/java/spring/javax-validation/" >-- 使用javax.validation</option>
+      <option value="/html-css-js-memo/java/spring/hibernate-timezone/" >-- Hibernate時區設定</option>
       <option value="/html-css-js-memo/java/spring/custom-scope/" >-- 自定義Scope</option>
   
+    <option value="/html-css-js-memo/java/jpa/" >
+  - 
+   Jpa</option>
   
     <option value="/html-css-js-memo/web/" >
    Web雜項</option>
@@ -338,6 +394,63 @@
 
 	<tr class="post java">
     <td class="text-truncate-3-line">
+        <a href="/html-css-js-memo/java/spring/javax-validation/">
+            <p>使用javax.validation</p>
+        </a>
+        
+        
+        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/spring/">spring</a>
+        
+        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/hibernate/">hibernate</a>
+        
+        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/validation/">validation</a>
+        
+        
+    </td>
+    <td class="text-truncate-3-line">
+        <p>目標：在Spring+JSF專案上使用javax.validation，用標籤即可達到基本檢查
+ 根據https://beanvalidation.org/2.0/有實作的包似乎只有Hibernate Validator
+ public class Sysclitime { /** 診別代碼(PK) */ @Id @NotBlank private String code; /** 語系代碼(PK) */ @Id @NotBlank private String langcode; /** 診別名稱 */ @Size(min=0, max=10) private String name; } 遇到的問題 訊息沒有繁體中文 所有訊息都放在hibernate-validator.jar的org.hibernate.validator中，但就是沒有繁中，因此只好複製修改一份放在src/main/resource內的最外層，也就是跟application.properties放一起，似乎有設定可以指定位置，但沒有特別研究
+客製的訊息 預設訊息內容雖然清楚，但對於表單輸入總是需要說明是哪個欄位有怎樣的問題，因此需要在預設訊息前面加上欄位名稱。因此需要自定MessageInterpolator(參考)，但實作起來頗為麻煩，因此改為在驗證完取得Set&lt;ConstraintViolation&lt;Object&gt;&gt;後另外處理
+JSF的自動檢查 由於JSF在validation階段就會自動啟用檢查，是滿方便的，但要改成客製的Validator好像有點麻煩，因此可以用&lt;f:validateBean disabled=&quot;true&quot;&gt;把全範圍包起來，就完全關閉JSF自動檢查了
+Spring與Hibernate沒有共用Validator 預期進行檢查的時間點是在進資料庫之前，也就是Repository的操作，而此時Hibernate也確實會自動進行檢查。由於需要客製訊息，因此需要替換預設的Validator。Spring可以透過設定Bean來替換，但Spring的Validator跟Hibernate沒有共用*1,*2，所以需要直接替換Hibernate的Validator，考慮所有設定都透過Spring型式，就沒再研究
+@Bean public Validator validator(MessageSource messageSource) { LocalValidatorFactoryBean factory = new LocalValidatorFactoryBean(); factory.setValidationMessageSource(messageSource); return factory; } 結論 由於需要訊息前方加上欄位名稱，如果無法在MessageInterpolator達成，就勢必要手動觸發驗證。要在MessageInterpolator達成，就需要替換Hibernate的Validator</p>
+    </td>
+</tr>
+
+
+
+
+	<tr class="post java">
+    <td class="text-truncate-3-line">
+        <a href="/html-css-js-memo/java/spring/hibernate-timezone/">
+            <p>Hibernate時區設定</p>
+        </a>
+        
+        
+        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/spring/">spring</a>
+        
+        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/hibernate/">hibernate</a>
+        
+        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/time/">time</a>
+        
+        
+    </td>
+    <td class="text-truncate-3-line">
+        <p>需要應付不同時區時，資料庫儲存UTC+0的時間，頁面動態決定要顯示的時區。但從資料庫取出的java.util.Date會自動設定為環境預設時區
+方案1 修改JVM預設時區：
+java -Duser.timezone=UTC -jar project.jar 或是
+@SpringBootApplication public class Application { @PostConstruct void started() { TimeZone.setDefault(TimeZone.getTimeZone(&#34;UTC&#34;)); } public static void main(String[] args) { SpringApplication.run(Application.class, args); } } 方案2 用Hibernate的話可以設定JDBC時區
+spring.jpa.properties.hibernate.jdbc.time_zone = UTC 參考資料
+https://moelholm.com/2016/11/09/spring-boot-controlling-timezones-with-hibernate/</p>
+    </td>
+</tr>
+
+
+
+
+	<tr class="post java">
+    <td class="text-truncate-3-line">
         <a href="/html-css-js-memo/java/spring/custom-scope/">
             <p>自定義Scope</p>
         </a>
@@ -391,7 +504,7 @@ import org.springframework.beans.factory.ObjectFactory; import org.springframewo
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i> Last update on 16/04/2019
+        <i class='fa fa-calendar'></i> Last update on 10/06/2019
     </div>
     
 

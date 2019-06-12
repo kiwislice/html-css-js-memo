@@ -44,4 +44,5 @@ description = ""
 - [Coursera](https://www.coursera.org/)
 - [Swagger](https://swagger.io/)
 - [Java反組譯工具](<https://github.com/java-decompiler/jd-gui>)
+- [Algorithms, 4th Edition](<https://algs4.cs.princeton.edu/cheatsheet/>)
 

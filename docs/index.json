@@ -1,5 +1,12 @@
 [
 {
+	"uri": "https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-ii/algorithms-part2-week1/",
+	"title": "Week 1 編程作業:WordNet",
+	"tags": ["coursera", "Algorithms, Part II", "algorithm", "graph", "directed graph"],
+	"description": "",
+	"content": " 編程作業: WordNet 100分\n 檢查沒有環且同根 如果自製BFS可以更快(搜尋到共同祖先即停止)  WordNet.java import java.util.HashMap; import java.util.HashSet; import java.util.Iterator; import java.util.Map; import java.util.Set; import edu.princeton.cs.algs4.Digraph; import edu.princeton.cs.algs4.DirectedCycle; import edu.princeton.cs.algs4.In; public class WordNet { private final Map\u0026lt;Integer, String\u0026gt; synsetsById; private final Map\u0026lt;String, Set\u0026lt;Integer\u0026gt;\u0026gt; synsets; private final Digraph digraph; private final SAP sap; private final Iterable\u0026lt;String\u0026gt; iterable = () -\u0026gt; new NounsIterator(); // constructor takes the name of the two input files \tpublic WordNet(String synsets, String hypernyms) { this(new In(requireNonNull(synsets)), new In(requireNonNull(hypernyms))); } private WordNet(In synsets, In hypernyms) { requireNonNull(synsets); requireNonNull(hypernyms); this.synsetsById = new HashMap\u0026lt;\u0026gt;(); this.synsets = new HashMap\u0026lt;\u0026gt;(); int maxId = readSynsets(synsets); this.digraph = new Digraph(maxId + 1); initDigraphByHypernyms(this.digraph, hypernyms); this.sap = new SAP(this.digraph); requireNoCycle(this.digraph); requireOneRoot(this.digraph); } private int readSynsets(In in) { int maxId = 0; while (in.hasNextLine()) { String[] ar = in.readLine().split(\u0026#34;,\u0026#34;); int id = Integer.parseInt(ar[0]); this.synsetsById.put(id, ar[1]); String[] sar = ar[1].split(\u0026#34;\\\\s+\u0026#34;); for (String s : sar) { Set\u0026lt;Integer\u0026gt; idset = this.synsets.get(s); if (idset == null) { idset = new HashSet\u0026lt;\u0026gt;(); this.synsets.put(s, idset); } idset.add(id); } maxId = maxId \u0026lt; id ? id : maxId; } return maxId; } private static void initDigraphByHypernyms(Digraph digraph, In in) { while (in.hasNextLine()) { String[] ar = in.readLine().split(\u0026#34;,\u0026#34;); int id = Integer.parseInt(ar[0]); for (int c = 1; c \u0026lt; ar.length; c++) { int up = Integer.parseInt(ar[c]); digraph.addEdge(id, up); } } } // returns all WordNet nouns \tpublic Iterable\u0026lt;String\u0026gt; nouns() { return iterable; } // is the word a WordNet noun? \tpublic boolean isNoun(String word) { requireNonNull(word); return this.synsets.containsKey(word); } // distance between nounA and nounB (defined below) \tpublic int distance(String nounA, String nounB) { requireNoun(nounA); requireNoun(nounB); Set\u0026lt;Integer\u0026gt; idA = this.synsets.get(nounA); Set\u0026lt;Integer\u0026gt; idB = this.synsets.get(nounB); return this.sap.length(idA, idB); } // a synset (second field of synsets.txt) that is the common ancestor of nounA \t// and nounB \t// in a shortest ancestral path (defined below) \tpublic String sap(String nounA, String nounB) { requireNoun(nounA); requireNoun(nounB); Set\u0026lt;Integer\u0026gt; idA = this.synsets.get(nounA); Set\u0026lt;Integer\u0026gt; idB = this.synsets.get(nounB); int ancestor = this.sap.ancestor(idA, idB); return this.synsetsById.get(ancestor); } private static \u0026lt;T\u0026gt; T requireNonNull(T obj) { if (obj == null) throw new IllegalArgumentException(); return obj; } private String requireNoun(String s) { if (!isNoun(s)) throw new IllegalArgumentException(); return s; } private static Digraph requireNoCycle(Digraph G) { DirectedCycle dc = new DirectedCycle(G); if (dc.hasCycle()) throw new IllegalArgumentException(); return G; } private static void requireOneRoot(Digraph G) { int count = 0; for (int i = 0; i \u0026lt; G.V(); i++) { if (G.outdegree(i) == 0) count++; } if (count != 1) throw new IllegalArgumentException(); } private class NounsIterator implements Iterator\u0026lt;String\u0026gt; { private final Iterator\u0026lt;String\u0026gt; it = synsets.keySet().iterator(); @Override public boolean hasNext() { return it.hasNext(); } @Override public String next() { return it.next(); } } } SAP.java import java.util.HashMap; import java.util.Map; import edu.princeton.cs.algs4.BreadthFirstDirectedPaths; import edu.princeton.cs.algs4.Digraph; public class SAP { private final Digraph G; private final Map\u0026lt;IdPair, Result\u0026gt; cache; // constructor takes a digraph (not necessarily a DAG) \tpublic SAP(Digraph G) { requireNonNull(G); this.G = G; this.cache = new HashMap\u0026lt;\u0026gt;(); } // length of shortest ancestral path between v and w; -1 if no such path \tpublic int length(int v, int w) { validateVertex(v); validateVertex(w); IdPair idPair = new IdPair(v, w); Result result = cache.get(idPair); if (result == null) { result = sap(v, w); cache.put(idPair, result); } return result.length; } // a common ancestor of v and w that participates in a shortest ancestral path; \t// -1 if no such path \tpublic int ancestor(int v, int w) { validateVertex(v); validateVertex(w); IdPair idPair = new IdPair(v, w); Result result = cache.get(idPair); if (result == null) { result = sap(v, w); cache.put(idPair, result); } return result.ancestor; } // length of shortest ancestral path between any vertex in v and any vertex in \t// w; -1 if no such path \tpublic int length(Iterable\u0026lt;Integer\u0026gt; v, Iterable\u0026lt;Integer\u0026gt; w) { requireNonNull(v); requireNonNull(w); BreadthFirstDirectedPaths bfdpV = new BreadthFirstDirectedPaths(this.G, v); BreadthFirstDirectedPaths bfdpW = new BreadthFirstDirectedPaths(this.G, w); return sap(bfdpV, bfdpW).length; } // a common ancestor that participates in shortest ancestral path; -1 if no such \t// path \tpublic int ancestor(Iterable\u0026lt;Integer\u0026gt; v, Iterable\u0026lt;Integer\u0026gt; w) { requireNonNull(v); requireNonNull(w); BreadthFirstDirectedPaths bfdpV = new BreadthFirstDirectedPaths(this.G, v); BreadthFirstDirectedPaths bfdpW = new BreadthFirstDirectedPaths(this.G, w); return sap(bfdpV, bfdpW).ancestor; } private Result sap(int idA, int idB) { if (idA == idB) { return new Result(0, idA); } BreadthFirstDirectedPaths bfdpV = new BreadthFirstDirectedPaths(this.G, idA); BreadthFirstDirectedPaths bfdpW = new BreadthFirstDirectedPaths(this.G, idB); return sap(bfdpV, bfdpW); } private Result sap(BreadthFirstDirectedPaths v, BreadthFirstDirectedPaths w) { int length = -1; int ancestor = -1; for (int i = 0; i \u0026lt; this.G.V(); i++) { if (v.hasPathTo(i) \u0026amp;\u0026amp; w.hasPathTo(i)) { if (length \u0026lt; 0 || length \u0026gt; v.distTo(i) + w.distTo(i)) { length = v.distTo(i) + w.distTo(i); ancestor = i; } } } return new Result(length, ancestor); } private static \u0026lt;T\u0026gt; T requireNonNull(T obj) { if (obj == null) throw new IllegalArgumentException(); return obj; } private static \u0026lt;T\u0026gt; Iterable\u0026lt;T\u0026gt; requireNonNull(Iterable\u0026lt;T\u0026gt; obj) { if (obj == null) throw new IllegalArgumentException(); for (T o : obj) if (o == null) throw new IllegalArgumentException(); return obj; } private void validateVertex(int v) { int V = this.G.V(); if (v \u0026lt; 0 || v \u0026gt;= V) throw new IllegalArgumentException(); } private static class IdPair { private final int idMin; private final int idMax; IdPair(int idA, int idB) { if (idA \u0026lt;= idB) { this.idMin = idA; this.idMax = idB; } else { this.idMin = idB; this.idMax = idA; } } @Override public int hashCode() { final int prime = 31; int result = 1; result = prime * result + idMax; result = prime * result + idMin; return result; } @Override public boolean equals(Object obj) { if (this == obj) return true; if (obj == null) return false; if (getClass() != obj.getClass()) return false; IdPair other = (IdPair) obj; if (idMax != other.idMax) return false; if (idMin != other.idMin) return false; return true; } } private static class Result { private final int length; private final int ancestor; Result(int length, int ancestor) { this.length = length; this.ancestor = ancestor; } } } Outcast.java public class Outcast { private final WordNet wordnet; public Outcast(WordNet wordnet) { this.wordnet = wordnet; } public String outcast(String[] nouns) { long[] ds = new long[nouns.length]; int maxIndex = 0; for (int i = 0; i \u0026lt; nouns.length; i++) { for (int j = i + 1; j \u0026lt; nouns.length; j++) { int d = this.wordnet.distance(nouns[i], nouns[j]); ds[i] += d; ds[j] += d; if (ds[maxIndex] \u0026lt; ds[i]) maxIndex = i; if (ds[maxIndex] \u0026lt; ds[j]) maxIndex = j; } } return nouns[maxIndex]; } }"
+},
+{
 	"uri": "https://kiwislice.github.io/html-css-js-memo/algorithm/union-find/",
 	"title": "Uinon-Find Algorithm",
 	"tags": ["algorithm", "union-find"],
@@ -105,15 +112,57 @@
 	"content": " 編程作業: Kd-Trees 100分關鍵在如果當前最短距離\u0026gt;區域到點最短距離時才找，區域到點的最短距離可先用點到線的距離比過\nPointSET.java import java.util.LinkedList; import java.util.List; import java.util.TreeSet; import edu.princeton.cs.algs4.Point2D; import edu.princeton.cs.algs4.RectHV; public class PointSET { private TreeSet\u0026lt;Point2D\u0026gt; set; public PointSET() { this.set = new TreeSet\u0026lt;\u0026gt;(); } public boolean isEmpty() { return this.set.isEmpty(); } public int size() { return this.set.size(); } public void insert(Point2D p) { requireNonNull(p); this.set.add(p); } public boolean contains(Point2D p) { requireNonNull(p); return this.set.contains(p); } public void draw() { for (Point2D p : this.set) p.draw(); } public Iterable\u0026lt;Point2D\u0026gt; range(RectHV rect) { requireNonNull(rect); List\u0026lt;Point2D\u0026gt; rtn = new LinkedList\u0026lt;\u0026gt;(); for (Point2D anyP : this.set) { if (rect.contains(anyP)) { rtn.add(anyP); } } return rtn; } public Point2D nearest(Point2D p) { requireNonNull(p); double minDis = Double.MAX_VALUE; Point2D rtn = null; for (Point2D anyP : this.set) { double dis = p.distanceSquaredTo(anyP); if (dis \u0026lt; minDis) { minDis = dis; rtn = anyP; } } return rtn; } private static void requireNonNull(Object o) { if (o == null) throw new java.lang.IllegalArgumentException(); } } KdTree.java import java.util.LinkedList; import java.util.List; import edu.princeton.cs.algs4.Point2D; import edu.princeton.cs.algs4.RectHV; import edu.princeton.cs.algs4.StdDraw; public class KdTree { private Node root; private int size; public KdTree() { } public boolean isEmpty() { return this.root == null; } public int size() { return this.size; } public void insert(Point2D p) { requireNonNull(p); this.root = put(root, p, true); } private Node put(Node n, Point2D p, boolean byX) { if (n == null) { this.size++; Node rtn = new Node(p); //\trtn.index = this.size; \treturn rtn; } if (n.p.x() == p.x() \u0026amp;\u0026amp; n.p.y() == p.y()) return n; boolean goLeft = (byX \u0026amp;\u0026amp; p.x() \u0026lt; n.p.x()) || (!byX \u0026amp;\u0026amp; p.y() \u0026lt; n.p.y()); if (goLeft) { n.left = put(n.left, p, !byX); } else { n.right = put(n.right, p, !byX); } return n; } public boolean contains(Point2D p) { requireNonNull(p); return find(this.root, p, true) != null; } private Node find(Node n, Point2D p, boolean byX) { if (n == null) return null; if (n.p.x() == p.x() \u0026amp;\u0026amp; n.p.y() == p.y()) return n; boolean goLeft = (byX \u0026amp;\u0026amp; p.x() \u0026lt; n.p.x()) || (!byX \u0026amp;\u0026amp; p.y() \u0026lt; n.p.y()); if (goLeft) { return find(n.left, p, !byX); } else { return find(n.right, p, !byX); } } public void draw() { preorderDraw(this.root, true, new RectHV(0, 0, 1, 1)); } private static void preorderDraw(Node n, boolean byX, RectHV rect) { if (n == null) return; StdDraw.setPenColor(StdDraw.BLACK); StdDraw.setPenRadius(0.01); n.p.draw(); //\tStdDraw.text(n.p.x(), n.p.y(), String.valueOf(n.index));  if (byX) { StdDraw.setPenColor(StdDraw.RED); StdDraw.setPenRadius(0.003); StdDraw.line(n.p.x(), rect.ymin(), n.p.x(), rect.ymax()); preorderDraw(n.left, !byX, new RectHV(rect.xmin(), rect.ymin(), n.p.x(), rect.ymax())); preorderDraw(n.right, !byX, new RectHV(n.p.x(), rect.ymin(), rect.xmax(), rect.ymax())); } else { StdDraw.setPenColor(StdDraw.BLUE); StdDraw.setPenRadius(0.003); StdDraw.line(rect.xmin(), n.p.y(), rect.xmax(), n.p.y()); preorderDraw(n.left, !byX, new RectHV(rect.xmin(), rect.ymin(), rect.xmax(), n.p.y())); preorderDraw(n.right, !byX, new RectHV(rect.xmin(), n.p.y(), rect.xmax(), rect.ymax())); } } public Iterable\u0026lt;Point2D\u0026gt; range(RectHV rect) { requireNonNull(rect); List\u0026lt;Point2D\u0026gt; rtn = new LinkedList\u0026lt;\u0026gt;(); find(this.root, rect, true, rtn); return rtn; } private static void find(Node n, RectHV rect, boolean byX, List\u0026lt;Point2D\u0026gt; rtn) { if (n == null) return; if (rect.contains(n.p)) { rtn.add(n.p); find(n.left, rect, !byX, rtn); find(n.right, rect, !byX, rtn); return; } if (byX) { if (rect.xmin() \u0026lt;= n.p.x() \u0026amp;\u0026amp; n.p.x() \u0026lt;= rect.xmax()) { find(n.left, rect, !byX, rtn); find(n.right, rect, !byX, rtn); } else if (rect.xmax() \u0026lt; n.p.x()) { find(n.left, rect, !byX, rtn); } else { find(n.right, rect, !byX, rtn); } } else { if (rect.ymin() \u0026lt;= n.p.y() \u0026amp;\u0026amp; n.p.y() \u0026lt;= rect.ymax()) { find(n.left, rect, !byX, rtn); find(n.right, rect, !byX, rtn); } else if (rect.ymax() \u0026lt; n.p.y()) { find(n.left, rect, !byX, rtn); } else { find(n.right, rect, !byX, rtn); } } } public Point2D nearest(Point2D p) { requireNonNull(p); FindNearestData data = new FindNearestData(); findNearest(this.root, p, true, data, new RectHV(0, 0, 1, 1)); Point2D nearest = data.nearest == null ? null : data.nearest.p; return nearest; } private void findNearest(Node n, Point2D p, boolean byX, FindNearestData data, RectHV findIn) { //\tSystem.out.println(\u0026#34;findNearest \u0026#34; + n); \tif (n == null) return; double disToLine = byX ? n.p.x() - p.x() : n.p.y() - p.y(); disToLine = Math.abs(disToLine); if (data.minDis \u0026gt;= disToLine) { double disToP = n.p.distanceTo(p); if (disToP \u0026lt; data.minDis) { data.minDis = disToP; data.nearest = n; } if (data.minDis == 0) return; } boolean goLeftFirst = (byX \u0026amp;\u0026amp; p.x() \u0026lt; n.p.x()) || (!byX \u0026amp;\u0026amp; p.y() \u0026lt; n.p.y()); if (goLeftFirst) { if (n.left != null) { findNearest(n.left, p, !byX, data, nextRect(findIn, n, byX, true)); } if (n.right != null \u0026amp;\u0026amp; data.minDis \u0026gt; disToLine) { RectHV nextRect = nextRect(findIn, n, byX, false); if (data.minDis \u0026gt; nextRect.distanceTo(p)) findNearest(n.right, p, !byX, data, nextRect); } } else { if (n.right != null) { findNearest(n.right, p, !byX, data, nextRect(findIn, n, byX, false)); } if (n.left != null \u0026amp;\u0026amp; data.minDis \u0026gt; disToLine) { RectHV nextRect = nextRect(findIn, n, byX, true); if (data.minDis \u0026gt; nextRect.distanceTo(p)) findNearest(n.left, p, !byX, data, nextRect); } } } private static RectHV nextRect(RectHV curFindIn, Node curNode, boolean curByX, boolean goLeft) { if (curByX) { if (goLeft) return new RectHV(curFindIn.xmin(), curFindIn.ymin(), curNode.p.x(), curFindIn.ymax()); else return new RectHV(curNode.p.x(), curFindIn.ymin(), curFindIn.xmax(), curFindIn.ymax()); } else { if (goLeft) return new RectHV(curFindIn.xmin(), curFindIn.ymin(), curFindIn.xmax(), curNode.p.y()); else return new RectHV(curFindIn.xmin(), curNode.p.y(), curFindIn.xmax(), curFindIn.ymax()); } } private static class FindNearestData { Node nearest = null; double minDis = Double.MAX_VALUE; } private static void requireNonNull(Object o) { if (o == null) throw new java.lang.IllegalArgumentException(); } private static class Node { Node left; Node right; Point2D p; //\tint index = -1;  Node(Point2D p) { this.p = p; } @Override public String toString() { return String.valueOf(p); } } }"
 },
 {
-	"uri": "https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/",
-	"title": "Algorithms, Part I",
+	"uri": "https://kiwislice.github.io/html-css-js-memo/java/spring/",
+	"title": "Spring",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://kiwislice.github.io/html-css-js-memo/java/spring/",
-	"title": "Spring",
+	"uri": "https://kiwislice.github.io/html-css-js-memo/java/spring/javax-validation/",
+	"title": "使用javax.validation",
+	"tags": ["spring", "hibernate", "validation"],
+	"description": "",
+	"content": " 目標：在Spring+JSF專案上使用javax.validation，用標籤即可達到基本檢查\n 根據https://beanvalidation.org/2.0/有實作的包似乎只有Hibernate Validator\n public class Sysclitime { /** 診別代碼(PK) */ @Id @NotBlank private String code; /** 語系代碼(PK) */ @Id @NotBlank private String langcode; /** 診別名稱 */ @Size(min=0, max=10) private String name; } 遇到的問題 訊息沒有繁體中文 所有訊息都放在hibernate-validator.jar的org.hibernate.validator中，但就是沒有繁中，因此只好複製修改一份放在src/main/resource內的最外層，也就是跟application.properties放一起，似乎有設定可以指定位置，但沒有特別研究\n客製的訊息 預設訊息內容雖然清楚，但對於表單輸入總是需要說明是哪個欄位有怎樣的問題，因此需要在預設訊息前面加上欄位名稱。因此需要自定MessageInterpolator(參考)，但實作起來頗為麻煩，因此改為在驗證完取得Set\u0026lt;ConstraintViolation\u0026lt;Object\u0026gt;\u0026gt;後另外處理\nJSF的自動檢查 由於JSF在validation階段就會自動啟用檢查，是滿方便的，但要改成客製的Validator好像有點麻煩，因此可以用\u0026lt;f:validateBean disabled=\u0026quot;true\u0026quot;\u0026gt;把全範圍包起來，就完全關閉JSF自動檢查了\nSpring與Hibernate沒有共用Validator 預期進行檢查的時間點是在進資料庫之前，也就是Repository的操作，而此時Hibernate也確實會自動進行檢查。由於需要客製訊息，因此需要替換預設的Validator。Spring可以透過設定Bean來替換，但Spring的Validator跟Hibernate沒有共用*1,*2，所以需要直接替換Hibernate的Validator，考慮所有設定都透過Spring型式，就沒再研究\n@Bean public Validator validator(MessageSource messageSource) { LocalValidatorFactoryBean factory = new LocalValidatorFactoryBean(); factory.setValidationMessageSource(messageSource); return factory; } 結論 由於需要訊息前方加上欄位名稱，如果無法在MessageInterpolator達成，就勢必要手動觸發驗證。要在MessageInterpolator達成，就需要替換Hibernate的Validator\n"
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/java/jpa/one-to-many/",
+	"title": "@OneToMany",
+	"tags": ["jpa"],
+	"description": "",
+	"content": " 簡易範例 @Entity @Table(name = \u0026#34;staf\u0026#34;) public class Staf implements Serializable { private static final long serialVersionUID = 1L; /** 職員代碼(PK) */ @Id @GeneratedValue private int stafno; /** 職員編號 */ private String empid; /** 職員姓名 */ private String name; /** 職位 */ @OneToMany(mappedBy=\u0026#34;stafno\u0026#34;, fetch = FetchType.EAGER, cascade=CascadeType.ALL, orphanRemoval=true) private Set\u0026lt;Stafpositn\u0026gt; stafpositns; } 注意事項  建議使用fetch=FetchType.EAGER，如果使用LAZY據說要在@Transactional範圍內才不會沒有連線而報錯 cascade=CascadeType.ALL, orphanRemoval=true是為了從Set中移除物件並存檔時，可同步移除資料庫內容 建議使用Set取代List，如果使用@OneToMany List2個會報MultipleBagFetchException，參考這裡  "
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/java/jpa/entity-extends/",
+	"title": "Entity的繼承",
+	"tags": ["jpa"],
+	"description": "",
+	"content": " @Embeddable 如果只是要重複使用field，並且不介意多一層物件，可使用@Embeddable\n@Embeddable public class RC_OBJ implements Serializable { private static final long serialVersionUID = 1L; String rcuser; String rcdept; String rcdate; String rctime; String rcname; }@Entity @Table(name=\u0026#34;BCCNTRL\u0026#34;) public class BCCNTRL implements DeptDocument, ExecuteDocument { @Embedded @AttributeOverrides({ @AttributeOverride(name = \u0026#34;rcuser\u0026#34;, column = @Column(name = \u0026#34;RCUSER\u0026#34;)), @AttributeOverride(name = \u0026#34;rcdept\u0026#34;, column = @Column(name = \u0026#34;RCDEPT\u0026#34;)), @AttributeOverride(name = \u0026#34;rcdate\u0026#34;, column = @Column(name = \u0026#34;RCDATE\u0026#34;)), @AttributeOverride(name = \u0026#34;rctime\u0026#34;, column = @Column(name = \u0026#34;RCTIME\u0026#34;)), @AttributeOverride(name = \u0026#34;rcname\u0026#34;, column = @Column(name = \u0026#34;RCNAME\u0026#34;)), }) RC_OBJ rc; } @MappedSuperclass 如果只是要重複使用field，並且不介意Entity的extends被用掉，可使用@MappedSuperclass\n 需注意@MappedSuperclass不可與@Entity共用，會報錯：\norg.hibernate.AnnotationException: An entity cannot be annotated with both @Entity and @MappedSuperclass\n @MappedSuperclass class HospitalBaseEntity implements Serializable { private static final long serialVersionUID = 1L; /** 醫院編號(PK) */ @Id @GeneratedValue protected int hno; /** 醫院代碼(UK) */ protected String hcode; }@Entity @Table(name = \u0026#34;hospital\u0026#34;) public class Hospital extends HospitalBaseEntity { private static final long serialVersionUID = 1L; public Hospital copy() { return ReflectionTool.copyEntity(this); } } @Inheritance 尚未實際用過\n參考資料  https://vladmihalcea.com/the-best-way-to-use-entity-inheritance-with-jpa-and-hibernate/ https://vladmihalcea.com/how-to-inherit-properties-from-a-base-class-entity-using-mappedsuperclass-with-jpa-and-hibernate/ https://thoughts-on-java.org/complete-guide-inheritance-strategies-jpa-hibernate/  "
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/java/jpa/",
+	"title": "Jpa",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/java/spring/hibernate-timezone/",
+	"title": "Hibernate時區設定",
+	"tags": ["spring", "hibernate", "time"],
+	"description": "",
+	"content": " 需要應付不同時區時，資料庫儲存UTC+0的時間，頁面動態決定要顯示的時區。但從資料庫取出的java.util.Date會自動設定為環境預設時區\n方案1 修改JVM預設時區：\njava -Duser.timezone=UTC -jar project.jar 或是\n@SpringBootApplication public class Application { @PostConstruct void started() { TimeZone.setDefault(TimeZone.getTimeZone(\u0026#34;UTC\u0026#34;)); } public static void main(String[] args) { SpringApplication.run(Application.class, args); } } 方案2 用Hibernate的話可以設定JDBC時區\nspring.jpa.properties.hibernate.jdbc.time_zone = UTC 參考資料\nhttps://moelholm.com/2016/11/09/spring-boot-controlling-timezones-with-hibernate/\n"
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-ii/",
+	"title": "Algorithms, Part II",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/",
+	"title": "Algorithms, Part I",
 	"tags": [],
 	"description": "",
 	"content": ""
@@ -161,13 +210,6 @@
 	"content": ""
 },
 {
-	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/algorithms-part-i/",
-	"title": "Algorithms, Part I",
-	"tags": [],
-	"description": "",
-	"content": ""
-},
-{
 	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/",
 	"title": "Tags",
 	"tags": [],
@@ -175,8 +217,50 @@
 	"content": ""
 },
 {
-	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/a-star/",
-	"title": "a star",
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/hibernate/",
+	"title": "hibernate",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/spring/",
+	"title": "spring",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/validation/",
+	"title": "validation",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/",
+	"title": "學習筆記",
+	"tags": [],
+	"description": "",
+	"content": " 學習筆記 就是個忘記時方便查找的的筆記，順便紀錄各種測試與試作品.\nHtml-Css-Js相關網站  CSS w3schools Bootstrap4 w3schools Bootstrap官網 CodePen：線上編輯、測試、展示網站 免費處理中GIF下載 JS等價表 漸層色塊 互動小動畫 Google Font  Java Web相關網站  Spring Security Reference Spring Web MVC Reference Spring Boot Reference Guide Spring Data JPA Reference Lombok Maven Repository JSF Tag   其他  OWSAP Markdown Pastebin Coursera Swagger Java反組譯工具 Algorithms, 4th Edition  "
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/jpa/",
+	"title": "jpa",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/time/",
+	"title": "time",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/algorithms-part-ii/",
+	"title": "Algorithms, Part II",
 	"tags": [],
 	"description": "",
 	"content": ""
@@ -184,6 +268,41 @@
 {
 	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/algorithm/",
 	"title": "algorithm",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/coursera/",
+	"title": "coursera",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/directed-graph/",
+	"title": "directed graph",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/graph/",
+	"title": "graph",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/algorithms-part-i/",
+	"title": "Algorithms, Part I",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/a-star/",
+	"title": "a star",
 	"tags": [],
 	"description": "",
 	"content": ""
@@ -198,13 +317,6 @@
 {
 	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/cors/",
 	"title": "cors",
-	"tags": [],
-	"description": "",
-	"content": ""
-},
-{
-	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/coursera/",
-	"title": "coursera",
 	"tags": [],
 	"description": "",
 	"content": ""
@@ -301,13 +413,6 @@
 	"content": ""
 },
 {
-	"uri": "https://kiwislice.github.io/html-css-js-memo/",
-	"title": "學習筆記",
-	"tags": [],
-	"description": "",
-	"content": " 學習筆記 就是個忘記時方便查找的的筆記，順便紀錄各種測試與試作品.\nHtml-Css-Js相關網站  CSS w3schools Bootstrap4 w3schools Bootstrap官網 CodePen：線上編輯、測試、展示網站 免費處理中GIF下載 JS等價表 漸層色塊 互動小動畫 Google Font  Java Web相關網站  Spring Security Reference Spring Web MVC Reference Spring Boot Reference Guide Spring Data JPA Reference Lombok Maven Repository JSF Tag   其他  OWSAP Markdown Pastebin Coursera Swagger Java反組譯工具  "
-},
-{
 	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/javascript/",
 	"title": "javascript",
 	"tags": [],
@@ -324,13 +429,6 @@
 {
 	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/scope/",
 	"title": "scope",
-	"tags": [],
-	"description": "",
-	"content": ""
-},
-{
-	"uri": "https://kiwislice.github.io/html-css-js-memo/tags/spring/",
-	"title": "spring",
 	"tags": [],
 	"description": "",
 	"content": ""
@@ -382,7 +480,7 @@
 	"title": "Credits",
 	"tags": [],
 	"description": "contributors and packages used by hugo-theme-docdock",
-	"content": " github contributors .ghContributors{ display:flex; flex-flow: wrap; align-content: flex-start }\n.ghContributors \u0026gt; div{ width: 50% ; display: inline-flex; margin-bottom: 5px; } .ghContributors \u0026gt; div label{ padding-left: 4px ; } .ghContributors \u0026gt; div span{ font-size: x-small; padding-left: 4px ; }\n  @vjeantet 247 commits \n @matcornic 49 commits \n @W-Floyd 24 commits \n @Pilskalns 24 commits \n @gwleclerc 21 commits \n @lierdakil 16 commits \n @jose-oc 8 commits \n @SiamKreative 6 commits \n @Xipas 5 commits \n @altinnadmin 4 commits \n @FMuro 2 commits \n @EnigmaCurry 2 commits \n @aral 2 commits \n @adamlamar 1 commits \n @byzheng 1 commits \n @zivbk1 1 commits \n @cmrust 1 commits \n @damoon 1 commits \n @vielmetti 1 commits \n @erikjasiak 1 commits \n @giuliov 1 commits \n @farmergreg 1 commits \n @jodumont 1 commits \n @tarpdalton 1 commits \n @jamestharpe 1 commits \n @JohnBlood 1 commits \n @kamilchm 1 commits \n @lgfischer 1 commits \n @ripienaar 1 commits \n @rsanderscybraics 1 commits \n @shazic 1 commits \n @viertaxa 1 commits \n @uweschaefer 1 commits \n @wshayes 1 commits \n @eyoder 1 commits \n @ivan-danilov 1 commits \n @justin-yan 1 commits \n @karlmacklin 1 commits \n @petzi53 1 commits \n @remi31000 1 commits \n @xxxtonixxx 1 commits \n\nOther contribution  @bep supports and advices   @facette.io Flex style based on facette documentation theme, Thanks to @vbatoufflet  \nPackages and libraries  Bootstrap - front-end framework mermaid - generation of diagram and flowchart from text in a similar manner as markdown font awesome - the iconic font and CSS framework jQuery - The Write Less, Do More, JavaScript Library lunr - Lunr enables you to provide a great search experience without the need for external, server-side, search services\u0026hellip; JavaScript-autoComplete - An extremely lightweight and powerful vanilla JavaScript completion suggester. clipboard.js - copy text to clipboard highlight.js - Javascript syntax highlighter modernizr - A JavaScript toolkit that allows web developers to use new CSS3 and HTML5 features while maintaining a fine level of control over browsers that don\u0026rsquo;t support reveal-js - The HTML Presentation Framework  Tooling  Netlify - Continuous deployement and hosting of this documentation Hugo  \n"
+	"content": " github contributors .ghContributors{ display:flex; flex-flow: wrap; align-content: flex-start }\n.ghContributors \u0026gt; div{ width: 50% ; display: inline-flex; margin-bottom: 5px; } .ghContributors \u0026gt; div label{ padding-left: 4px ; } .ghContributors \u0026gt; div span{ font-size: x-small; padding-left: 4px ; }\n  @vjeantet 247 commits \n @matcornic 49 commits \n @W-Floyd 24 commits \n @Pilskalns 24 commits \n @gwleclerc 21 commits \n @lierdakil 16 commits \n @jose-oc 8 commits \n @SiamKreative 6 commits \n @Xipas 5 commits \n @altinnadmin 4 commits \n @FMuro 2 commits \n @EnigmaCurry 2 commits \n @aral 2 commits \n @adamlamar 1 commits \n @byzheng 1 commits \n @zivbk1 1 commits \n @damoon 1 commits \n @vielmetti 1 commits \n @erikjasiak 1 commits \n @giuliov 1 commits \n @farmergreg 1 commits \n @jodumont 1 commits \n @tarpdalton 1 commits \n @jamestharpe 1 commits \n @JohnBlood 1 commits \n @kamilchm 1 commits \n @lgfischer 1 commits \n @ripienaar 1 commits \n @rsanderscybraics 1 commits \n @shazic 1 commits \n @viertaxa 1 commits \n @uweschaefer 1 commits \n @wshayes 1 commits \n @eyoder 1 commits \n @ivan-danilov 1 commits \n @justin-yan 1 commits \n @karlmacklin 1 commits \n @petzi53 1 commits \n @remi31000 1 commits \n @xxxtonixxx 1 commits \n\nOther contribution  @bep supports and advices   @facette.io Flex style based on facette documentation theme, Thanks to @vbatoufflet  \nPackages and libraries  Bootstrap - front-end framework mermaid - generation of diagram and flowchart from text in a similar manner as markdown font awesome - the iconic font and CSS framework jQuery - The Write Less, Do More, JavaScript Library lunr - Lunr enables you to provide a great search experience without the need for external, server-side, search services\u0026hellip; JavaScript-autoComplete - An extremely lightweight and powerful vanilla JavaScript completion suggester. clipboard.js - copy text to clipboard highlight.js - Javascript syntax highlighter modernizr - A JavaScript toolkit that allows web developers to use new CSS3 and HTML5 features while maintaining a fine level of control over browsers that don\u0026rsquo;t support reveal-js - The HTML Presentation Framework  Tooling  Netlify - Continuous deployement and hosting of this documentation Hugo  \n"
 },
 {
 	"uri": "https://kiwislice.github.io/html-css-js-memo/showcase/",

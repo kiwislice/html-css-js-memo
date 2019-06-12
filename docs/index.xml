@@ -6,10 +6,20 @@
     <description>Recent content on 學習筆記</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
-    <lastBuildDate>Thu, 18 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 10 Jun 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kiwislice.github.io/html-css-js-memo/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Week 1 編程作業:WordNet</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-ii/algorithms-part2-week1/</link>
+      <pubDate>Wed, 15 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-ii/algorithms-part2-week1/</guid>
+      <description>編程作業: WordNet 100分
+ 檢查沒有環且同根 如果自製BFS可以更快(搜尋到共同祖先即停止)  WordNet.java import java.util.HashMap; import java.util.HashSet; import java.util.Iterator; import java.util.Map; import java.util.Set; import edu.princeton.cs.algs4.Digraph; import edu.princeton.cs.algs4.DirectedCycle; import edu.princeton.cs.algs4.In; public class WordNet { private final Map&amp;lt;Integer, String&amp;gt; synsetsById; private final Map&amp;lt;String, Set&amp;lt;Integer&amp;gt;&amp;gt; synsets; private final Digraph digraph; private final SAP sap; private final Iterable&amp;lt;String&amp;gt; iterable = () -&amp;gt; new NounsIterator(); // constructor takes the name of the two input files 	public WordNet(String synsets, String hypernyms) { this(new In(requireNonNull(synsets)), new In(requireNonNull(hypernyms))); } private WordNet(In synsets, In hypernyms) { requireNonNull(synsets); requireNonNull(hypernyms); this.</description>
+    </item>
     
     <item>
       <title>Uinon-Find Algorithm</title>
@@ -172,6 +182,54 @@ Board.java import java.util.ArrayList; import java.util.Arrays; import java.util
       <guid>https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-i/algorithms-part1-week5/</guid>
       <description>編程作業: Kd-Trees 100分關鍵在如果當前最短距離&amp;gt;區域到點最短距離時才找，區域到點的最短距離可先用點到線的距離比過
 PointSET.java import java.util.LinkedList; import java.util.List; import java.util.TreeSet; import edu.princeton.cs.algs4.Point2D; import edu.princeton.cs.algs4.RectHV; public class PointSET { private TreeSet&amp;lt;Point2D&amp;gt; set; public PointSET() { this.set = new TreeSet&amp;lt;&amp;gt;(); } public boolean isEmpty() { return this.set.isEmpty(); } public int size() { return this.set.size(); } public void insert(Point2D p) { requireNonNull(p); this.set.add(p); } public boolean contains(Point2D p) { requireNonNull(p); return this.set.contains(p); } public void draw() { for (Point2D p : this.set) p.</description>
+    </item>
+    
+    <item>
+      <title>使用javax.validation</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/java/spring/javax-validation/</link>
+      <pubDate>Mon, 10 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/java/spring/javax-validation/</guid>
+      <description>目標：在Spring+JSF專案上使用javax.validation，用標籤即可達到基本檢查
+ 根據https://beanvalidation.org/2.0/有實作的包似乎只有Hibernate Validator
+ public class Sysclitime { /** 診別代碼(PK) */ @Id @NotBlank private String code; /** 語系代碼(PK) */ @Id @NotBlank private String langcode; /** 診別名稱 */ @Size(min=0, max=10) private String name; } 遇到的問題 訊息沒有繁體中文 所有訊息都放在hibernate-validator.jar的org.hibernate.validator中，但就是沒有繁中，因此只好複製修改一份放在src/main/resource內的最外層，也就是跟application.properties放一起，似乎有設定可以指定位置，但沒有特別研究
+客製的訊息 預設訊息內容雖然清楚，但對於表單輸入總是需要說明是哪個欄位有怎樣的問題，因此需要在預設訊息前面加上欄位名稱。因此需要自定MessageInterpolator(參考)，但實作起來頗為麻煩，因此改為在驗證完取得Set&amp;lt;ConstraintViolation&amp;lt;Object&amp;gt;&amp;gt;後另外處理
+JSF的自動檢查 由於JSF在validation階段就會自動啟用檢查，是滿方便的，但要改成客製的Validator好像有點麻煩，因此可以用&amp;lt;f:validateBean disabled=&amp;quot;true&amp;quot;&amp;gt;把全範圍包起來，就完全關閉JSF自動檢查了
+Spring與Hibernate沒有共用Validator 預期進行檢查的時間點是在進資料庫之前，也就是Repository的操作，而此時Hibernate也確實會自動進行檢查。由於需要客製訊息，因此需要替換預設的Validator。Spring可以透過設定Bean來替換，但Spring的Validator跟Hibernate沒有共用*1,*2，所以需要直接替換Hibernate的Validator，考慮所有設定都透過Spring型式，就沒再研究
+@Bean public Validator validator(MessageSource messageSource) { LocalValidatorFactoryBean factory = new LocalValidatorFactoryBean(); factory.setValidationMessageSource(messageSource); return factory; } 結論 由於需要訊息前方加上欄位名稱，如果無法在MessageInterpolator達成，就勢必要手動觸發驗證。要在MessageInterpolator達成，就需要替換Hibernate的Validator</description>
+    </item>
+    
+    <item>
+      <title>@OneToMany</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/java/jpa/one-to-many/</link>
+      <pubDate>Thu, 30 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/java/jpa/one-to-many/</guid>
+      <description> 簡易範例 @Entity @Table(name = &amp;#34;staf&amp;#34;) public class Staf implements Serializable { private static final long serialVersionUID = 1L; /** 職員代碼(PK) */ @Id @GeneratedValue private int stafno; /** 職員編號 */ private String empid; /** 職員姓名 */ private String name; /** 職位 */ @OneToMany(mappedBy=&amp;#34;stafno&amp;#34;, fetch = FetchType.EAGER, cascade=CascadeType.ALL, orphanRemoval=true) private Set&amp;lt;Stafpositn&amp;gt; stafpositns; } 注意事項  建議使用fetch=FetchType.EAGER，如果使用LAZY據說要在@Transactional範圍內才不會沒有連線而報錯 cascade=CascadeType.ALL, orphanRemoval=true是為了從Set中移除物件並存檔時，可同步移除資料庫內容 建議使用Set取代List，如果使用@OneToMany List2個會報MultipleBagFetchException，參考這裡  </description>
+    </item>
+    
+    <item>
+      <title>Entity的繼承</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/java/jpa/entity-extends/</link>
+      <pubDate>Thu, 30 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/java/jpa/entity-extends/</guid>
+      <description>@Embeddable 如果只是要重複使用field，並且不介意多一層物件，可使用@Embeddable
+@Embeddable public class RC_OBJ implements Serializable { private static final long serialVersionUID = 1L; String rcuser; String rcdept; String rcdate; String rctime; String rcname; }@Entity @Table(name=&amp;#34;BCCNTRL&amp;#34;) public class BCCNTRL implements DeptDocument, ExecuteDocument { @Embedded @AttributeOverrides({ @AttributeOverride(name = &amp;#34;rcuser&amp;#34;, column = @Column(name = &amp;#34;RCUSER&amp;#34;)), @AttributeOverride(name = &amp;#34;rcdept&amp;#34;, column = @Column(name = &amp;#34;RCDEPT&amp;#34;)), @AttributeOverride(name = &amp;#34;rcdate&amp;#34;, column = @Column(name = &amp;#34;RCDATE&amp;#34;)), @AttributeOverride(name = &amp;#34;rctime&amp;#34;, column = @Column(name = &amp;#34;RCTIME&amp;#34;)), @AttributeOverride(name = &amp;#34;rcname&amp;#34;, column = @Column(name = &amp;#34;RCNAME&amp;#34;)), }) RC_OBJ rc; } @MappedSuperclass 如果只是要重複使用field，並且不介意Entity的extends被用掉，可使用@MappedSuperclass</description>
+    </item>
+    
+    <item>
+      <title>Hibernate時區設定</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/java/spring/hibernate-timezone/</link>
+      <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/java/spring/hibernate-timezone/</guid>
+      <description>需要應付不同時區時，資料庫儲存UTC+0的時間，頁面動態決定要顯示的時區。但從資料庫取出的java.util.Date會自動設定為環境預設時區
+方案1 修改JVM預設時區：
+java -Duser.timezone=UTC -jar project.jar 或是
+@SpringBootApplication public class Application { @PostConstruct void started() { TimeZone.setDefault(TimeZone.getTimeZone(&amp;#34;UTC&amp;#34;)); } public static void main(String[] args) { SpringApplication.run(Application.class, args); } } 方案2 用Hibernate的話可以設定JDBC時區
+spring.jpa.properties.hibernate.jdbc.time_zone = UTC 參考資料
+https://moelholm.com/2016/11/09/spring-boot-controlling-timezones-with-hibernate/</description>
     </item>
     
     <item>

@@ -6,10 +6,20 @@
     <description>Recent content in algorithm on 學習筆記</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-TW</language>
-    <lastBuildDate>Thu, 18 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 15 May 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://kiwislice.github.io/html-css-js-memo/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Week 1 編程作業:WordNet</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-ii/algorithms-part2-week1/</link>
+      <pubDate>Wed, 15 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/algorithm/coursera/algorithms-part-ii/algorithms-part2-week1/</guid>
+      <description>編程作業: WordNet 100分
+ 檢查沒有環且同根 如果自製BFS可以更快(搜尋到共同祖先即停止)  WordNet.java import java.util.HashMap; import java.util.HashSet; import java.util.Iterator; import java.util.Map; import java.util.Set; import edu.princeton.cs.algs4.Digraph; import edu.princeton.cs.algs4.DirectedCycle; import edu.princeton.cs.algs4.In; public class WordNet { private final Map&amp;lt;Integer, String&amp;gt; synsetsById; private final Map&amp;lt;String, Set&amp;lt;Integer&amp;gt;&amp;gt; synsets; private final Digraph digraph; private final SAP sap; private final Iterable&amp;lt;String&amp;gt; iterable = () -&amp;gt; new NounsIterator(); // constructor takes the name of the two input files 	public WordNet(String synsets, String hypernyms) { this(new In(requireNonNull(synsets)), new In(requireNonNull(hypernyms))); } private WordNet(In synsets, In hypernyms) { requireNonNull(synsets); requireNonNull(hypernyms); this.</description>
+    </item>
     
     <item>
       <title>Uinon-Find Algorithm</title>

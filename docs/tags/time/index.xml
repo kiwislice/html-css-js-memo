@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>time on 學習筆記</title>
+    <link>https://kiwislice.github.io/html-css-js-memo/tags/time/</link>
+    <description>Recent content in time on 學習筆記</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Fri, 24 May 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://kiwislice.github.io/html-css-js-memo/tags/time/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hibernate時區設定</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/java/spring/hibernate-timezone/</link>
+      <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/java/spring/hibernate-timezone/</guid>
+      <description>需要應付不同時區時，資料庫儲存UTC+0的時間，頁面動態決定要顯示的時區。但從資料庫取出的java.util.Date會自動設定為環境預設時區
+方案1 修改JVM預設時區：
+java -Duser.timezone=UTC -jar project.jar 或是
+@SpringBootApplication public class Application { @PostConstruct void started() { TimeZone.setDefault(TimeZone.getTimeZone(&amp;#34;UTC&amp;#34;)); } public static void main(String[] args) { SpringApplication.run(Application.class, args); } } 方案2 用Hibernate的話可以設定JDBC時區
+spring.jpa.properties.hibernate.jdbc.time_zone = UTC 參考資料
+https://moelholm.com/2016/11/09/spring-boot-controlling-timezones-with-hibernate/</description>
+    </item>
+    
+  </channel>
+</rss>

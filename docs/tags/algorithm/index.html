@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-05-02T10:56:24 CST">
+<meta name="revised" content="2019-06-12T09:13:58 CST">
 
 <meta name="description" content="Kiwislice&#39;s notes." />
 <meta property="og:title" content="Kiwislice的學習筆記" />
@@ -108,10 +108,46 @@
       <a href="/html-css-js-memo/java/spring/">Spring</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
+      <li data-nav-id="/html-css-js-memo/java/spring/javax-validation/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/java/spring/javax-validation/">
+            使用javax.validation
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/html-css-js-memo/java/spring/hibernate-timezone/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/java/spring/hibernate-timezone/">
+            Hibernate時區設定
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
       <li data-nav-id="/html-css-js-memo/java/spring/custom-scope/" class="dd-item">
         <div>
           <a href="/html-css-js-memo/java/spring/custom-scope/">
             自定義Scope
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/html-css-js-memo/java/jpa/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/java/jpa/">Jpa</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/html-css-js-memo/java/jpa/one-to-many/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/java/jpa/one-to-many/">
+            @OneToMany
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/html-css-js-memo/java/jpa/entity-extends/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/java/jpa/entity-extends/">
+            Entity的繼承
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -196,6 +232,21 @@
       <a href="/html-css-js-memo/algorithm/coursera/">Coursera</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
+    <li data-nav-id="/html-css-js-memo/algorithm/coursera/algorithms-part-ii/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/html-css-js-memo/algorithm/coursera/algorithms-part-ii/">Algorithms, Part II</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/html-css-js-memo/algorithm/coursera/algorithms-part-ii/algorithms-part2-week1/" class="dd-item">
+        <div>
+          <a href="/html-css-js-memo/algorithm/coursera/algorithms-part-ii/algorithms-part2-week1/">
+            Week 1 編程作業:WordNet
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
     <li data-nav-id="/html-css-js-memo/algorithm/coursera/algorithms-part-i/" class="dd-item haschildren
         ">
       <div>
@@ -327,6 +378,34 @@
     </thead>
     <tbody>
        
+
+	<tr class="post algorithm">
+    <td class="text-truncate-3-line">
+        <a href="/html-css-js-memo/algorithm/coursera/algorithms-part-ii/algorithms-part2-week1/">
+            <p>Week 1 編程作業:WordNet</p>
+        </a>
+        
+        
+        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/coursera/">coursera</a>
+        
+        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/algorithms-part-ii/">Algorithms, Part II</a>
+        
+        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/algorithm/">algorithm</a>
+        
+        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/graph/">graph</a>
+        
+        <a class="label label-default" href="https://kiwislice.github.io/html-css-js-memo/tags/directed-graph/">directed graph</a>
+        
+        
+    </td>
+    <td class="text-truncate-3-line">
+        <p>編程作業: WordNet 100分
+ 檢查沒有環且同根 如果自製BFS可以更快(搜尋到共同祖先即停止)  WordNet.java import java.util.HashMap; import java.util.HashSet; import java.util.Iterator; import java.util.Map; import java.util.Set; import edu.princeton.cs.algs4.Digraph; import edu.princeton.cs.algs4.DirectedCycle; import edu.princeton.cs.algs4.In; public class WordNet { private final Map&lt;Integer, String&gt; synsetsById; private final Map&lt;String, Set&lt;Integer&gt;&gt; synsets; private final Digraph digraph; private final SAP sap; private final Iterable&lt;String&gt; iterable = () -&gt; new NounsIterator(); // constructor takes the name of the two input files 	public WordNet(String synsets, String hypernyms) { this(new In(requireNonNull(synsets)), new In(requireNonNull(hypernyms))); } private WordNet(In synsets, In hypernyms) { requireNonNull(synsets); requireNonNull(hypernyms); this.</p>
+    </td>
+</tr>
+
+
+
 
 	<tr class="post algorithm">
     <td class="text-truncate-3-line">
@@ -548,7 +627,7 @@ PointSET.java import java.util.LinkedList; import java.util.List; import java.ut
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i> Last update on 18/04/2019
+        <i class='fa fa-calendar'></i> Last update on 15/05/2019
     </div>
     
 

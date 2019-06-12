@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>jpa on 學習筆記</title>
+    <link>https://kiwislice.github.io/html-css-js-memo/tags/jpa/</link>
+    <description>Recent content in jpa on 學習筆記</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Thu, 30 May 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://kiwislice.github.io/html-css-js-memo/tags/jpa/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>@OneToMany</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/java/jpa/one-to-many/</link>
+      <pubDate>Thu, 30 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/java/jpa/one-to-many/</guid>
+      <description> 簡易範例 @Entity @Table(name = &amp;#34;staf&amp;#34;) public class Staf implements Serializable { private static final long serialVersionUID = 1L; /** 職員代碼(PK) */ @Id @GeneratedValue private int stafno; /** 職員編號 */ private String empid; /** 職員姓名 */ private String name; /** 職位 */ @OneToMany(mappedBy=&amp;#34;stafno&amp;#34;, fetch = FetchType.EAGER, cascade=CascadeType.ALL, orphanRemoval=true) private Set&amp;lt;Stafpositn&amp;gt; stafpositns; } 注意事項  建議使用fetch=FetchType.EAGER，如果使用LAZY據說要在@Transactional範圍內才不會沒有連線而報錯 cascade=CascadeType.ALL, orphanRemoval=true是為了從Set中移除物件並存檔時，可同步移除資料庫內容 建議使用Set取代List，如果使用@OneToMany List2個會報MultipleBagFetchException，參考這裡  </description>
+    </item>
+    
+    <item>
+      <title>Entity的繼承</title>
+      <link>https://kiwislice.github.io/html-css-js-memo/java/jpa/entity-extends/</link>
+      <pubDate>Thu, 30 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kiwislice.github.io/html-css-js-memo/java/jpa/entity-extends/</guid>
+      <description>@Embeddable 如果只是要重複使用field，並且不介意多一層物件，可使用@Embeddable
+@Embeddable public class RC_OBJ implements Serializable { private static final long serialVersionUID = 1L; String rcuser; String rcdept; String rcdate; String rctime; String rcname; }@Entity @Table(name=&amp;#34;BCCNTRL&amp;#34;) public class BCCNTRL implements DeptDocument, ExecuteDocument { @Embedded @AttributeOverrides({ @AttributeOverride(name = &amp;#34;rcuser&amp;#34;, column = @Column(name = &amp;#34;RCUSER&amp;#34;)), @AttributeOverride(name = &amp;#34;rcdept&amp;#34;, column = @Column(name = &amp;#34;RCDEPT&amp;#34;)), @AttributeOverride(name = &amp;#34;rcdate&amp;#34;, column = @Column(name = &amp;#34;RCDATE&amp;#34;)), @AttributeOverride(name = &amp;#34;rctime&amp;#34;, column = @Column(name = &amp;#34;RCTIME&amp;#34;)), @AttributeOverride(name = &amp;#34;rcname&amp;#34;, column = @Column(name = &amp;#34;RCNAME&amp;#34;)), }) RC_OBJ rc; } @MappedSuperclass 如果只是要重複使用field，並且不介意Entity的extends被用掉，可使用@MappedSuperclass</description>
+    </item>
+    
+  </channel>
+</rss>
